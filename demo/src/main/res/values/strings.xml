@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Demo</string>
+    
+    <string name="next">Berikutnya</string>
+    <string name="register">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="skip">Lewati untuk Saat ini</string>
+
+    <string name="title_first_screen">Tutorial Memasak</string>
+    <string name="subtitle_first_screen">Temukan tutorial masak yang sesuai dengan kategori yang kamu ingingkan</string>
+    <string name="title_second_screen">Pesan Bahan</string>
+    <string name="subtitle_second_screen">Kami sediakan bahan yang sesuai dengan takaran dari tutorial masak kami</string>
+    <string name="title_third_screen">Antar Bahan</string>
+    <string name="subtitle_third_screen">Kami antarkan bahan masakan sampai kedepan rumahmu</string>
 </resources>
