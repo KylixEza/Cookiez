@@ -4,6 +4,8 @@
     <color name="white">#FFFEFEFE</color>
     <color name="light_red">#FFFEEBED</color>
     <color name="dark_gray">#FF5D5D5D</color>
+    <color name="light_gray">#FF8A887B</color>
+    <color name="stroke_gray">#FFC9C9C9</color>
     <color name="black">#FF1E1E1E</color>
     <color name="gray">#FFC0C0C0</color>
     <color name="gray_icon">#FF999999</color>

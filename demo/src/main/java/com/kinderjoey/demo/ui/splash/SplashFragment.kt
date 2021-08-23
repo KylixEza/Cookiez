@@ -36,8 +36,8 @@ class SplashFragment : Fragment() {
         val handler = Handler(Looper.getMainLooper())
 
         handler.postDelayed({
-            splashViewModel.readFromDataStore().observe(viewLifecycleOwner, {
-                if (it) {
+            splashViewModel.readFromDataStore().observe(viewLifecycleOwner, { isLogin ->
+                if (isLogin) {
                     val intent = Intent(requireActivity(), MainActivity::class.java)
                     startActivity(intent)
                 } else {
@@ -48,6 +48,6 @@ class SplashFragment : Fragment() {
                     }
                 }
             })
-        }, 3000)
+        }, 1500)
     }
 }

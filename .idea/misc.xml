@@ -7,15 +7,19 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_background_splash.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_icon.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_icon_second_screen.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_main_background.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_title_subtitle_first_screen.xml" value="0.24166666666666667" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_title_subtitle_third_screen.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_auth.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_main.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_splash.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_first_screen.xml" value="0.18" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_on_boarding.xml" value="0.22" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_second_screen.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_splash.xml" value="0.25" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_third_screen.xml" value="0.18" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/include_or_separator.xml" value="0.278125" />
       </map>
     </option>
   </component>
