@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_your_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_location"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/gray_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_semibold"
+        app:drawableStartCompat="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="@id/tv_your_location"
+        app:layout_constraintTop_toBottomOf="@id/tv_your_location"
+        tools:text="Kota Malang"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_search_cover"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        app:cardBackgroundColor="@color/search_background"
+        app:layout_constraintStart_toStartOf="@id/tv_location"
+        app:layout_constraintTop_toBottomOf="@id/tv_location"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:queryHint="Mau masak apa hari ini"
+            app:defaultQueryHint="Mau masak apa hari ini"
+            app:searchIcon="@drawable/ic_search"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/iv_notification"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_notification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cv_search_cover"/>
+
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_favorite"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/iv_notification"
+        app:layout_constraintTop_toTopOf="@id/iv_notification"
+        app:layout_constraintBottom_toBottomOf="@id/iv_notification"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

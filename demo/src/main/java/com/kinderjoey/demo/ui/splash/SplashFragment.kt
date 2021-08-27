@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
-import com.kinderjoey.demo.MainActivity
+import com.kinderjoey.demo.ui.MainActivity
 import com.kinderjoey.demo.R
 import com.kinderjoey.demo.databinding.FragmentSplashBinding
 import com.kinderjoey.demo.ui.onboard.OnBoardingFragment
@@ -40,6 +40,7 @@ class SplashFragment : Fragment() {
                 if (isLogin) {
                     val intent = Intent(requireActivity(), MainActivity::class.java)
                     startActivity(intent)
+                    activity?.finish()
                 } else {
                     val mFragment = OnBoardingFragment()
                     val mFragmentManager = parentFragmentManager

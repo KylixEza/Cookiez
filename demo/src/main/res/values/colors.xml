@@ -11,4 +11,8 @@
     <color name="gray_icon">#FF999999</color>
     <color name="red_pastel">#FFFD6C6C</color>
     <color name="red_soft_pastel">#FFFE9494</color>
+    <color name="icon_location_red">#FFFF575A</color>
+    <color name="search_background">#FFF3F3F3</color>
+    <color name="outlined_button_see_all">#FFEBFEEA</color>
+    <color name="text_outlined_button_see_all">#FF69AF6B</color>
 </resources>

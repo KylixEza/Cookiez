@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.viewModels
-import com.kinderjoey.demo.MainActivity
+import com.kinderjoey.demo.ui.MainActivity
 import com.kinderjoey.demo.R
 import com.kinderjoey.demo.databinding.FragmentThirdScreenBinding
 import com.kinderjoey.demo.ui.auth.AuthActivity
