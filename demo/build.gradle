@@ -72,4 +72,9 @@ dependencies {
     //Coroutine Flow
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+
+    //Exo Player
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.15.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.15.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
 }

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.detail.order.DetailOrderMenuFragment">
+
+    <include
+        android:id="@+id/include_app_bar_middle"
+        layout="@layout/include_app_bar_middle"/>
+
+    <ImageView
+        android:id="@+id/iv_driver_order"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/driver_order"
+        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintTop_toBottomOf="@id/include_app_bar_middle"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="6dp"
+        android:text="Pesan antar"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/iv_driver_order"
+        app:layout_constraintTop_toTopOf="@id/iv_driver_order"/>
+
+    <TextView
+        android:id="@+id/tv_estimated_time_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Diantar dalam 15 min"
+        android:textSize="9sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_order"
+        app:layout_constraintStart_toStartOf="@id/tv_order"/>
+
+    <ImageView
+        android:id="@+id/iv_separator_header_address"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:src="@drawable/dotted"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_driver_order"/>
+    
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:text="Alamat Pengantaran"
+        app:layout_constraintStart_toStartOf="@id/iv_separator_header_address"
+        app:layout_constraintTop_toBottomOf="@id/iv_separator_header_address"/>
+
+    <TextView
+        android:id="@+id/tv_location_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Rumah"
+        app:layout_constraintTop_toBottomOf="@id/tv_location"
+        app:layout_constraintStart_toStartOf="@id/tv_location"/>
+
+    <TextView
+        android:id="@+id/tv_detail_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="10sp"
+        android:text="Jl. Catur Jaya nomer 110 Kota Madiun"
+        app:layout_constraintStart_toStartOf="@id/tv_location_point"
+        app:layout_constraintTop_toBottomOf="@id/tv_location_point"/>
+
+    <View
+        android:id="@+id/separator_address_menu"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_location"
+        app:layout_constraintStart_toStartOf="@id/iv_separator_header_address"
+        app:layout_constraintEnd_toEndOf="@id/iv_separator_header_address"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_variant_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator_address_menu">
+        <include
+            layout="@layout/item_list_variant"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_input_voucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Masukan Voucher"
+        app:layout_constraintStart_toStartOf="@id/separator_address_menu"
+        app:layout_constraintTop_toBottomOf="@id/item_variant_container"/>
+
+    <TextView
+        android:id="@+id/tv_choose_voucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="12sp"
+        android:text="Pilih voucher milikmu"
+        app:layout_constraintStart_toStartOf="@id/tv_input_voucher"
+        app:layout_constraintTop_toBottomOf="@id/tv_input_voucher"/>
+
+    <ImageView
+        android:id="@+id/iv_arrow_forward"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_arrow_forward_ios"
+        app:layout_constraintTop_toTopOf="@id/tv_choose_voucher"
+        app:layout_constraintEnd_toEndOf="@id/separator_address_menu"
+        app:layout_constraintBottom_toBottomOf="@id/tv_choose_voucher"/>
+
+    <View
+        android:id="@+id/separator_voucher_detailPayment"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/tv_choose_voucher"
+        app:layout_constraintStart_toStartOf="@id/tv_choose_voucher"
+        app:layout_constraintEnd_toEndOf="@id/iv_arrow_forward"/>
+
+    <TextView
+        android:id="@+id/tv_detail_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Detail Pembayaran"
+        app:layout_constraintTop_toBottomOf="@id/separator_voucher_detailPayment"
+        app:layout_constraintStart_toStartOf="@id/separator_voucher_detailPayment"/>
+
+    <TextView
+        android:id="@+id/tv_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="Harga bahan"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/tv_detail_payment"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_payment"/>
+
+    <TextView
+        android:id="@+id/tv_ingredients_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        android:text="15.000"
+        app:layout_constraintTop_toTopOf="@id/tv_ingredients"
+        app:layout_constraintBottom_toBottomOf="@id/tv_ingredients"
+        app:layout_constraintEnd_toEndOf="@id/separator_voucher_detailPayment"/>
+
+    <TextView
+        android:id="@+id/tv_shipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="Ongkir"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/tv_ingredients"
+        app:layout_constraintTop_toBottomOf="@id/tv_ingredients"/>
+
+    <TextView
+        android:id="@+id/tv_shipment_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        android:text="4.000"
+        app:layout_constraintTop_toTopOf="@id/tv_shipment"
+        app:layout_constraintBottom_toBottomOf="@id/tv_shipment"
+        app:layout_constraintEnd_toEndOf="@id/tv_ingredients_price"/>
+
+    <TextView
+        android:id="@+id/tv_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="Diskon"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/tv_shipment"
+        app:layout_constraintTop_toBottomOf="@id/tv_shipment"/>
+
+    <TextView
+        android:id="@+id/tv_discount_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        android:text="-3.500"
+        app:layout_constraintTop_toTopOf="@id/tv_discount"
+        app:layout_constraintBottom_toBottomOf="@id/tv_discount"
+        app:layout_constraintEnd_toEndOf="@id/tv_shipment_price"/>
+
+    <TextView
+        android:id="@+id/tv_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="Biaya Admin"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/tv_discount"
+        app:layout_constraintTop_toBottomOf="@id/tv_discount"/>
+
+    <TextView
+        android:id="@+id/tv_admin_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        android:text="0"
+        app:layout_constraintTop_toTopOf="@id/tv_admin"
+        app:layout_constraintBottom_toBottomOf="@id/tv_admin"
+        app:layout_constraintEnd_toEndOf="@id/tv_discount_price"/>
+
+    <View
+        android:id="@+id/separator_detailPayment_totalPayment"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/separator_voucher_detailPayment"
+        app:layout_constraintTop_toBottomOf="@id/tv_admin"
+        app:layout_constraintEnd_toEndOf="@id/separator_voucher_detailPayment"/>
+
+    <TextView
+        android:id="@+id/tv_total_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:text="Total Pembayaran"
+        app:layout_constraintStart_toStartOf="@id/separator_detailPayment_totalPayment"
+        app:layout_constraintTop_toBottomOf="@id/separator_detailPayment_totalPayment"/>
+
+    <TextView
+        android:id="@+id/tv_total_payment_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="15.500"
+        app:layout_constraintTop_toTopOf="@id/tv_total_payment"
+        app:layout_constraintBottom_toBottomOf="@id/tv_total_payment"
+        app:layout_constraintEnd_toEndOf="@id/tv_admin_price"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <include
+            layout="@layout/include_bottom_bar_detail"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
