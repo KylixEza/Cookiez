@@ -47,8 +47,6 @@ class MainActivity : AppCompatActivity() {
             }
             labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_UNLABELED
         }
-
-        finish()
     }
 
     private fun navigationSelected(fragment: Fragment): Boolean {

@@ -1,11 +1,13 @@
 package com.kinderjoey.demo.ui.home.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kinderjoey.demo.databinding.ItemListCategoriesBinding
 import com.kinderjoey.demo.model.Category
+import com.kinderjoey.demo.ui.category.CategoryActivity
 
 class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
@@ -36,8 +38,12 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(
             Glide.with(itemView.context)
                 .load(category.imageCategory)
                 .into(view.ivCategory)
-
             view.tvCategory.text = category.titleCategory
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, CategoryActivity::class.java)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }

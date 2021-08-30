@@ -15,4 +15,11 @@
     <color name="search_background">#FFF3F3F3</color>
     <color name="outlined_button_see_all">#FFEBFEEA</color>
     <color name="text_outlined_button_see_all">#FF69AF6B</color>
+
+    <color name="card_difficult_easy">#266CC580</color>
+    <color name="card_difficult_medium">#FFFFEEBB</color>
+    <color name="card_difficult_hard">#FFFFB2A9</color>
+    <color name="text_difficult_easy">#FF05BD86</color>
+    <color name="text_difficult_medium">#FFFF8A00</color>
+    <color name="text_difficult_hard">#FFFF3551</color>
 </resources>
