@@ -56,6 +56,11 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-
+    override fun onBackPressed() {
+        if (mainBinding.mainBottomNav.selectedItemId != R.id.home_menu)
+            mainBinding.mainBottomNav.selectedItemId = R.id.home_menu
+        else
+            super.onBackPressed()
+    }
 
 }

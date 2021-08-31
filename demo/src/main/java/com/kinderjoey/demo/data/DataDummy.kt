@@ -164,4 +164,15 @@ object DataDummy {
             R.drawable.voucher_yellow,
         )
     }
+
+    fun setLeaderboard(): List<Int> {
+        return listOf(
+            R.drawable.leaderboard_first,
+            R.drawable.leaderboard_second,
+            R.drawable.leaderboard_third,
+            R.drawable.leaderboard_fourth,
+            R.drawable.leaderboard_fifth,
+            R.drawable.leaderboard_sixth
+        )
+    }
 }

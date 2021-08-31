@@ -110,6 +110,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/separator_address_menu">
         <include
+            android:id="@+id/include_item_list_variant"
             layout="@layout/item_list_variant"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -310,7 +311,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         <include
-            layout="@layout/include_bottom_bar_detail"/>
+            android:id="@+id/include_bottom_bar_detail_order"
+            layout="@layout/include_bottom_bar_detail_order"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
