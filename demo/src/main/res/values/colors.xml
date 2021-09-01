@@ -15,7 +15,8 @@
     <color name="search_background">#FFF3F3F3</color>
     <color name="outlined_button_see_all">#FFEBFEEA</color>
     <color name="text_outlined_button_see_all">#FF69AF6B</color>
-
+    <color name="text_last_transaction_status">#FF474748</color>
+    
     <color name="card_difficult_easy">#266CC580</color>
     <color name="card_difficult_medium">#FFFFEEBB</color>
     <color name="card_difficult_hard">#FFFFB2A9</color>

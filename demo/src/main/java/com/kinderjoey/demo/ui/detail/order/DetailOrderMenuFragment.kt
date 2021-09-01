@@ -32,7 +32,7 @@ class DetailOrderMenuFragment : Fragment() {
         }
 
         binding.includeItemListVariant.apply {
-            rbVariant.visibility = View.GONE
+            rbVariant.visibility = View.INVISIBLE
             tvTittleVariant.text = "Bahan Komplit (3-5 Porsi)"
             tvSubtitleVariant.text = "Sayur-sayuran, telur, nasi, cabai, daging, jeruk"
             tvVariantPrice.text = "15.000"

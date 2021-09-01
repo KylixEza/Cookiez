@@ -47,6 +47,8 @@ class DetailMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.includeAppBarMiddle.tvTittle.text = "Nasi Goreng Asia"
+
         initializePlayer()
 
         val fragmentManager = parentFragmentManager
