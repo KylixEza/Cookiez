@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
         val exclusiveAdapter = ListMenuAdapter()
 
         homeBinding.apply {
+            includeAppBar.tvLocation.text = "Kota Malang"
             rvCategory.apply {
                 adapter = categoryAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)

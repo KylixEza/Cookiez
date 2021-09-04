@@ -34,11 +34,11 @@
             app:layout_constraintBottom_toBottomOf="@id/iv_icon_upside"
             tools:text="Alamatku"/>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_forward_upside"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward_ios"
+            android:background="@drawable/ic_arrow_forward_ios"
             app:layout_constraintTop_toTopOf="@id/tv_upside"
             app:layout_constraintBottom_toBottomOf="@id/tv_upside"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -75,11 +75,11 @@
             app:layout_constraintBottom_toBottomOf="@id/iv_icon_downside"
             tools:text="Riwayat Pesanan"/>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_forward_downside"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward_ios"
+            android:background="@drawable/ic_arrow_forward_ios"
             app:layout_constraintTop_toTopOf="@id/tv_downside"
             app:layout_constraintBottom_toBottomOf="@id/tv_downside"
             app:layout_constraintEnd_toEndOf="parent"/>

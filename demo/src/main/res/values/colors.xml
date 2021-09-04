@@ -23,4 +23,10 @@
     <color name="text_difficult_easy">#FF05BD86</color>
     <color name="text_difficult_medium">#FFFF8A00</color>
     <color name="text_difficult_hard">#FFFF3551</color>
+    
+    <color name="card_on_process">#FFFF8A00</color>
+    <color name="card_on_success">#FF2BDAA6</color>
+    <color name="card_on_canceled">#FFFF1D58</color>
+    <color name="card_on_order_cancel">#FFF1323E</color>
+    <color name="card_on_order_again">#FF2BDAA6</color>
 </resources>

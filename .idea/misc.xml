@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/activity_main.xml" value="0.2640625" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/card_view_stroke.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/dotted.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_all_categories.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_arrow_back.xml" value="0.2942708333333333" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_main_background.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_person.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_reccomended.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_send_rating.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_separator_variant.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_shopping_bag.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/drawable/ic_shopping_bag_last_transaction.xml" value="0.2942708333333333" />
@@ -25,9 +27,11 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_category.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_cwallet.xml" value="0.22" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_detail.xml" value="0.22" />
-        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_history.xml" value="0.25" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_history.xml" value="0.2254335260115607" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/activity_splash.xml" value="0.278125" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/card_view_stroke.xml" value="0.278125" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/exo_playback_control_view.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_available_voucher.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_datail_variant_menu.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/fragment_detail_menu.xml" value="0.278125" />
@@ -59,10 +63,12 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/include_bottom_bar_detail_order.xml" value="0.33" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/include_or_separator.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/include_profile_util.xml" value="0.33" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/include_send_rating.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_categories.xml" value="0.67" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_history.xml" value="0.33" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_las_transaction.xml" value="0.47266881028938906" />
-        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_last_transaction.xml" value="0.25" />
-        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_leaderboard.xml" value="0.25" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_last_transaction.xml" value="0.5" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_leaderboard.xml" value="0.5878284923928078" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_menu.xml" value="0.25" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_promotion.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_variant.xml" value="0.5" />

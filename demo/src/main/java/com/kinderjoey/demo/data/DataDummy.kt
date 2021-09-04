@@ -3,6 +3,8 @@ package com.kinderjoey.demo.data
 import com.kinderjoey.demo.R
 import com.kinderjoey.demo.model.Category
 import com.kinderjoey.demo.model.Menu
+import com.kinderjoey.demo.model.Transaction
+import com.kinderjoey.demo.model.UserLeaderBoard
 
 object DataDummy {
 
@@ -165,14 +167,84 @@ object DataDummy {
         )
     }
 
-    fun setLeaderboard(): List<Int> {
+    fun setLeaderboard(): List<UserLeaderBoard> {
         return listOf(
-            R.drawable.leaderboard_first,
-            R.drawable.leaderboard_second,
-            R.drawable.leaderboard_third,
-            R.drawable.leaderboard_fourth,
-            R.drawable.leaderboard_fifth,
-            R.drawable.leaderboard_sixth
+            UserLeaderBoard(
+                1,
+                R.drawable.avatar_rank1,
+                "Annette Black",
+                2450
+            ),
+            UserLeaderBoard(
+                2,
+                R.drawable.avatar_rank2,
+                "Esther Howard",
+                2450
+            ),
+            UserLeaderBoard(
+                3,
+                R.drawable.avatar_rank3,
+                "Eleanor Pena",
+                2450
+            ),
+            UserLeaderBoard(
+                4,
+                R.drawable.avatar_rank4,
+                "Jane Cooper",
+                2450
+            ),
+            UserLeaderBoard(
+                5,
+                R.drawable.avatar_rank5,
+                "Bessie Cooper",
+                2450
+            ),
+            UserLeaderBoard(
+                6,
+                R.drawable.avatar_rank6,
+                "Dianner Russel",
+                2450
+            ),
+        )
+    }
+
+    fun setTransaction(): List<Transaction> {
+        return listOf(
+            Transaction(
+                "Pembayaran",
+                "Nasi Goreng Asia (1-3 porsi)",
+                "21-08-2021",
+                "- Rp. 25000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Nasi Goreng Asia (5-7 porsi)",
+                "17-08-2021",
+                "- Rp. 75000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Ayam bakar (3-5 porsi)",
+                "15-08-2021",
+                "- Rp. 41000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Mie rebus (3-5 porsi)",
+                "11-08-2021",
+                "- Rp. 27000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Nasi lalapan (3-5 porsi)",
+                "09-08-2021",
+                "- Rp. 32000",
+                "Berhasil"
+            ),
         )
     }
 }

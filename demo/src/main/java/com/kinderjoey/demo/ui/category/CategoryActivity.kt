@@ -24,7 +24,7 @@ class CategoryActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.white)
         }
 
-        val categoryAdapter = SelectedCategoryAdapter()
+        val categoryAdapter = SelectedCategoryAdapter(this)
 
         binding.apply {
             includeAppBarMiddle.apply {

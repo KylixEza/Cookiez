@@ -10,7 +10,7 @@
         android:id="@+id/include_app_bar_profile"
         layout="@layout/include_app_bar_profile"/>
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
+    <ImageView
         android:id="@+id/iv_profile_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_account"
         app:layout_constraintEnd_toEndOf="@id/iv_profile_state">
         <include
-            android:id="include_account_util"
+            android:id="@+id/include_account_util"
             layout="@layout/include_profile_util"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_others"
         app:layout_constraintEnd_toEndOf="@id/iv_profile_state">
         <include
-            android:id="include_account_util"
+            android:id="@+id/include_others_util"
             layout="@layout/include_profile_util"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

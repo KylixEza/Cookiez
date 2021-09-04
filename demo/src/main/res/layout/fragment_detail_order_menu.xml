@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@id/iv_driver_order"/>
 
     <TextView
-        android:id="@+id/tv_estimated_time_order"
+        android:id="@+id/tv_estimated_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
@@ -304,7 +304,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_total_payment"
         app:layout_constraintEnd_toEndOf="@id/tv_admin_price"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -313,6 +313,6 @@
         <include
             android:id="@+id/include_bottom_bar_detail_order"
             layout="@layout/include_bottom_bar_detail_order"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

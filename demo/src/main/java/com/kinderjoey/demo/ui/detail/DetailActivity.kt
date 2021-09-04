@@ -4,8 +4,10 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.kinderjoey.demo.R
+import com.kinderjoey.demo.ui.detail.order.DetailOrderVerificationFragment
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,5 @@ class DetailActivity : AppCompatActivity() {
         fragmentManager.commit {
             add(R.id.detail_container, fragment, DetailMenuFragment::class.java.simpleName)
         }
-
     }
 }

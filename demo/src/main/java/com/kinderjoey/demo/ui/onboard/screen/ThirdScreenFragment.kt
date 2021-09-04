@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.viewModels
-import com.kinderjoey.demo.ui.MainActivity
 import com.kinderjoey.demo.R
 import com.kinderjoey.demo.databinding.FragmentThirdScreenBinding
 import com.kinderjoey.demo.ui.auth.AuthActivity
+import com.kinderjoey.demo.ui.auth.login.LoginFragment
+import com.kinderjoey.demo.ui.auth.register.RegisterFragment
 import com.kinderjoey.demo.ui.splash.SplashViewModel
 
 class ThirdScreenFragment : Fragment() {
@@ -34,11 +35,12 @@ class ThirdScreenFragment : Fragment() {
         thirdScreenBinding.apply {
             btnLogin.setOnClickListener {
                 val intent = Intent(requireActivity(), AuthActivity::class.java)
+                intent.putExtra(AuthActivity.AUTH_INTENT_CODE, LoginFragment::class.java.simpleName)
                 startActivity(intent)
             }
             btnRegister.setOnClickListener {
-                splashViewModel.saveToDataStore("Kylix")
-                val intent = Intent(requireActivity(), MainActivity::class.java)
+                val intent = Intent(requireActivity(), AuthActivity::class.java)
+                intent.putExtra(AuthActivity.AUTH_INTENT_CODE, RegisterFragment::class.java.simpleName)
                 startActivity(intent)
             }
         }

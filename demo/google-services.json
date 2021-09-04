@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868807435518",
+    "project_id": "cookiez-83063",
+    "storage_bucket": "cookiez-83063.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868807435518:android:1177463f376914792eb1af",
+        "android_client_info": {
+          "package_name": "com.kinderjoey.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868807435518-mdo75upa27s4osq4f29jjdvfqtmnveok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPZ0kRJ6b9rcnScYE91mmUAvwrdPCEpJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868807435518-mdo75upa27s4osq4f29jjdvfqtmnveok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

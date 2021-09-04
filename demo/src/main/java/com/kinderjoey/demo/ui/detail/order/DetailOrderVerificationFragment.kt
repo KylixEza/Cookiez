@@ -1,5 +1,6 @@
 package com.kinderjoey.demo.ui.detail.order
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import com.kinderjoey.demo.R
 import com.kinderjoey.demo.databinding.FragmentDetailOrderVerificationBinding
+import com.kinderjoey.demo.ui.history.HistoryActivity
 
 class DetailOrderVerificationFragment : Fragment() {
 
@@ -28,5 +30,13 @@ class DetailOrderVerificationFragment : Fragment() {
             ivFavorite.visibility = View.GONE
             tvTittle.text = "Pesanan Diterima"
         }
+
+        binding.btnGoToHistory.setOnClickListener {
+            val intent = Intent(activity, HistoryActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
     }
+
+
 }

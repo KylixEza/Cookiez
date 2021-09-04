@@ -1,10 +1,12 @@
 package com.kinderjoey.demo.ui.category
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kinderjoey.demo.R
@@ -12,7 +14,7 @@ import com.kinderjoey.demo.databinding.ItemListMenuBinding
 import com.kinderjoey.demo.model.Menu
 import com.kinderjoey.demo.ui.detail.DetailActivity
 
-class SelectedCategoryAdapter: RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
+class SelectedCategoryAdapter(val activity: AppCompatActivity): RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
 
     private val listOfMenu = ArrayList<Menu>()
 
@@ -80,6 +82,7 @@ class SelectedCategoryAdapter: RecyclerView.Adapter<SelectedCategoryAdapter.Sele
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailActivity::class.java)
                 itemView.context.startActivity(intent)
+                activity.finish()
             }
         }
 
