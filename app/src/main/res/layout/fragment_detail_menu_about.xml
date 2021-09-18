@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <TextView
+            android:id="@+id/tv_title_menu_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/dark_gray"
+            android:textSize="12sp"
+            android:text="@string/title_menu_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_menu_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_menu_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Nasi Goreng Asia merupakan jenis masakan Indonesian Food. Tutorial memasak dilakukan oleh Chef Reina."/>
+
+        <TextView
+            android:id="@+id/tv_title_menu_estimate_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/estimate_time"
+            android:textSize="12sp"
+            android:textColor="@color/dark_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_menu_description"/>
+
+
+        <TextView
+            android:id="@+id/tv_menu_estimate_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_menu_estimate_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="20 - 25 Menit"/>
+
+        <TextView
+            android:id="@+id/tv_title_menu_benefit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/benefit"
+            android:textSize="12sp"
+            android:textColor="@color/dark_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_menu_estimate_time"/>
+
+        <TextView
+            android:id="@+id/tv_menu_benefit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_menu_benefit"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Ketika kamu selesai memesan bahan makanan kamu akan mendapatkan 20 XP dan 20 Coin Poin yang dapat kamu tukarkan pada halaman Toko Voucher"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

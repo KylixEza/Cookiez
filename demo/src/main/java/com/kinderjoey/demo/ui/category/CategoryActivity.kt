@@ -26,7 +26,7 @@ class CategoryActivity : AppCompatActivity() {
 
         val categoryAdapter = SelectedCategoryAdapter(this)
 
-        binding.apply {
+        /*binding.apply {
             includeAppBarMiddle.apply {
                 ivFavorite.visibility = View.GONE
                 tvTittle.text = "Semua Kategori"
@@ -35,7 +35,7 @@ class CategoryActivity : AppCompatActivity() {
                 adapter = categoryAdapter
                 layoutManager = LinearLayoutManager(this@CategoryActivity, LinearLayoutManager.VERTICAL, false)
             }
-        }
+        }*/
 
         categoryAdapter.setAllData(DataDummy.setAllCategories())
     }

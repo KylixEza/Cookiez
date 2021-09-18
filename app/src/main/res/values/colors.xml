@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFF1323E</color>
+    <color name="white">#FFFEFEFE</color>
+    <color name="light_red">#FFFEEBED</color>
+    <color name="dark_gray">#FF5D5D5D</color>
+    <color name="light_gray">#FF8A887B</color>
+    <color name="stroke_gray">#FFC9C9C9</color>
+    <color name="black">#FF1E1E1E</color>
+    <color name="gray">#FFC0C0C0</color>
+    <color name="gray_icon">#FF999999</color>
+    <color name="red_pastel">#FFFD6C6C</color>
+    <color name="red_soft_pastel">#FFFE9494</color>
+    <color name="icon_location_red">#FFFF575A</color>
+    <color name="search_background">#FFF3F3F3</color>
+    <color name="outlined_button_see_all">#FFEBFEEA</color>
+    <color name="text_outlined_button_see_all">#FF69AF6B</color>
+    <color name="text_last_transaction_status">#FF474748</color>
+
+    <color name="card_difficult_easy">#266CC580</color>
+    <color name="card_difficult_medium">#FFFFEEBB</color>
+    <color name="card_difficult_hard">#FFFFB2A9</color>
+    <color name="text_difficult_easy">#FF05BD86</color>
+    <color name="text_difficult_medium">#FFFF8A00</color>
+    <color name="text_difficult_hard">#FFFF3551</color>
+
+    <color name="card_on_process">#FFFF8A00</color>
+    <color name="card_on_success">#FF2BDAA6</color>
+    <color name="card_on_canceled">#FFFF1D58</color>
+    <color name="card_on_order_cancel">#FFF1323E</color>
+    <color name="card_on_order_again">#FF2BDAA6</color>
 </resources>

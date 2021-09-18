@@ -24,7 +24,7 @@ class CWalletActivity : AppCompatActivity() {
         }
 
         val transactionAdapter = PreviewTransactionAdapter()
-        binding.apply {
+        /*binding.apply {
             rvLastTransaction.apply {
                 adapter = transactionAdapter
                 layoutManager = LinearLayoutManager(this@CWalletActivity, LinearLayoutManager.VERTICAL, false)
@@ -34,7 +34,7 @@ class CWalletActivity : AppCompatActivity() {
                 tvTittle.text = "Cookiez Wallet"
                 ivFavorite.visibility = View.GONE
             }
-        }
+        }*/
 
         transactionAdapter.setAllData(DataDummy.setTransaction())
     }

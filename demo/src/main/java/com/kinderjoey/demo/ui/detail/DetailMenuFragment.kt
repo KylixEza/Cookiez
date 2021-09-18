@@ -63,7 +63,7 @@ class DetailMenuFragment : Fragment() {
                 onStart()
         }
 
-        binding.includeAppBarMiddle.tvTittle.text = "Nasi Goreng Asia"
+        //binding.includeAppBarMiddle.tvTittle.text = "Nasi Goreng Asia"
 
         val fragmentManager = parentFragmentManager
         val fragment = DetailVariantMenuFragment()

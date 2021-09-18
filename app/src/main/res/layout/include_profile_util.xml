@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardUseCompatPadding="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/iv_icon_upside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_location_gray"/>
+
+        <TextView
+            android:id="@+id/tv_upside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@id/iv_icon_upside"
+            app:layout_constraintTop_toTopOf="@id/iv_icon_upside"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon_upside"
+            tools:text="Alamatku"/>
+
+        <ImageButton
+            android:id="@+id/iv_forward_upside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_forward_ios"
+            app:layout_constraintTop_toTopOf="@id/tv_upside"
+            app:layout_constraintBottom_toBottomOf="@id/tv_upside"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <View
+            android:id="@+id/separator_upside_downside"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/gray"
+            app:layout_constraintStart_toStartOf="@id/iv_icon_upside"
+            app:layout_constraintTop_toBottomOf="@id/tv_upside"
+            app:layout_constraintEnd_toEndOf="@id/iv_forward_upside"/>
+
+        <ImageView
+            android:id="@+id/iv_icon_downside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@id/separator_upside_downside"
+            app:layout_constraintTop_toTopOf="@id/separator_upside_downside"
+            tools:src="@drawable/ic_history"/>
+
+        <TextView
+            android:id="@+id/tv_downside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@id/iv_icon_downside"
+            app:layout_constraintTop_toTopOf="@id/iv_icon_downside"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon_downside"
+            tools:text="Riwayat Pesanan"/>
+
+        <ImageButton
+            android:id="@+id/iv_forward_downside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_forward_ios"
+            app:layout_constraintTop_toTopOf="@id/tv_downside"
+            app:layout_constraintBottom_toBottomOf="@id/tv_downside"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

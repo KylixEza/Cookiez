@@ -205,6 +205,30 @@ object DataDummy {
                 "Dianner Russel",
                 2450
             ),
+            UserLeaderBoard(
+                7,
+                R.drawable.avatar_rank1,
+                "Matthew Natt",
+                2450
+            ),
+            UserLeaderBoard(
+                8,
+                R.drawable.avatar_rank2,
+                "Easter Egg",
+                2450
+            ),
+            UserLeaderBoard(
+                9,
+                R.drawable.avatar_rank3,
+                "Norrand Gold",
+                2450
+            ),
+            UserLeaderBoard(
+                10,
+                R.drawable.avatar_rank4,
+                "Fanny Viola",
+                2450
+            ),
         )
     }
 

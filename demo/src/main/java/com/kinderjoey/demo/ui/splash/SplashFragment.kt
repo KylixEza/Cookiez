@@ -18,7 +18,6 @@ import com.kinderjoey.demo.ui.onboard.OnBoardingFragment
 
 class SplashFragment : Fragment() {
 
-    private val splashBinding by viewBinding<FragmentSplashBinding>()
     private val splashViewModel by viewModels<SplashViewModel>()
 
     override fun onCreateView(

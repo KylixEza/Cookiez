@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="32dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/rb_variant"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    
+    <TextView
+        android:id="@+id/tv_tittle_variant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/rb_variant"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bahan Komplit (3-5 Porsi)"/>
+
+    <TextView
+        android:id="@+id/tv_subtitle_variant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/tv_tittle_variant"
+        app:layout_constraintTop_toBottomOf="@id/tv_tittle_variant"
+        app:layout_constraintEnd_toStartOf="@id/iv_variant_img"
+        tools:text="Sayur-sayuran, telur, nasi, cabai, daging, jeruk"/>
+
+    <TextView
+        android:id="@+id/tv_variant_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_subtitle_variant"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle_variant"
+        tools:text="20.000"/>
+
+    <ImageView
+        android:id="@+id/iv_variant_img"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        app:circularflow_radiusInDP="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_tittle_variant"
+        tools:src="@drawable/ic_favorite"/>
+
+    <View
+        android:id="@+id/separator_downside"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_variant_img" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

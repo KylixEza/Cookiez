@@ -25,7 +25,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.includeAccountUtil.apply {
+        /*binding.includeAccountUtil.apply {
             ivIconUpside.setImageResource(R.drawable.ic_location_gray)
             ivIconDownside.setImageResource(R.drawable.ic_history)
             tvUpside.text = "Alamatku"
@@ -42,6 +42,6 @@ class ProfileFragment : Fragment() {
         binding.includeOthersUtil.ivForwardUpside.setOnClickListener {
             val intent = Intent(requireActivity(), CWalletActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 }

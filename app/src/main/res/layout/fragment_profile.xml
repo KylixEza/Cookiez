@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/include_app_bar_profile"
+        layout="@layout/include_app_bar_profile"/>
+
+    <ImageView
+        android:id="@+id/iv_profile_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/profile_state"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_app_bar_profile"/>
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="16sp"
+        android:text="Account"
+        app:layout_constraintStart_toStartOf="@id/iv_profile_state"
+        app:layout_constraintTop_toBottomOf="@id/iv_profile_state"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_account_util"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/iv_profile_state"
+        app:layout_constraintTop_toBottomOf="@id/tv_account"
+        app:layout_constraintEnd_toEndOf="@id/iv_profile_state">
+        <include
+            android:id="@+id/include_account_util"
+            layout="@layout/include_profile_util"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_others"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="16sp"
+        android:text="Lainnya"
+        app:layout_constraintStart_toStartOf="@id/container_account_util"
+        app:layout_constraintTop_toBottomOf="@id/container_account_util"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_others_util"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/iv_profile_state"
+        app:layout_constraintTop_toBottomOf="@id/tv_others"
+        app:layout_constraintEnd_toEndOf="@id/iv_profile_state">
+        <include
+            android:id="@+id/include_others_util"
+            layout="@layout/include_profile_util"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,4 +81,8 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.15.0'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.15.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
+
+    //Custom UI
+    implementation 'com.github.hyogeun.colorratingbar:ColorRatingBar:1.0.1'
+
 }

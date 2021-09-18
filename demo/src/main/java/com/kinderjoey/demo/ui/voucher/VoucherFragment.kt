@@ -9,7 +9,6 @@ import android.viewbinding.library.fragment.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kinderjoey.demo.R
 import com.kinderjoey.demo.databinding.FragmentVoucherBinding
-import com.kinderjoey.demo.ui.onboard.OnBoardingViewPagerAdapter
 import com.kinderjoey.demo.ui.voucher.screen.AvailableVoucherFragment
 import com.kinderjoey.demo.ui.voucher.screen.OwnVoucherFragment
 

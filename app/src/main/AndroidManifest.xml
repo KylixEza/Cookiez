@@ -10,7 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookiez">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.notification.NotificationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.category.CategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.CWalletActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
