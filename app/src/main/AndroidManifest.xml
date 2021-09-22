@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kinderjoey.cookiez">
+    package="com.kinderjoey.cookiez" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Cookiez">
+        android:theme="@style/Theme.Cookiez" >
+        <activity
+            android:name=".ui.profile.wallet.TopUpActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.notification.NotificationActivity"
             android:exported="true" />
@@ -22,7 +25,7 @@
             android:name=".ui.category.CategoryActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.profile.CWalletActivity"
+            android:name=".ui.profile.wallet.CWalletActivity"
             android:exported="true" />
         <activity
             android:name=".ui.auth.AuthActivity"
@@ -32,7 +35,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

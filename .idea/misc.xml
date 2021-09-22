@@ -124,6 +124,23 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/layout/item_list_voucher.xml" value="0.33" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/menu-v26/main_bottom_menu.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/demo/src/main/res/menu/main_bottom_menu.xml" value="0.278125" />
+        <entry key="app/src/main/res/layout/activity_cwallet.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_history.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_notification.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_top_up.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_detail_menu.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/include_app_bar_middle.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/include_app_bar_profile.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/include_profile_util.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/include_selected_item_variant.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/include_send_rating.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/item_top_up_payment.xml" value="0.33652530779753764" />
+        <entry key="app/src/main/res/menu/main_bottom_menu.xml" value="0.3026041666666667" />
       </map>
     </option>
   </component>
@@ -132,5 +149,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

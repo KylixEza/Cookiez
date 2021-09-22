@@ -1,4 +1,4 @@
-package com.kinderjoey.cookiez.ui.profile
+package com.kinderjoey.cookiez.ui.profile.wallet
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity

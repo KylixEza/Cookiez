@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentProfileBinding
+import com.kinderjoey.cookiez.ui.profile.wallet.CWalletActivity
 
 
 class ProfileFragment : Fragment() {
