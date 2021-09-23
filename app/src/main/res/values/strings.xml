@@ -42,5 +42,13 @@
     <string name="title_list_of_review">Daftar Penilaian</string>
     <string name="message_empty_notification">Belum ada notifikasi yang tersedia</string>
     <string name="title_top_up">Isi Saldo</string>
+    <string name="rank_poin">Rank Poin</string>
+    <string name="ubah_foto">Ubah Foto</string>
+    <string name="location">Alamatku</string>
+    <string name="history">Riwayat Pesanan</string>
+    <string name="account">Akun</string>
+    <string name="other">Lainnya</string>
+    <string name="cookiez_wallet">Cookiez Wallet</string>
+    <string name="logout">Keluar</string>
 
 </resources>
