@@ -1,5 +1,6 @@
 package com.kinderjoey.cookiez.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,8 @@ import com.kinderjoey.cookiez.adapter.CategoryAdapter
 import com.kinderjoey.cookiez.adapter.ListMenuAdapter
 import com.kinderjoey.cookiez.adapter.PromotionAdapter
 import com.kinderjoey.cookiez.databinding.FragmentHomeBinding
+import com.kinderjoey.cookiez.ui.search.SearchActivity
+import com.kinderjoey.cookiez.util.DataDummy
 
 class HomeFragment : Fragment() {
 
@@ -34,12 +37,16 @@ class HomeFragment : Fragment() {
         val exclusiveAdapter = ListMenuAdapter()
 
         homeBinding.apply {
-            includeAppBarHome.tvLocationPoint.text = "Kota Malang"
+            cvSearchCover.setOnClickListener {
+                startActivity(Intent(requireActivity(), SearchActivity::class.java))
+            }
             rvCategory.apply {
+                categoryAdapter.setAllData(DataDummy.setCategories())
                 adapter = categoryAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             }
             rvCoupon.apply {
+                promotionAdapter.setAllData(DataDummy.setPromotionCoupon())
                 adapter = promotionAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             }
@@ -52,6 +59,7 @@ class HomeFragment : Fragment() {
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             }
 
+            homeBinding
         }
     }
 }

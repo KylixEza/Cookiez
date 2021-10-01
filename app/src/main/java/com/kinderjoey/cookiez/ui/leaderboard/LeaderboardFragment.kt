@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.LeaderboardAdapter
 import com.kinderjoey.cookiez.databinding.FragmentLeaderboardBinding
+import com.kinderjoey.cookiez.util.DataDummy
 
 
 class LeaderboardFragment : Fragment() {
@@ -30,10 +31,10 @@ class LeaderboardFragment : Fragment() {
         val leaderboardAdapter = LeaderboardAdapter()
 
         binding.rvLeaderboard.apply {
+            leaderboardAdapter.setAllData(DataDummy.setLeaderboard())
             adapter = leaderboardAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
 
-        //leaderboardAdapter.setAllData(DataDummy.setLeaderboard())
     }
 }

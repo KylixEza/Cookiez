@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentProfileBinding
+import com.kinderjoey.cookiez.ui.history.HistoryActivity
 import com.kinderjoey.cookiez.ui.profile.wallet.CWalletActivity
 
 
@@ -27,23 +28,11 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.includeAccountUtil.apply {
-            ivIconUpside.setImageResource(R.drawable.ic_location_gray)
-            ivIconDownside.setImageResource(R.drawable.ic_history)
-            tvUpside.text = "Alamatku"
-            tvDownside.text = "Riwayat Pesanan"
+        binding.btnCookiezWallet.setOnClickListener {
+            startActivity(Intent(requireActivity(), CWalletActivity::class.java))
         }
-
-        binding.includeOthersUtil.apply {
-            ivIconUpside.setImageResource(R.drawable.ic_cwallet)
-            ivIconDownside.setImageResource(R.drawable.ic_logout)
-            tvUpside.text = "Cookiez Wallet"
-            tvDownside.text = "Keluar"
-        }
-
-        binding.includeOthersUtil.ivForwardUpside.setOnClickListener {
-            val intent = Intent(requireActivity(), CWalletActivity::class.java)
-            startActivity(intent)
+        binding.btnHistory.setOnClickListener {
+            startActivity(Intent(requireActivity(), HistoryActivity::class.java))
         }
     }
 }

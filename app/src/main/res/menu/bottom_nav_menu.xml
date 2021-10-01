@@ -3,28 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home_menu"
+        android:id="@+id/navigation_home"
         android:title="@string/home"
         android:enabled="true"
         android:icon="@drawable/ic_home"/>
 
     <item
-        android:id="@+id/voucher_menu"
+        android:id="@+id/navigation_voucher"
         android:title="@string/voucher"
         android:enabled="true"
-        android:iconTintMode="src_atop"
         android:icon="@drawable/ic_shopping_bag"
-
-        tools:targetApi="o" />
-
+        />
     <item
-        android:id="@+id/leaderboard_menu"
+        android:id="@+id/navigation_leadearboard"
         android:title="@string/leaderboard"
         android:enabled="true"
         android:icon="@drawable/ic_leaderboard"/>
 
     <item
-        android:id="@+id/profile_menu"
+        android:id="@+id/navigation_profile"
         android:title="@string/profile"
         android:enabled="true"
         android:icon="@drawable/ic_profile"/>

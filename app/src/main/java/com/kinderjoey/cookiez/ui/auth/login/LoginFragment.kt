@@ -11,6 +11,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentLoginBinding
+import com.kinderjoey.cookiez.ui.BaseActivity
 import com.kinderjoey.cookiez.ui.MainActivity
 import com.kinderjoey.cookiez.ui.auth.register.RegisterFragment
 
@@ -41,7 +42,7 @@ class LoginFragment : Fragment() {
         }
 
         loginBinding.btnLogin.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
+            val intent = Intent(activity, BaseActivity::class.java)
             startActivity(intent)
             loginViewModel.saveToDataStore("Kylix")
             activity?.finish()

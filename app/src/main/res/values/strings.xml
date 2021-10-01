@@ -50,5 +50,9 @@
     <string name="other">Lainnya</string>
     <string name="cookiez_wallet">Cookiez Wallet</string>
     <string name="logout">Keluar</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

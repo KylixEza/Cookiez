@@ -24,7 +24,9 @@ class MainActivity : AppCompatActivity() {
             this.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = resources.getColor(R.color.white)
         }
-
+    }
+}
+/*
         val fragmentManager = supportFragmentManager
         val fragment = HomeFragment()
 
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainBinding.mainBottomNav.apply {
-            /*setOnNavigationItemSelectedListener { item ->
+            *//*setOnNavigationItemSelectedListener { item ->
                 when(item.itemId) {
                     R.id.home_menu -> navigationSelected(HomeFragment())
                     R.id.voucher_menu -> navigationSelected(VoucherFragment())
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.profile_menu -> navigationSelected(ProfileFragment())
                     else -> false
                 }
-            }*/
+            }*//*
             labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_UNLABELED
         }
     }
@@ -60,4 +62,4 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
     }
 
-}
+}*/

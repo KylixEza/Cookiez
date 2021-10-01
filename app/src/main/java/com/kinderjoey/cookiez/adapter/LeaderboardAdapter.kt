@@ -46,6 +46,7 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                         ivRank.setImageResource(R.drawable.ic_rank_first)
                         Glide.with(itemView.context)
                             .load(leaderboard.avatar)
+                            .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
                         tvXpPoints.text = String.format("${leaderboard.xp} XP")
@@ -57,6 +58,7 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                         ivRank.setImageResource(R.drawable.ic_rank_second)
                         Glide.with(itemView.context)
                             .load(leaderboard.avatar)
+                            .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
                         tvXpPoints.text = String.format("${leaderboard.xp} XP")
@@ -68,6 +70,7 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                         ivRank.setImageResource(R.drawable.ic_rank_third)
                         Glide.with(itemView.context)
                             .load(leaderboard.avatar)
+                            .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
                         tvXpPoints.text = String.format("${leaderboard.xp} XP")
@@ -79,6 +82,7 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                         ivRank.visibility = View.INVISIBLE
                         Glide.with(itemView.context)
                             .load(leaderboard.avatar)
+                            .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
                         tvXpPoints.text = String.format("${leaderboard.xp} XP")
