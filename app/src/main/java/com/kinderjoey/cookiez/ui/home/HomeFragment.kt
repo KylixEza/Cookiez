@@ -12,9 +12,9 @@ import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.CategoryAdapter
 import com.kinderjoey.cookiez.adapter.ListMenuAdapter
 import com.kinderjoey.cookiez.adapter.PromotionAdapter
+import com.kinderjoey.cookiez.data.sources.dummy.DataDummy
 import com.kinderjoey.cookiez.databinding.FragmentHomeBinding
 import com.kinderjoey.cookiez.ui.search.SearchActivity
-import com.kinderjoey.cookiez.util.DataDummy
 
 class HomeFragment : Fragment() {
 

@@ -12,7 +12,7 @@ import com.kinderjoey.cookiez.adapter.OnBoardingViewPagerAdapter
 import com.kinderjoey.cookiez.databinding.FragmentOnBoardingBinding
 import com.kinderjoey.cookiez.ui.onboard.screen.FirstScreenFragment
 import com.kinderjoey.cookiez.ui.onboard.screen.SecondScreenFragment
-import com.kinderjoey.demo.ui.onboard.screen.ThirdScreenFragment
+import com.kinderjoey.cookiez.ui.onboard.screen.ThirdScreenFragment
 
 class OnBoardingFragment : Fragment() {
     private val onBoardingBinding by viewBinding<FragmentOnBoardingBinding>()

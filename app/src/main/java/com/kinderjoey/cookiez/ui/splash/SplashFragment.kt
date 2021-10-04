@@ -8,13 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.viewbinding.library.fragment.viewBinding
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.databinding.FragmentSplashBinding
 import com.kinderjoey.cookiez.ui.MainActivity
-import com.kinderjoey.cookiez.ui.onboard.OnBoardingFragment
 
 class SplashFragment : Fragment() {
 
@@ -34,20 +31,26 @@ class SplashFragment : Fragment() {
 
         val handler = Handler(Looper.getMainLooper())
 
-        handler.postDelayed({
-            splashViewModel.readFromDataStore().observe(viewLifecycleOwner, { isLogin ->
-                if (isLogin) {
-                    val intent = Intent(requireActivity(), MainActivity::class.java)
-                    startActivity(intent)
-                    activity?.finish()
-                } else {
-                    val mFragment = OnBoardingFragment()
-                    val mFragmentManager = parentFragmentManager
-                    mFragmentManager.commit {
-                        replace(R.id.splash_fragment_container, mFragment, OnBoardingFragment::class.java.simpleName)
-                    }
-                }
-            })
-        }, 1500)
+        handler.postDelayed({observeHaveRunAppBefore(view)}, 2000)
+    }
+
+    private fun observeUsername(view: View) {
+        splashViewModel.readPrefUsername().observe(viewLifecycleOwner, {isLogin ->
+            if (isLogin) {
+                view.findNavController().navigate(R.id.action_splashFragment_to_baseActivity)
+            } else {
+                view.findNavController().navigate(R.id.action_splashFragment_to_authActivity)
+            }
+        })
+    }
+
+    private fun observeHaveRunAppBefore(view: View) {
+        splashViewModel.readPrefHaveRunAppBefore().observe(viewLifecycleOwner, { haveRun ->
+            if (haveRun) {
+                observeUsername(view)
+            } else {
+                view.findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
+            }
+        })
     }
 }

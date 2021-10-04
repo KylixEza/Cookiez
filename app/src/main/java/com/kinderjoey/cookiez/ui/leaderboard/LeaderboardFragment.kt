@@ -9,8 +9,8 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.LeaderboardAdapter
+import com.kinderjoey.cookiez.data.sources.dummy.DataDummy
 import com.kinderjoey.cookiez.databinding.FragmentLeaderboardBinding
-import com.kinderjoey.cookiez.util.DataDummy
 
 
 class LeaderboardFragment : Fragment() {

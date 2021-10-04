@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import com.kinderjoey.cookiez.R
@@ -39,6 +40,11 @@ class LoginFragment : Fragment() {
             mFragmentManager.commit {
                 replace(R.id.auth_container, mRegisterFragment, RegisterFragment::class.java.simpleName)
             }
+        }
+
+        loginBinding.tvRegister.setOnLongClickListener {
+            Toast.makeText(activity, "Ini long click", Toast.LENGTH_LONG)
+            true
         }
 
         loginBinding.btnLogin.setOnClickListener {

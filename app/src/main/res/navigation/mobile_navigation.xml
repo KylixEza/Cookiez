@@ -9,7 +9,17 @@
         android:id="@+id/navigation_home"
         android:name="com.kinderjoey.cookiez.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_voucher"
+            app:destination="@id/navigation_voucher" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_leadearboard"
+            app:destination="@id/navigation_leadearboard" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_voucher"
         android:name="com.kinderjoey.cookiez.ui.voucher.VoucherFragment"
