@@ -1,8 +1,8 @@
-package com.kinderjoey.cookiez.model
+package com.kinderjoey.cookiez.data.sources.firestore.response
 
-data class Menu(
+data class MenuResponse(
     val title: String,
-    val time: Int,
+    val time: String,
     val difficulty: String,
     val price: Int,
     val rating: Int,

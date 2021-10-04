@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "591505633668",
+    "project_id": "cookiez-kinderjoey",
+    "storage_bucket": "cookiez-kinderjoey.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591505633668:android:bdbd11ec300a730bec2dd1",
+        "android_client_info": {
+          "package_name": "com.kinderjoey.cookiez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591505633668-nk83surmkqkdrbupd49vovkrhtuqqhim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlwRCA3FLDClaMdDbE_3NkGNCaskE_Zxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591505633668-nk83surmkqkdrbupd49vovkrhtuqqhim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

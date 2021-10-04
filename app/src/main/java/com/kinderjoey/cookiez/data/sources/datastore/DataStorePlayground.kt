@@ -1,4 +1,4 @@
-package com.kinderjoey.cookiez.data.datastore
+package com.kinderjoey.cookiez.data.sources.datastore
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -28,14 +28,25 @@ class DataStorePlayground(private val context: Context) {
         name = DataStoreUtil.DATA_STORE_NAME
     )
 
-    suspend fun saveToDataStore(name: String) {
+    suspend fun savePrefUsername(name: String) {
         context.userPreferenceDataStore.edit {
             it[DataStoreUtil.USERNAME_PREF_KEY] = name
         }
     }
 
-    fun readFromDataStore(): Flow<Boolean> = context.userPreferenceDataStore.data
+    suspend fun savePrefHaveRunAppBefore(isFirstTime: Boolean) {
+        context.userPreferenceDataStore.edit {
+            it[DataStoreUtil.HAVE_RUN_APP_BEFORE] = isFirstTime
+        }
+    }
+
+    fun readPrefUsername(): Flow<Boolean> = context.userPreferenceDataStore.data
         .map {
             it[DataStoreUtil.USERNAME_PREF_KEY] != null
+        }
+
+    fun readPrefHaveRunAppBefore(): Flow<Boolean> = context.userPreferenceDataStore.data
+        .map {
+            it[DataStoreUtil.HAVE_RUN_APP_BEFORE] != null
         }
 }
