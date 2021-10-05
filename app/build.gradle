@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
 }
 
 androidExtensions {
@@ -73,9 +74,23 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "androidx.datastore:datastore:1.0.0"
 
+    //Database
+    implementation "androidx.room:room-runtime:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+
+    //Database Encryption
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:4.4.0"
+
     //Coroutine Flow
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+
+    //Dependency Injection
+    implementation "org.koin:koin-core:2.1.6"
+    implementation "org.koin:koin-android:2.1.6"
+    implementation "org.koin:koin-android-viewmodel:2.1.6"
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
