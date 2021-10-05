@@ -14,7 +14,7 @@ import com.kinderjoey.cookiez.databinding.ItemListMenuBinding
 import com.kinderjoey.cookiez.model.Menu
 
 
-class SelectedCategoryAdapter(val activity: AppCompatActivity): RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
+class SelectedCategoryAdapter(private val activity: AppCompatActivity): RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
 
     private val listOfMenu = ArrayList<Menu>()
 
@@ -49,9 +49,9 @@ class SelectedCategoryAdapter(val activity: AppCompatActivity): RecyclerView.Ada
                     .load(menu.image)
                     .centerCrop()
                     .into(ivImgMenu)
-                tvRating.text = menu.rating
+                tvRating.text = menu.rating.toString()
                 tvTitle.text = menu.title
-                tvEstimatedTime.text = menu.time
+                tvEstimatedTime.text = String.format("${menu.time} Menit")
 
                 when (menu.difficulty) {
                     "Mudah" -> {
@@ -76,7 +76,7 @@ class SelectedCategoryAdapter(val activity: AppCompatActivity): RecyclerView.Ada
                         cvDifficulty.setCardBackgroundColor(itemView.context.getColor(R.color.card_difficult_hard))
                     }
                 }
-                tvPrice.text = menu.price
+                tvPrice.text = String.format("Rp ${menu.price}")
             }
 
             itemView.setOnClickListener {

@@ -13,12 +13,20 @@ import com.kinderjoey.cookiez.adapter.CategoryAdapter
 import com.kinderjoey.cookiez.adapter.ListMenuAdapter
 import com.kinderjoey.cookiez.adapter.PromotionAdapter
 import com.kinderjoey.cookiez.data.sources.dummy.DataDummy
+import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentHomeBinding
 import com.kinderjoey.cookiez.ui.search.SearchActivity
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private val homeBinding by viewBinding<FragmentHomeBinding>()
+    private val viewModel: HomeViewModel by viewModel()
+    private val categoryAdapter: CategoryAdapter by inject()
+    private val promotionAdapter: PromotionAdapter by inject()
+    private val popularAdapter: ListMenuAdapter by inject()
+    private val exclusiveAdapter: ListMenuAdapter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,35 +39,50 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val categoryAdapter = CategoryAdapter()
-        val promotionAdapter = PromotionAdapter()
-        val popularAdapter = ListMenuAdapter()
-        val exclusiveAdapter = ListMenuAdapter()
-
         homeBinding.apply {
             cvSearchCover.setOnClickListener {
                 startActivity(Intent(requireActivity(), SearchActivity::class.java))
             }
             rvCategory.apply {
-                categoryAdapter.setAllData(DataDummy.setCategories())
                 adapter = categoryAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                categoryAdapter.setAllData(DataDummy.setCategories())
             }
             rvCoupon.apply {
-                promotionAdapter.setAllData(DataDummy.setPromotionCoupon())
                 adapter = promotionAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                promotionAdapter.setAllData(DataDummy.setPromotionCoupon())
             }
             rvPopularMenu.apply {
                 adapter = popularAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+                observePopularMenus()
             }
             rvExclusiveMenu.apply {
                 adapter = exclusiveAdapter
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+                observeExclusiveMenus()
             }
-
-            homeBinding
         }
+    }
+
+    private fun observeExclusiveMenus() {
+        viewModel.getExclusiveMenus().observe(viewLifecycleOwner, {
+            when(it) {
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> it.data?.let { it1 -> exclusiveAdapter.setAllData(it1) }
+            }
+        })
+    }
+
+    private fun observePopularMenus() {
+        viewModel.getPopularMenus().observe(viewLifecycleOwner, {
+            when(it) {
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> it.data?.let { it1 -> popularAdapter.setAllData(it1) }
+            }
+        })
     }
 }
