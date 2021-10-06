@@ -30,8 +30,9 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val handler = Handler(Looper.getMainLooper())
-
-        handler.postDelayed({observeHaveRunAppBefore(view)}, 2000)
+        handler.postDelayed({
+            observeHaveRunAppBefore(view)
+        }, 2000L)
     }
 
     private fun observeUsername(view: View) {
@@ -39,7 +40,7 @@ class SplashFragment : Fragment() {
             if (isLogin) {
                 view.findNavController().navigate(R.id.action_splashFragment_to_baseActivity)
             } else {
-                view.findNavController().navigate(R.id.action_splashFragment_to_authActivity)
+                view.findNavController().navigate(R.id.action_splash_destination_to_loginFragment)
             }
         })
     }

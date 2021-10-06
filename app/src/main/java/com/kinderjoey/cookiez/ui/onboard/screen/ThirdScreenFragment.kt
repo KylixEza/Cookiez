@@ -12,6 +12,7 @@ import com.kinderjoey.cookiez.databinding.FragmentThirdScreenBinding
 import com.kinderjoey.cookiez.ui.auth.login.LoginFragment
 import com.kinderjoey.cookiez.ui.auth.register.RegisterFragment
 import com.kinderjoey.cookiez.ui.onboard.OnBoardingFragmentDirections
+import com.kinderjoey.cookiez.ui.splash.SplashFragmentDirections
 
 class ThirdScreenFragment : Fragment() {
 
@@ -32,12 +33,12 @@ class ThirdScreenFragment : Fragment() {
         thirdScreenBinding.apply {
             btnLogin.setOnClickListener {
                 view.findNavController().navigate(
-                    OnBoardingFragmentDirections.actionOnBoardingFragmentToAuthActivity(LoginFragment::class.java.simpleName)
+                    OnBoardingFragmentDirections.actionOnBoardingDestinationToLoginFragment()
                 )
             }
             btnRegister.setOnClickListener {
                 view.findNavController().navigate(
-                    OnBoardingFragmentDirections.actionOnBoardingFragmentToAuthActivity(RegisterFragment::class.java.simpleName)
+                    OnBoardingFragmentDirections.actionOnBoardingDestinationToRegisterFragment()
                 )
             }
         }

@@ -45,9 +45,9 @@ class ListMenuAdapter: RecyclerView.Adapter<ListMenuAdapter.ListMenuViewHolder>(
                     .load(menu.image)
                     .centerCrop()
                     .into(ivImgMenu)
-                tvRating.text = menu.rating
+                tvRating.text = menu.rating.toString()
                 tvTitle.text = menu.title
-                tvEstimatedTime.text = menu.time
+                tvEstimatedTime.text = String.format("${menu.time} Menit")
 
                 when (menu.difficulty) {
                     "Mudah" -> {
@@ -72,7 +72,7 @@ class ListMenuAdapter: RecyclerView.Adapter<ListMenuAdapter.ListMenuViewHolder>(
                         cvDifficulty.setCardBackgroundColor(itemView.context.getColor(R.color.card_difficult_hard))
                     }
                 }
-                tvPrice.text = menu.price
+                tvPrice.text = String.format("Rp. ${menu.price}")
             }
         }
 

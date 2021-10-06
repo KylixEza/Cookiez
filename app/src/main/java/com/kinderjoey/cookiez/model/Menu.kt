@@ -5,6 +5,6 @@ data class Menu(
     val time: Int,
     val difficulty: String,
     val price: Int,
-    val rating: Int,
+    val rating: Double,
     val image: String
 )

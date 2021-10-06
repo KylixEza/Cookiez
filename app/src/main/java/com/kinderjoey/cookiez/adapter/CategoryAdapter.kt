@@ -3,11 +3,13 @@ package com.kinderjoey.cookiez.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.databinding.ItemListCategoriesBinding
 import com.kinderjoey.cookiez.model.Category
 import com.kinderjoey.cookiez.ui.category.CategoryActivity
+import com.kinderjoey.cookiez.ui.home.HomeFragmentDirections
 import com.kinderjoey.cookiez.util.Constanta
 
 class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
@@ -42,9 +44,7 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(
             view.tvCategory.text = category.titleCategory
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, CategoryActivity::class.java)
-                intent.putExtra(Constanta.KEY_OF_CATEGORY, category.titleCategory)
-                itemView.context.startActivity(intent)
+                it.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToCategoryActivity(category.titleCategory))
             }
         }
     }

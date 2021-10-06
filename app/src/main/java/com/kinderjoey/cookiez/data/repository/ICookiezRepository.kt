@@ -8,4 +8,5 @@ interface ICookiezRepository {
 
     fun getPopularMenus(): Flow<Resource<List<Menu>>>
     fun getExclusiveMenus(): Flow<Resource<List<Menu>>>
+    fun getCategoryMenus(category: String): Flow<Resource<List<Menu>>>
 }

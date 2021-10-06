@@ -37,4 +37,16 @@ class CookiezRepository(
             }
         }.asFlow()
     }
+
+    override fun getCategoryMenus(category: String): Flow<Resource<List<Menu>>> {
+        return object : FirestoreOnlyResource<List<Menu>, List<MenuResponse>>() {
+            override fun loadFromNetwork(data: List<MenuResponse>): Flow<List<Menu>> {
+                return FirestoreMapper.mapMenusToDomain(data)
+            }
+
+            override suspend fun createCall(): Flow<FirestoreResponses<List<MenuResponse>>> {
+                return firestoreDataSource.getCategoryMenus(category)
+            }
+        }.asFlow()
+    }
 }

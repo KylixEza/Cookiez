@@ -25,8 +25,8 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModel()
     private val categoryAdapter: CategoryAdapter by inject()
     private val promotionAdapter: PromotionAdapter by inject()
-    private val popularAdapter: ListMenuAdapter by inject()
-    private val exclusiveAdapter: ListMenuAdapter by inject()
+    private lateinit var popularAdapter: ListMenuAdapter
+    private lateinit var exclusiveAdapter: ListMenuAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +38,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        popularAdapter = ListMenuAdapter()
+        exclusiveAdapter = ListMenuAdapter()
 
         homeBinding.apply {
             cvSearchCover.setOnClickListener {
@@ -72,6 +75,7 @@ class HomeFragment : Fragment() {
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
                 is Resource.Success -> it.data?.let { it1 -> exclusiveAdapter.setAllData(it1) }
+                is Resource.Empty -> {}
             }
         })
     }
@@ -82,6 +86,7 @@ class HomeFragment : Fragment() {
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
                 is Resource.Success -> it.data?.let { it1 -> popularAdapter.setAllData(it1) }
+                is Resource.Empty -> {}
             }
         })
     }

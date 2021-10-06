@@ -17,6 +17,10 @@ abstract class FirestoreOnlyResource<ResultType, RequestType> {
             is FirestoreResponses.Error -> {
                 emit(Resource.Error(apiResponse.errorMessage))
             }
+
+            is FirestoreResponses.Empty -> {
+                emit(Resource.Empty())
+            }
         }
     }
 

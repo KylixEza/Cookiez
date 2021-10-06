@@ -46,7 +46,6 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation "androidx.fragment:fragment-ktx:1.3.6"
     implementation 'androidx.appcompat:appcompat:1.3.1'
@@ -81,7 +80,7 @@ dependencies {
 
     //Database Encryption
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"
-    implementation "androidx.sqlite:sqlite-ktx:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.1.0"
 
     //Coroutine Flow
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
@@ -91,6 +90,9 @@ dependencies {
     implementation "org.koin:koin-core:2.1.6"
     implementation "org.koin:koin-android:2.1.6"
     implementation "org.koin:koin-android-viewmodel:2.1.6"
+
+    //GMS
+    implementation "com.google.android.gms:play-services-auth:19.2.0"
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:28.4.0')

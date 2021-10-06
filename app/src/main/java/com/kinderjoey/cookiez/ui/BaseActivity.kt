@@ -4,8 +4,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ActivityBaseBinding
 
@@ -23,10 +25,9 @@ class BaseActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpNavigation()
     }
+
     private fun setUpNavigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_base) as NavHostFragment
-        val navController = navHostFragment.navController
-        NavigationUI.setupWithNavController(binding.navView,navController)
+        val navController = findNavController(R.id.nav_host_fragment_activity_base)
+        binding.navView.setupWithNavController(navController)
     }
 }

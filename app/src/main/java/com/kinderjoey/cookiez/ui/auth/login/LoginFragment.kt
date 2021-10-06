@@ -1,20 +1,16 @@
 package com.kinderjoey.cookiez.ui.auth.login
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import android.widget.Toast
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentLoginBinding
-import com.kinderjoey.cookiez.ui.BaseActivity
-import com.kinderjoey.cookiez.ui.MainActivity
-import com.kinderjoey.cookiez.ui.auth.register.RegisterFragment
+import com.kinderjoey.cookiez.ui.splash.SplashFragmentDirections
 
 class LoginFragment : Fragment() {
 
@@ -33,23 +29,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginBinding.tvRegister.setOnClickListener {
-            val mFragmentManager = parentFragmentManager
-            val mRegisterFragment = RegisterFragment()
-
-            mFragmentManager.commit {
-                replace(R.id.auth_container, mRegisterFragment, RegisterFragment::class.java.simpleName)
-            }
-        }
-
-        loginBinding.tvRegister.setOnLongClickListener {
-            Toast.makeText(activity, "Ini long click", Toast.LENGTH_LONG)
-            true
-        }
-
         loginBinding.btnLogin.setOnClickListener {
-            val intent = Intent(activity, BaseActivity::class.java)
-            startActivity(intent)
+            view.findNavController().navigate(LoginFragmentDirections.actionLoginDestinationToBaseDestination())
             loginViewModel.saveToDataStore("Kylix")
             activity?.finish()
         }

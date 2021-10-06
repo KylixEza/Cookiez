@@ -12,7 +12,6 @@ val viewModelModule = module {
 val adapterModule = module {
     single { CategoryAdapter() }
     single { LeaderboardAdapter() }
-    single { ListMenuAdapter() }
     single { PreviewTransactionAdapter() }
     single { PromotionAdapter() }
     single { SelectedCategoryAdapter(get()) }

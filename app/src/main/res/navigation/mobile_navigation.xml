@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_leadearboard"
             app:destination="@id/navigation_leadearboard" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryActivity"
+            app:destination="@id/categoryActivity" />
     </fragment>
     <fragment
         android:id="@+id/navigation_voucher"
@@ -34,5 +37,15 @@
         android:id="@+id/navigation_profile"
         android:name="com.kinderjoey.cookiez.ui.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <activity
+        android:id="@+id/categoryActivity"
+        android:name="com.kinderjoey.cookiez.ui.category.CategoryActivity"
+        android:label="activity_category"
+        tools:layout="@layout/activity_category" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="null" />
+    </activity>
 
 </navigation>
