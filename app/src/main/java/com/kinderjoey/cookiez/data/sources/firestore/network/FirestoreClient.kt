@@ -8,4 +8,5 @@ interface FirestoreClient {
     suspend fun getPopularMenus(): Flow<FirestoreResponses<List<MenuResponse>>>
     suspend fun getExclusiveMenus(): Flow<FirestoreResponses<List<MenuResponse>>>
     suspend fun getCategoryMenus(category: String): Flow<FirestoreResponses<List<MenuResponse>>>
+    suspend fun getAllMenus(): Flow<FirestoreResponses<List<MenuResponse>>>
 }

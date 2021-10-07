@@ -5,8 +5,8 @@ import androidx.lifecycle.asLiveData
 import com.kinderjoey.cookiez.data.repository.ICookiezRepository
 import kotlinx.coroutines.Dispatchers
 
-class HomeViewModel(private val iCookiezRepository: ICookiezRepository): ViewModel() {
+class HomeViewModel(private val cookiezRepository: ICookiezRepository): ViewModel() {
 
-    fun getPopularMenus() = iCookiezRepository.getPopularMenus().asLiveData(Dispatchers.IO)
-    fun getExclusiveMenus() = iCookiezRepository.getExclusiveMenus().asLiveData(Dispatchers.IO)
+    fun getPopularMenus() = cookiezRepository.getPopularMenus().asLiveData(Dispatchers.IO)
+    fun getExclusiveMenus() = cookiezRepository.getExclusiveMenus().asLiveData(Dispatchers.IO)
 }

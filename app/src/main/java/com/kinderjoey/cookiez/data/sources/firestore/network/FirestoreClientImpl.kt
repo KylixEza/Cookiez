@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.data.sources.firestore.network
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -37,7 +36,7 @@ class FirestoreClientImpl: FirestoreClient {
         }
         
         if (listOfPopularMenu.isNullOrEmpty())
-            emit(FirestoreResponses.Error(null))
+            emit(FirestoreResponses.Empty())
         else
             emit(FirestoreResponses.Success(listOfPopularMenu))
 
@@ -57,17 +56,18 @@ class FirestoreClientImpl: FirestoreClient {
         } catch (e: Exception) {
             emit(FirestoreResponses.Error(e.localizedMessage))
         }
-        
+
         if (listOfExclusiveMenu.isNullOrEmpty())
-            emit(FirestoreResponses.Error(null))
+            emit(FirestoreResponses.Empty())
         else
             emit(FirestoreResponses.Success(listOfExclusiveMenu))
 
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getCategoryMenus(category: String): Flow<FirestoreResponses<List<MenuResponse>>> = flow {
-            var listOfCategory: List<MenuResponse> = ArrayList()
+        var listOfCategory: List<MenuResponse> = ArrayList()
 
+        try {
             CoroutineScope(Dispatchers.IO).launch {
                 listOfCategory = menuRef
                     .collection(FirestoreReference.All.reference.toString())
@@ -76,10 +76,34 @@ class FirestoreClientImpl: FirestoreClient {
                     .await()
                     .toObjects(MenuResponse::class.java)
             }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
 
-            if (listOfCategory.isNullOrEmpty())
-                emit(FirestoreResponses.Error(null))
-            else
-                emit(FirestoreResponses.Success(listOfCategory))
+        if (listOfCategory.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(listOfCategory))
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getAllMenus(): Flow<FirestoreResponses<List<MenuResponse>>> = flow {
+        var listOfAll: List<MenuResponse> = ArrayList()
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                listOfAll = menuRef
+                    .collection(FirestoreReference.All.reference.toString())
+                    .get()
+                    .await()
+                    .toObjects(MenuResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
+
+        if (listOfAll.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(listOfAll))
     }.flowOn(Dispatchers.IO)
 }

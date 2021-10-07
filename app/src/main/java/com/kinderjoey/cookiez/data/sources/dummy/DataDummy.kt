@@ -3,35 +3,42 @@ package com.kinderjoey.cookiez.data.sources.dummy
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.model.Category
 import com.kinderjoey.cookiez.model.UserLeaderBoard
+import com.kinderjoey.cookiez.util.CategoryType
 import com.kinderjoey.cookiez.util.Constanta
 
 object DataDummy {
 
     fun setCategories(): List<Category> {
-        return listOf<Category>(
+        return listOf(
             Category(
                 R.drawable.ic_all_categories,
-                "Semua"
+                CategoryType.All.title,
+                CategoryType.All.type
             ),
             Category(
                 R.drawable.ic_drinks_category,
-                "Minuman"
+                CategoryType.Drink.title,
+                CategoryType.Drink.type
             ),
             Category(
                 R.drawable.ic_vegetable_category,
-                "Sayuran"
+                CategoryType.Vegetable.title,
+                CategoryType.Vegetable.type
             ),
             Category(
                 R.drawable.ic_soup_catgory,
-                "Soup"
+                CategoryType.Soup.title,
+                CategoryType.Soup.type
             ),
             Category(
                 R.drawable.ic_spicy_category,
-                "Pedas"
+                CategoryType.Spicy.title,
+                CategoryType.Spicy.type
             ),
             Category(
                 R.drawable.ic_indoensian_category,
-                "Indonesian"
+                CategoryType.Indonesian.title,
+                CategoryType.Indonesian.type
             )
         )
     }
