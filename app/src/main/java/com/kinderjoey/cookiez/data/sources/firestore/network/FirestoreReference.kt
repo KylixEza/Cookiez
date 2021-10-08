@@ -6,5 +6,12 @@ enum class FirestoreReference(val reference: String? = null, val attribute: Stri
     Popular("popular"),
     Exclusive("exclusive"),
     All("all"),
-    CategoryAttr(attribute = "category")
+    Detail("detail"),
+    Ingredients("ingredients"),
+    Steps("steps"),
+    Review("review"),
+    Reviewer("reviewer"),
+
+    CategoryAttr(attribute = "category"),
+    MenuNameAttr(attribute = "menuName")
 }

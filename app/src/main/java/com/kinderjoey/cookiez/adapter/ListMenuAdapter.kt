@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ItemListMenuBinding
-import com.kinderjoey.cookiez.model.Menu
+import com.kinderjoey.cookiez.model.menu.Menu
 
 class ListMenuAdapter: RecyclerView.Adapter<ListMenuAdapter.ListMenuViewHolder>() {
 

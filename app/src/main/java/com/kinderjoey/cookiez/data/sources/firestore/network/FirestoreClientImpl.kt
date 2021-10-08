@@ -1,9 +1,10 @@
 package com.kinderjoey.cookiez.data.sources.firestore.network
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.kinderjoey.cookiez.data.sources.firestore.response.MenuResponse
+import com.kinderjoey.cookiez.data.sources.firestore.response.*
 import com.kiwimob.firestore.coroutines.await
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +35,9 @@ class FirestoreClientImpl: FirestoreClient {
         } catch (e: Exception) {
             emit(FirestoreResponses.Error(e.localizedMessage))
         }
-        
+
+        Log.e("Popular Menus", listOfPopularMenu.toString())
+
         if (listOfPopularMenu.isNullOrEmpty())
             emit(FirestoreResponses.Empty())
         else
@@ -105,5 +108,94 @@ class FirestoreClientImpl: FirestoreClient {
             emit(FirestoreResponses.Empty())
         else
             emit(FirestoreResponses.Success(listOfAll))
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getDetailMenu(menuName: String): Flow<FirestoreResponses<DetailMenuResponse?>> = flow {
+        var detailMenu: DetailMenuResponse? = null
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                detailMenu = menuRef
+                    .collection(FirestoreReference.Detail.reference.toString())
+                    .document(menuName)
+                    .get()
+                    .await()
+                    .toObject(DetailMenuResponse::class.java)!!
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
+
+        emit(FirestoreResponses.Success(detailMenu))
+
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getSteps(menuName: String): Flow<FirestoreResponses<StepResponse?>> = flow {
+        var steps: StepResponse? = null
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                steps = menuRef
+                    .collection(FirestoreReference.Steps.reference.toString())
+                    .document(menuName)
+                    .get()
+                    .await()
+                    .toObject(StepResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
+
+        if (steps?.steps.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(steps))
+
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getIngredients(menuName: String): Flow<FirestoreResponses<IngredientResponse?>> = flow {
+        var ingredients: IngredientResponse? = null
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                ingredients = menuRef
+                    .collection(FirestoreReference.Ingredients.reference.toString())
+                    .document(menuName)
+                    .get()
+                    .await()
+                    .toObject(IngredientResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
+
+        if (ingredients?.ingredients.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(ingredients))
+
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getReviews(menuName: String): Flow<FirestoreResponses<List<ReviewResponse>>> = flow {
+        var listOfReviews: List<ReviewResponse> = ArrayList()
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                listOfReviews = menuRef
+                    .collection(FirestoreReference.Review.reference.toString())
+                    .document(menuName)
+                    .collection(FirestoreReference.Reviewer.reference.toString())
+                    .get()
+                    .await()
+                    .toObjects(ReviewResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
+
+        if (listOfReviews.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(listOfReviews))
     }.flowOn(Dispatchers.IO)
 }

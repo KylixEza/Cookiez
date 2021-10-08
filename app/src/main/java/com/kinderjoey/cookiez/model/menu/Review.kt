@@ -1,4 +1,4 @@
-package com.kinderjoey.cookiez.model
+package com.kinderjoey.cookiez.model.menu
 
 data class Review(
     val imageReviewer: String,

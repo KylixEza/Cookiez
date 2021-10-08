@@ -1,7 +1,5 @@
 package com.kinderjoey.cookiez.adapter
 
-import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ItemListMenuBinding
-import com.kinderjoey.cookiez.model.Menu
+import com.kinderjoey.cookiez.model.menu.Menu
 
 
 class SelectedCategoryAdapter(private val activity: AppCompatActivity): RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
