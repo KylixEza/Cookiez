@@ -64,36 +64,36 @@ class CookiezRepository(
     }
 
     override fun getDetailMenu(menuName: String): Flow<Resource<DetailMenu>> {
-        return object : FirestoreOnlyResource<DetailMenu, DetailMenuResponse>() {
-            override fun loadFromNetwork(data: DetailMenuResponse): Flow<DetailMenu> {
-                return FirestoreMapper.mapDetailResponseToDomain(data)
+        return object : FirestoreOnlyResource<DetailMenu, DetailMenuResponse?>() {
+            override fun loadFromNetwork(data: DetailMenuResponse?): Flow<DetailMenu> {
+                return FirestoreMapper.mapDetailResponseToDomain(data!!)
             }
 
-            override suspend fun createCall(): Flow<FirestoreResponses<DetailMenuResponse>> {
+            override suspend fun createCall(): Flow<FirestoreResponses<DetailMenuResponse?>> {
                 return firestoreDataSource.getDetailMenu(menuName)
             }
         }.asFlow()
     }
 
     override fun getSteps(menuName: String): Flow<Resource<Step>> {
-        return object : FirestoreOnlyResource<Step, StepResponse>() {
-            override fun loadFromNetwork(data: StepResponse): Flow<Step> {
-                return FirestoreMapper.mapStepResponseToDomain(data)
+        return object : FirestoreOnlyResource<Step, StepResponse?>() {
+            override fun loadFromNetwork(data: StepResponse?): Flow<Step> {
+                return FirestoreMapper.mapStepResponseToDomain(data!!)
             }
 
-            override suspend fun createCall(): Flow<FirestoreResponses<StepResponse>> {
+            override suspend fun createCall(): Flow<FirestoreResponses<StepResponse?>> {
                 return firestoreDataSource.getSteps(menuName)
             }
         }.asFlow()
     }
 
     override fun getIngredients(menuName: String): Flow<Resource<Ingredient>> {
-        return object : FirestoreOnlyResource<Ingredient, IngredientResponse>() {
-            override fun loadFromNetwork(data: IngredientResponse): Flow<Ingredient> {
-                return FirestoreMapper.mapIngredientResponseToDomain(data)
+        return object : FirestoreOnlyResource<Ingredient, IngredientResponse?>() {
+            override fun loadFromNetwork(data: IngredientResponse?): Flow<Ingredient> {
+                return FirestoreMapper.mapIngredientResponseToDomain(data!!)
             }
 
-            override suspend fun createCall(): Flow<FirestoreResponses<IngredientResponse>> {
+            override suspend fun createCall(): Flow<FirestoreResponses<IngredientResponse?>> {
                 return firestoreDataSource.getIngredients(menuName)
             }
         }.asFlow()

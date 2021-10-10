@@ -43,13 +43,16 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/include_selected_item_variant.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_categories.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_history.xml" value="0.278125" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_ingredient.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_ingredients.xml" value="0.25" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_last_transaction.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_leaderboard.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_menu.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_notification.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_promotion.xml" value="0.278125" />
-        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_steps.xml" value="0.25" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_review.xml" value="0.278125" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_step.xml" value="0.278125" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_steps.xml" value="0.33" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_variant.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/layout/item_list_voucher.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/Cookiez/app/src/main/res/menu/main_bottom_menu.xml" value="0.278125" />
