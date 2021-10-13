@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_navigation"
+    app:startDestination="@id/detail_menu_destination">
+
+    <fragment
+        android:id="@+id/detail_menu_destination"
+        android:name="com.kinderjoey.cookiez.ui.detail.DetailMenuFragment"
+        android:label="fragment_detail_menu"
+        tools:layout="@layout/fragment_detail_menu" >
+        <action
+            android:id="@+id/action_detailMenuFragment_to_detailVariantMenuFragment"
+            app:destination="@id/detail_variant_destination" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_variant_destination"
+        android:name="com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragment"
+        android:label="DetailVariantMenuFragment"
+        tools:layout="@layout/fragment_detail_variant_menu">
+        <action
+            android:id="@+id/action_detailVariantMenuFragment_to_detailOrderMenuFragment"
+            app:destination="@id/detail_order_destination" />
+        <action
+            android:id="@+id/action_detailVariantMenuFragment_to_detailMenuFragment"
+            app:destination="@id/detail_menu_destination" />
+        <argument
+            android:name="menuName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail_order_destination"
+        android:name="com.kinderjoey.cookiez.ui.detail.order.DetailOrderMenuFragment"
+        android:label="DetailOrderMenuFragment"
+        tools:layout="@layout/fragment_detail_order_menu">
+        <action
+            android:id="@+id/action_detailOrderMenuFragment_to_detailOrderVerificationFragment"
+            app:destination="@id/detail_verification_destination" />
+        <action
+            android:id="@+id/action_detailOrderMenuFragment_to_detailVariantMenuFragment"
+            app:destination="@id/detail_variant_destination" />
+        <argument
+            android:name="selectedVariant"
+            app:argType="com.kinderjoey.cookiez.model.Variant" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail_verification_destination"
+        android:name="com.kinderjoey.cookiez.ui.detail.order.DetailOrderVerificationFragment"
+        android:label="fragment_detail_order_verification"
+        tools:layout="@layout/fragment_detail_order_verification" >
+        <action
+            android:id="@+id/action_detailOrderVerificationFragment_to_detailOrderMenuFragment"
+            app:destination="@id/detail_order_destination" />
+    </fragment>
+
+</navigation>

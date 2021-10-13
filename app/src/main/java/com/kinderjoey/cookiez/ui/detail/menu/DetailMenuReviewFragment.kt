@@ -6,18 +6,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.ReviewAdapter
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailMenuReviewBinding
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMenuReviewFragment : Fragment() {
 
-    private val viewModel by viewModels<DetailMenuReviewViewModel>()
+    private val viewModel by viewModel<DetailMenuReviewViewModel>()
     private val binding by viewBinding<FragmentDetailMenuReviewBinding>()
     private val reviewAdapter by inject<ReviewAdapter>()
+    private var menuName: String? = null
+
+    companion object {
+        private const val KEY_BUNDLE = "MENU_NAME"
+
+        fun getInstance(menuName: String): Fragment {
+            return DetailMenuReviewFragment().apply {
+                arguments = Bundle().apply {
+                    putString(KEY_BUNDLE, menuName)
+                }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments.let {
+            menuName = it?.getString(KEY_BUNDLE)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +51,24 @@ class DetailMenuReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuName = ""
-        observeReview(menuName)
+        binding.rvListOfReview.apply {
+            adapter = reviewAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+
+        observeReview()
     }
 
-    private fun observeReview(menuName: String) {
-        viewModel.getReviews(menuName).observe(viewLifecycleOwner, {
+    private fun observeReview() {
+        viewModel.getReviews(menuName.toString()).observe(viewLifecycleOwner, {
             when(it) {
-                is Resource.Empty -> TODO()
-                is Resource.Error -> TODO()
-                is Resource.Loading -> TODO()
-                is Resource.Success -> it.data?.let { it1 -> reviewAdapter.setAllData(it1) }
+                is Resource.Empty -> {}
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    it.data?.let { it1 -> reviewAdapter.setAllData(it1) }
+                    binding.tvNumberOfRating.text = String.format("Dirating oleh ${it.data?.size} orang")
+                }
             }
         })
     }

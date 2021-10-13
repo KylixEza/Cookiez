@@ -1,5 +1,6 @@
 package com.kinderjoey.cookiez.adapter
 
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +11,11 @@ import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ItemListMenuBinding
 import com.kinderjoey.cookiez.model.menu.Menu
+import com.kinderjoey.cookiez.ui.detail.DetailActivity
+import com.kinderjoey.cookiez.util.Constanta
 
 
-class SelectedCategoryAdapter(private val activity: AppCompatActivity): RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
+class SelectedCategoryAdapter: RecyclerView.Adapter<SelectedCategoryAdapter.SelectedCategoryViewHolder>() {
 
     private val listOfMenu = ArrayList<Menu>()
 
@@ -78,9 +81,9 @@ class SelectedCategoryAdapter(private val activity: AppCompatActivity): Recycler
             }
 
             itemView.setOnClickListener {
-                /*val intent = Intent(itemView.context, DetailActivity::class.java)
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra(Constanta.KEY_OF_MENU_NAME, menu.title)
                 itemView.context.startActivity(intent)
-                activity.finish()*/
             }
         }
 

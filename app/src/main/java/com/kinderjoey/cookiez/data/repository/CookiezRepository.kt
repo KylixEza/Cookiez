@@ -6,6 +6,7 @@ import com.kinderjoey.cookiez.data.sources.firestore.response.*
 import com.kinderjoey.cookiez.data.util.FirestoreMapper
 import com.kinderjoey.cookiez.data.util.FirestoreOnlyResource
 import com.kinderjoey.cookiez.data.util.Resource
+import com.kinderjoey.cookiez.model.Variant
 import com.kinderjoey.cookiez.model.menu.*
 import kotlinx.coroutines.flow.Flow
 
@@ -107,6 +108,18 @@ class CookiezRepository(
 
             override suspend fun createCall(): Flow<FirestoreResponses<List<ReviewResponse>>> {
                 return firestoreDataSource.getReviews(menuName)
+            }
+        }.asFlow()
+    }
+
+    override fun getVariantMenu(menuName: String): Flow<Resource<List<Variant>>> {
+        return object : FirestoreOnlyResource<List<Variant>, List<VariantResponse>>() {
+            override fun loadFromNetwork(data: List<VariantResponse>): Flow<List<Variant>> {
+                return FirestoreMapper.mapVariantResponsesToDomain(data)
+            }
+
+            override suspend fun createCall(): Flow<FirestoreResponses<List<VariantResponse>>> {
+                return firestoreDataSource.getVariantMenu(menuName)
             }
         }.asFlow()
     }

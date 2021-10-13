@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.commit
 import com.kinderjoey.cookiez.R
+import com.kinderjoey.cookiez.util.Constanta
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,11 +18,6 @@ class DetailActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.white)
         }
 
-        val fragmentManager = supportFragmentManager
-        val fragment = DetailMenuFragment()
-
-        fragmentManager.commit {
-            add(R.id.detail_container, fragment, DetailMenuFragment::class.java.simpleName)
-        }
+        val menuName = intent.getStringExtra(Constanta.KEY_OF_MENU_NAME)
     }
 }

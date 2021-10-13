@@ -1,6 +1,7 @@
 package com.kinderjoey.cookiez.data.util
 
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
+import com.kinderjoey.cookiez.model.Variant
 import com.kinderjoey.cookiez.model.menu.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -51,12 +52,28 @@ object FirestoreMapper {
         val result = ArrayList<Review>()
 
         input.map {
-            val menu = Review(
+            val review = Review(
                 it.imageReviewer,
                 it.nameReviewer,
                 it.starReviewer
             )
-            result.add(menu)
+            result.add(review)
+        }
+        return flowOf(result)
+    }
+
+    fun mapVariantResponsesToDomain(input: List<VariantResponse>): Flow<List<Variant>> {
+        val result = ArrayList<Variant>()
+
+        input.map {
+            val variant = Variant(
+                it.menuName,
+                it.variant,
+                it.composition,
+                it.price,
+                it.image
+            )
+            result.add(variant)
         }
         return flowOf(result)
     }

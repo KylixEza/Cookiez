@@ -32,6 +32,22 @@
             app:layout_constraintTop_toBottomOf="@id/tv_title_number_of_rating"
             tools:text="Dirating oleh 3 Orang"/>
 
+        <RatingBar
+            android:id="@+id/rating_bar"
+            style="@android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            android:isIndicator="true"
+            android:max="5"
+            android:progressTint="@color/yellow"
+            app:layout_constraintStart_toEndOf="@id/tv_number_of_rating"
+            app:layout_constraintTop_toTopOf="@id/tv_average_rating"/>
+
         <TextView
             android:id="@+id/tv_average_rating"
             android:layout_width="wrap_content"

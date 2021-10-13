@@ -6,15 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import androidx.fragment.app.viewModels
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailMenuAboutBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMenuAboutFragment : Fragment() {
 
-    private val viewModel by viewModels<DetailMenuAboutViewModel>()
+    private val viewModel by viewModel<DetailMenuAboutViewModel>()
     private val binding by viewBinding<FragmentDetailMenuAboutBinding>()
+    private var menuName: String? = null
+
+    companion object {
+        private const val KEY_BUNDLE = "MENU_NAME"
+
+        fun getInstance(menuName: String): Fragment {
+            return DetailMenuAboutFragment().apply {
+                arguments = Bundle().apply {
+                    putString(KEY_BUNDLE, menuName)
+                }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments.let {
+            menuName = it?.getString(KEY_BUNDLE)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +47,11 @@ class DetailMenuAboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuName = ""
-        observeDetail(menuName)
+        observeDetail()
     }
 
-    private fun observeDetail(menuName: String) {
-        viewModel.getDetailMenu(menuName).observe(viewLifecycleOwner, {
+    private fun observeDetail() {
+        viewModel.getDetailMenu(menuName.toString()).observe(viewLifecycleOwner, {
             when(it) {
                 is Resource.Empty -> {}
                 is Resource.Error -> {}

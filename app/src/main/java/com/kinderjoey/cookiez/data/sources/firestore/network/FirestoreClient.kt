@@ -13,4 +13,5 @@ interface FirestoreClient {
     suspend fun getSteps(menuName: String): Flow<FirestoreResponses<StepResponse?>>
     suspend fun getIngredients(menuName: String): Flow<FirestoreResponses<IngredientResponse?>>
     suspend fun getReviews(menuName: String): Flow<FirestoreResponses<List<ReviewResponse>>>
+    suspend fun getVariantMenu(menuName: String): Flow<FirestoreResponses<List<VariantResponse>>>
 }

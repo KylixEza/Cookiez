@@ -1,6 +1,7 @@
 package com.kinderjoey.cookiez.data.repository
 
 import com.kinderjoey.cookiez.data.util.Resource
+import com.kinderjoey.cookiez.model.Variant
 import com.kinderjoey.cookiez.model.menu.*
 import kotlinx.coroutines.flow.Flow
 
@@ -14,4 +15,5 @@ interface ICookiezRepository {
     fun getSteps(menuName: String): Flow<Resource<Step>>
     fun getIngredients(menuName: String): Flow<Resource<Ingredient>>
     fun getReviews(menuName: String): Flow<Resource<List<Review>>>
+    fun getVariantMenu(menuName: String): Flow<Resource<List<Variant>>>
 }

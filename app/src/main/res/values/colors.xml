@@ -16,6 +16,7 @@
     <color name="outlined_button_see_all">#FFEBFEEA</color>
     <color name="text_outlined_button_see_all">#FF69AF6B</color>
     <color name="text_last_transaction_status">#FF474748</color>
+    <color name="yellow">#FFFFDB6F</color>
 
     <color name="card_difficult_easy">#266CC580</color>
     <color name="card_difficult_medium">#FFFFEEBB</color>

@@ -198,4 +198,26 @@ class FirestoreClientImpl: FirestoreClient {
         else
             emit(FirestoreResponses.Success(listOfReviews))
     }.flowOn(Dispatchers.IO)
+
+    override suspend fun getVariantMenu(menuName: String): Flow<FirestoreResponses<List<VariantResponse>>> = flow {
+        var listOfVariants: List<VariantResponse> = ArrayList()
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                listOfVariants = menuRef
+                    .collection(FirestoreReference.Variant.reference.toString())
+                    .whereEqualTo(FirestoreReference.MenuNameAttr.attribute.toString(), menuName)
+                    .get()
+                    .await()
+                    .toObjects(VariantResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.localizedMessage))
+        }
+
+        if (listOfVariants.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(listOfVariants))
+    }.flowOn(Dispatchers.IO)
 }

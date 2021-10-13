@@ -8,13 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.R
+import com.kinderjoey.cookiez.adapter.VariantAdapter
+import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailVariantMenuBinding
+import org.koin.android.ext.android.inject
 
 class DetailVariantMenuFragment : Fragment() {
 
     private val binding by viewBinding<FragmentDetailVariantMenuBinding>()
+    private val viewModel by viewModels<DetailVariantMenuViewModel>()
+    private lateinit var variantAdapter: VariantAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,6 +32,8 @@ class DetailVariantMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        variantAdapter = VariantAdapter(viewModel, binding, this@DetailVariantMenuFragment)
+
         binding.includeAppBarMiddle.apply {
             ivFavorite.visibility = View.GONE
             tvTittle.text = "Detail Pemesanan"
@@ -35,10 +43,18 @@ class DetailVariantMenuFragment : Fragment() {
             btnOrder.text = "Lanjutkan"
         }
 
-        binding.includeBottomBarDetail.btnOrder.setOnClickListener {
-            parentFragmentManager.commit {
-                replace(R.id.detail_container, DetailOrderMenuFragment(), DetailOrderMenuFragment::class.java.simpleName)
+        val menuName = ""
+        observeVariant(menuName)
+    }
+
+    private fun observeVariant(menuName: String) {
+        viewModel.getVariantMenu(menuName).observe(viewLifecycleOwner, {
+            when(it) {
+                is Resource.Empty -> {}
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> it.data?.let { variant -> variantAdapter.setAllData(variant) }
             }
-        }
+        })
     }
 }

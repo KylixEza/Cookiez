@@ -19,7 +19,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private val binding by viewBinding<ActivityCategoryBinding>()
     private val categoryViewModel by viewModel<CategoryViewModel>()
-    private val categoryAdapter by inject<SelectedCategoryAdapter>()
+    private lateinit var categoryAdapter: SelectedCategoryAdapter
     private val args by navArgs<CategoryActivityArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +31,7 @@ class CategoryActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.white)
         }
 
+        categoryAdapter = SelectedCategoryAdapter()
         val categoryTitle = args.categoryTitle
         val categoryType = args.categoryType
 

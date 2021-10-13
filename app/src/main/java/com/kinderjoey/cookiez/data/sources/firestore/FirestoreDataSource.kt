@@ -12,4 +12,5 @@ class FirestoreDataSource(private val firestoreClient: FirestoreClient) {
     suspend fun getSteps(menuName: String) = firestoreClient.getSteps(menuName)
     suspend fun getIngredients(menuName: String) = firestoreClient.getIngredients(menuName)
     suspend fun getReviews(menuName: String) = firestoreClient.getReviews(menuName)
+    suspend fun getVariantMenu(menuName: String) = firestoreClient.getVariantMenu(menuName)
 }
