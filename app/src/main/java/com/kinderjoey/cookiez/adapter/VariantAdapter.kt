@@ -22,6 +22,7 @@ class VariantAdapter(
     ) : RecyclerView.Adapter<VariantAdapter.VariantViewHolder>() {
 
     private val listOfVariants = ArrayList<Variant>()
+    private var selectedItem = -1
 
     fun setAllData(data: List<Variant>) {
         listOfVariants.apply {
@@ -42,7 +43,7 @@ class VariantAdapter(
 
     override fun getItemCount(): Int = listOfVariants.size
 
-    inner class VariantViewHolder(private val view: ItemListVariantBinding): RecyclerView.ViewHolder(view.root) {
+    inner class VariantViewHolder(val view: ItemListVariantBinding): RecyclerView.ViewHolder(view.root) {
 
         fun bind(variant: Variant, position: Int) {
             view.apply {
@@ -56,19 +57,23 @@ class VariantAdapter(
                     .into(view.ivVariantImg)
 
                 view.rbVariant.setOnClickListener {
-                    view.rbVariant.isChecked = true
+                    selectedItem = position
                     viewModel.getVariantMenu(variant.menuName).observe(owner.viewLifecycleOwner, {
                         when(it) {
                             is Resource.Empty -> {}
                             is Resource.Error -> {}
                             is Resource.Loading -> {}
-                            is Resource.Success -> binding
-                                .includeBottomBarDetail
-                                .availabilityStatus
-                                .text = Formatting.rupiahCurrencyFormatting(variant.price)
+                            is Resource.Success -> {
+                                binding
+                                    .includeBottomBarDetail
+                                    .availabilityStatus
+                                    .text = Formatting.rupiahCurrencyFormatting(variant.price)
+                            }
                         }
+                        notifyDataSetChanged()
                     })
                 }
+                rbVariant.isChecked = (position == selectedItem)
             }
 
             binding.includeBottomBarDetail.btnOrder.setOnClickListener {

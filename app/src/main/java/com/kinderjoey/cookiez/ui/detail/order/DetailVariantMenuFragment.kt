@@ -7,20 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import androidx.fragment.app.commit
-import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.VariantAdapter
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailVariantMenuBinding
-import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailVariantMenuFragment : Fragment() {
 
     private val binding by viewBinding<FragmentDetailVariantMenuBinding>()
-    private val viewModel by viewModels<DetailVariantMenuViewModel>()
+    private val viewModel by viewModel<DetailVariantMenuViewModel>()
     private lateinit var variantAdapter: VariantAdapter
+    private val args by navArgs<DetailVariantMenuFragmentArgs>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,16 +34,22 @@ class DetailVariantMenuFragment : Fragment() {
 
         variantAdapter = VariantAdapter(viewModel, binding, this@DetailVariantMenuFragment)
 
-        binding.includeAppBarMiddle.apply {
-            ivFavorite.visibility = View.GONE
-            tvTittle.text = "Detail Pemesanan"
-        }
-        binding.includeBottomBarDetail.apply {
-            availability.text = "Harga Bahan"
-            btnOrder.text = "Lanjutkan"
+        binding.apply {
+            includeAppBarMiddle.apply {
+                ivFavorite.visibility = View.GONE
+                tvTittle.text = "Detail Pemesanan"
+            }
+            includeBottomBarDetail.apply {
+                availability.text = "Harga Bahan"
+                btnOrder.text = "Lanjutkan"
+            }
+            rvVariant.apply {
+                adapter = variantAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
         }
 
-        val menuName = ""
+        val menuName = args.menuName
         observeVariant(menuName)
     }
 

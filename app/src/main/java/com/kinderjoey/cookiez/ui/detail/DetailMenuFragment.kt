@@ -25,6 +25,7 @@ import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailMenuBinding
 import com.kinderjoey.cookiez.ui.detail.menu.*
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragment
+import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragmentDirections
 import com.kinderjoey.cookiez.util.Constanta
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -37,7 +38,7 @@ class DetailMenuFragment : Fragment() {
     private val viewModel by viewModel<DetailMenuViewModel>()
 
     companion object {
-        var STREAM_URL = "https://firebasestorage.googleapis.com/v0/b/cookiez-83063.appspot.com/o/Nasi%20Goreng%20Asia.mp4?alt=media&token=004413aa-a275-449f-a20e-76e4c1f8ecdb"
+        var STREAM_URL = ""
         val TAB_TITLES = listOf(
             "Petunjuk",
             "Tentang",
@@ -77,12 +78,9 @@ class DetailMenuFragment : Fragment() {
 
         binding.includeAppBarMiddle.tvTittle.text = menuName
 
-        val fragmentManager = parentFragmentManager
-        val fragment = DetailVariantMenuFragment()
         binding.includeBottomBarDetail.btnOrder.setOnClickListener {
-            fragmentManager.commit {
-                replace(R.id.detail_container, fragment, fragment::class.java.simpleName)
-            }
+            view.findNavController().navigate(DetailMenuFragmentDirections
+                .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName))
         }
 
         val pagerAdapter = DetailMenuPageAdapter(

@@ -68,6 +68,12 @@ class DetailMenuReviewFragment : Fragment() {
                 is Resource.Success -> {
                     it.data?.let { it1 -> reviewAdapter.setAllData(it1) }
                     binding.tvNumberOfRating.text = String.format("Dirating oleh ${it.data?.size} orang")
+
+                    var avgRating = 0.0
+                    it.data?.forEach { review ->
+                        avgRating += review.starReviewer
+                    }
+                    binding.tvAverageRating.text = avgRating.toString()
                 }
             }
         })
