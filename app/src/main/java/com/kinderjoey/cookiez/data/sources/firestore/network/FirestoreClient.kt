@@ -1,6 +1,7 @@
 package com.kinderjoey.cookiez.data.sources.firestore.network
 
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
+import com.kinderjoey.cookiez.model.User
 import kotlinx.coroutines.flow.Flow
 
 interface FirestoreClient {

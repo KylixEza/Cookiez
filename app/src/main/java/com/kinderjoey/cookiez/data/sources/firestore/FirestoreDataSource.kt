@@ -1,6 +1,7 @@
 package com.kinderjoey.cookiez.data.sources.firestore
 
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreClient
+import com.kinderjoey.cookiez.model.User
 
 class FirestoreDataSource(private val firestoreClient: FirestoreClient) {
 

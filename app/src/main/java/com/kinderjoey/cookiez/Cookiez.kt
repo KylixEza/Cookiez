@@ -19,7 +19,9 @@ class Cookiez: Application() {
                     firestoreModule,
                     repositoryModule,
                     viewModelModule,
-                    adapterModule
+                    adapterModule,
+                    dataSourceModule,
+                    serviceModule
                 )
             )
         }

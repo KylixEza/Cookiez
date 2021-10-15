@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
+import com.kinderjoey.cookiez.model.User
 import com.kiwimob.firestore.coroutines.await
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +21,7 @@ class FirestoreClientImpl: FirestoreClient {
     private val menuRef = fireStore
         .collection(FirestoreReference.Admin.reference!!)
         .document(FirestoreReference.Menu.reference!!)
+
 
     override suspend fun getPopularMenus(): Flow<FirestoreResponses<List<MenuResponse>>> = flow {
         var listOfPopularMenu: List<MenuResponse> = ArrayList()
@@ -220,4 +222,8 @@ class FirestoreClientImpl: FirestoreClient {
         else
             emit(FirestoreResponses.Success(listOfVariants))
     }.flowOn(Dispatchers.IO)
+
+
+
+
 }

@@ -1,11 +1,16 @@
 package com.kinderjoey.cookiez.di
 
 import androidx.room.Room
+import com.kinderjoey.cookiez.data.repository.AuthRepository
 import com.kinderjoey.cookiez.data.repository.CookiezRepository
+import com.kinderjoey.cookiez.data.repository.IAuthRepository
 import com.kinderjoey.cookiez.data.repository.ICookiezRepository
 import com.kinderjoey.cookiez.data.sources.firestore.FirestoreDataSource
+import com.kinderjoey.cookiez.data.sources.firestore.RemoteDataSource
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreClient
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreClientImpl
+import com.kinderjoey.cookiez.data.sources.firestore.network.service.AuthService
+import com.kinderjoey.cookiez.data.sources.local.LocalDataSource
 import com.kinderjoey.cookiez.data.sources.local.room.CookiezDatabase
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
@@ -16,6 +21,10 @@ val databaseModule = module {
     factory {
         get<CookiezDatabase>().cookiezDao()
     }
+    factory {
+        get<CookiezDatabase>().userDao()
+    }
+
 
     single {
         val passphrase: ByteArray = SQLiteDatabase.getBytes("Cookiez".toCharArray())
@@ -42,5 +51,24 @@ val repositoryModule = module {
         CookiezRepository(
             get()
         )
+    }
+    single<IAuthRepository> {
+        AuthRepository(
+            get(), get()
+        )
+    }
+}
+
+val dataSourceModule = module{
+    single {
+        LocalDataSource(get())
+    }
+    single {
+        RemoteDataSource(get())
+    }
+}
+val serviceModule = module {
+    factory {
+        AuthService()
     }
 }
