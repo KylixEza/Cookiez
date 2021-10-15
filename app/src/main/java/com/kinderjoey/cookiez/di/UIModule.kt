@@ -1,6 +1,7 @@
 package com.kinderjoey.cookiez.di
 
 import com.kinderjoey.cookiez.adapter.*
+import com.kinderjoey.cookiez.ui.auth.login.LoginViewModel
 import com.kinderjoey.cookiez.ui.auth.register.RegisterViewModel
 import com.kinderjoey.cookiez.ui.category.CategoryViewModel
 import com.kinderjoey.cookiez.ui.detail.DetailMenuViewModel
@@ -21,6 +22,7 @@ val viewModelModule = module {
     viewModel { DetailMenuTutorialViewModel(get()) }
     viewModel { DetailVariantMenuViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }
 
 val adapterModule = module {
