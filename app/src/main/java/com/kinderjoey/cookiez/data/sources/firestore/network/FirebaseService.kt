@@ -5,6 +5,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.kiwimob.firestore.coroutines.await
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
@@ -115,3 +116,4 @@ abstract class FirebaseService {
         }.flowOn(Dispatchers.IO)
 
     }
+

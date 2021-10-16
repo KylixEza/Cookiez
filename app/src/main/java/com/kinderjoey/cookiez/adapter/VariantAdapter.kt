@@ -47,7 +47,6 @@ class VariantAdapter(
 
         fun bind(variant: Variant, position: Int) {
             view.apply {
-                view.rbVariant.isChecked = false
                 tvTittleVariant.text = variant.variant
                 tvSubtitleVariant.text = variant.composition
                 tvVariantPrice.text = Formatting.rupiahCurrencyFormatting(variant.price)
@@ -77,10 +76,11 @@ class VariantAdapter(
             }
 
             binding.includeBottomBarDetail.btnOrder.setOnClickListener {
-                if (view.rbVariant.isChecked)
+                if (selectedItem != -1) {
+                    val selectedVariant = listOfVariants[selectedItem]
                     it.findNavController().navigate(DetailVariantMenuFragmentDirections
-                        .actionDetailVariantMenuFragmentToDetailOrderMenuFragment(variant)
-                    )
+                        .actionDetailVariantMenuFragmentToDetailOrderMenuFragment(selectedVariant))
+                }
             }
         }
     }

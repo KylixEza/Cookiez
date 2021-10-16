@@ -10,22 +10,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.viewbinding.library.fragment.viewBinding
 import android.webkit.MimeTypeMap
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentProfileBinding
 import com.kinderjoey.cookiez.model.User
 import com.kinderjoey.cookiez.ui.history.HistoryActivity
@@ -90,8 +83,6 @@ class ProfileFragment : Fragment() {
         }
         Log.d("CEKK","uid $uid")
         uid?.let { viewModel.getUser(it).observe(viewLifecycleOwner, ::setProfile) }
-
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -114,7 +105,6 @@ class ProfileFragment : Fragment() {
         }
 
         }
-
     }
     private fun uploadImage() {
         if (photoLocation != null) {

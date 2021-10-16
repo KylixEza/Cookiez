@@ -13,7 +13,7 @@ object FirestoreMapper {
         input.map {
             val menu = Menu(
                 it.title,
-                it.price,
+                it.time,
                 it.difficulty,
                 it.price,
                 it.rating,

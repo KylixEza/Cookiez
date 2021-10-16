@@ -42,6 +42,9 @@ class LoginFragment : Fragment() {
                 val password = edtPassword.editText?.text.toString()
                 loginViewModel.signIn(email,password).observe(viewLifecycleOwner,::signInResponse)
             }
+            tvRegister.setOnClickListener {
+                view.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+            }
         }
 
     }

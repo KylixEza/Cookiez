@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="32dp"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -16,15 +16,17 @@
     
     <TextView
         android:id="@+id/tv_tittle_variant"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/poppins_medium"
         android:textColor="@color/black"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/rb_variant"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iv_variant_img"
         tools:text="Bahan Komplit (3-5 Porsi)"/>
 
     <TextView

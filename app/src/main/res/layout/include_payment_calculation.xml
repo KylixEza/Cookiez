@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_container_cWallet_value"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:backgroundTint="@color/red_soft_pastel"
+        app:layout_constraintBottom_toBottomOf="@id/cv_container_cWallet"
+        app:layout_constraintStart_toStartOf="@id/cv_container_cWallet"
+        app:layout_constraintTop_toTopOf="@id/cv_container_cWallet"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_cWallet_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_medium"
+            tools:text="2.000"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_container_cWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="6dp">
+        <TextView
+            android:id="@+id/tv_cWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="8dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="C-Wallet"
+            android:textColor="@color/white"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginStart="8dp"
+        android:text="+"
+        app:layout_constraintTop_toTopOf="@id/cv_container_cWallet_value"
+        app:layout_constraintStart_toEndOf="@id/cv_container_cWallet_value"
+        app:layout_constraintBottom_toBottomOf="@id/cv_container_cWallet_value"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_container_cash_value"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="@color/red_soft_pastel"
+        app:layout_constraintBottom_toBottomOf="@id/cv_container_cWallet_value"
+        app:layout_constraintStart_toStartOf="@id/cv_container_cash"
+        app:layout_constraintTop_toTopOf="@id/cv_container_cWallet_value"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_cash_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_medium"
+            tools:text="15.000"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_container_cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/tv_plus"
+        app:layout_constraintTop_toTopOf="@id/cv_container_cWallet_value"
+        app:layout_constraintBottom_toBottomOf="@id/cv_container_cWallet_value"
+        app:cardCornerRadius="6dp">
+
+        <TextView
+            android:id="@+id/tv_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="8dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Tunai"
+            android:textColor="@color/white"/>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
