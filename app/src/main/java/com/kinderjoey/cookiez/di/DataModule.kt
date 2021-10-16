@@ -1,15 +1,13 @@
 package com.kinderjoey.cookiez.di
 
 import androidx.room.Room
-import com.kinderjoey.cookiez.data.repository.AuthRepository
-import com.kinderjoey.cookiez.data.repository.CookiezRepository
-import com.kinderjoey.cookiez.data.repository.IAuthRepository
-import com.kinderjoey.cookiez.data.repository.ICookiezRepository
+import com.kinderjoey.cookiez.data.repository.*
 import com.kinderjoey.cookiez.data.sources.firestore.FirestoreDataSource
 import com.kinderjoey.cookiez.data.sources.firestore.RemoteDataSource
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreClient
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreClientImpl
 import com.kinderjoey.cookiez.data.sources.firestore.network.service.AuthService
+import com.kinderjoey.cookiez.data.sources.firestore.network.service.UserService
 import com.kinderjoey.cookiez.data.sources.local.LocalDataSource
 import com.kinderjoey.cookiez.data.sources.local.room.CookiezDatabase
 import net.sqlcipher.database.SQLiteDatabase
@@ -57,6 +55,11 @@ val repositoryModule = module {
             get(), get()
         )
     }
+    single<IProfileRepository> {
+        ProfileRepository(
+            get(), get()
+        )
+    }
 }
 
 val dataSourceModule = module{
@@ -64,11 +67,14 @@ val dataSourceModule = module{
         LocalDataSource(get())
     }
     single {
-        RemoteDataSource(get())
+        RemoteDataSource(get(),get())
     }
 }
 val serviceModule = module {
     factory {
         AuthService()
+    }
+    factory {
+        UserService()
     }
 }

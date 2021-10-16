@@ -9,15 +9,16 @@ import com.google.gson.reflect.TypeToken
 @Entity(tableName = "user")
 data class UserEntity(
     @PrimaryKey
-    val uid: String,
-    val name: String,
-    val phoneNumber: String,
-    val email: String,
-    val address: String,
-    val xp: Int,
-    val coin: Int,
-    val cookiezWallet: Int,
-    val transaction: List<String>
+    val uid:String ="",
+    val name: String ="",
+    val phoneNumber: String = "",
+    val email: String ="",
+    val address: String ="",
+    val xp: Int = 0,
+    val coin: Int = 0,
+    val cookiezWallet: Int = 0,
+    val transaction: List<String>? = listOf(),
+    val avatar: String = ""
 )
 class ListConverter {
     @TypeConverter

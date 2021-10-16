@@ -115,4 +115,22 @@ object DataDummy {
             ),
         )
     }
+    fun setAvailableVoucher(): List<Int> {
+        return arrayListOf(
+            R.drawable.voucher_red,
+            R.drawable.voucher_yellow,
+            R.drawable.voucher_orange,
+            R.drawable.voucher_red,
+            R.drawable.voucher_yellow,
+            R.drawable.voucher_orange,
+            R.drawable.voucher_red
+        )
+    }
+
+    fun setOwnVoucher(): List<Int> {
+        return arrayListOf(
+            R.drawable.voucher_red,
+            R.drawable.voucher_yellow,
+        )
+    }
 }

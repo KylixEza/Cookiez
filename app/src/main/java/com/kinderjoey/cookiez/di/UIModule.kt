@@ -10,6 +10,7 @@ import com.kinderjoey.cookiez.ui.detail.menu.DetailMenuReviewViewModel
 import com.kinderjoey.cookiez.ui.detail.menu.DetailMenuTutorialViewModel
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuViewModel
 import com.kinderjoey.cookiez.ui.home.HomeViewModel
+import com.kinderjoey.cookiez.ui.profile.ProfileViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

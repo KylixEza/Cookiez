@@ -1,5 +1,6 @@
 package com.kinderjoey.cookiez.data.util
 
+import com.kinderjoey.cookiez.data.sources.firestore.network.FirebaseResponse
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreResponses
 import kotlinx.coroutines.flow.*
 
@@ -10,7 +11,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
         emit(Resource.Loading(dbSource))
         if (shouldFetch(dbSource)) {
             when (val firebaseResponse = createCall().first()) {
-                is FirestoreResponses.Success<RequestType> -> {
+                is FirebaseResponse.Success<RequestType> -> {
                     saveCallResult(firebaseResponse.data)
                     emitAll(loadFromDB().map {
                         Resource.Success(
@@ -18,14 +19,14 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                         )
                     })
                 }
-                is FirestoreResponses.Empty -> {
+                is FirebaseResponse.Empty -> {
                     emitAll(loadFromDB().map {
                         Resource.Success(
                             it
                         )
                     })
                 }
-                is FirestoreResponses.Error -> {
+                is FirebaseResponse.Error -> {
                     onFetchFailed()
                     emit(
                         Resource.Error<ResultType>(
@@ -45,7 +46,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
     protected abstract fun shouldFetch(data: ResultType?): Boolean
 
-    protected abstract suspend fun createCall(): Flow<FirestoreResponses<RequestType>>
+    protected abstract suspend fun createCall(): Flow<FirebaseResponse<RequestType>>
 
     protected abstract suspend fun saveCallResult(data: RequestType)
 

@@ -12,10 +12,12 @@ import kotlinx.coroutines.tasks.await
 abstract class FirebaseService {
 
     val auth = Firebase.auth
+    fun getCurrentUserId() = auth.currentUser?.uid
+
     val firestore = Firebase.firestore
     val storage = Firebase.storage
 
-    fun getCurrentUserId() = auth.currentUser?.uid
+
 
     fun generateDocumentId(collection: String):String = firestore.collection(collection).document().id
 

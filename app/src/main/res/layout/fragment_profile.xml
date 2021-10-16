@@ -50,7 +50,7 @@
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/img_profile"
                 app:layout_constraintTop_toTopOf="@+id/img_profile"
-                android:text="User Name" />
+                 />
 
             <TextView
                 android:id="@+id/tv_email"
@@ -59,18 +59,18 @@
                 android:fontFamily="@font/poppins"
                 app:layout_constraintStart_toStartOf="@+id/tv_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name"
-                android:text="ilham.uklison@gmai.com" />
+                  />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_ubah_foto"
+                android:id="@+id/btn_ubah_profile"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="@string/ubah_foto"
+                android:text="@string/ubah_profile"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_email"
                 app:layout_constraintStart_toStartOf="@+id/tv_name" />
 
@@ -84,7 +84,7 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_ubah_foto" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_ubah_profile" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -106,7 +106,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/imageView2"
-                android:text="150 CP" />
+                tools:text="150 CP" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -142,7 +142,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tv_coin"
                 app:layout_constraintEnd_toEndOf="@+id/divider"
                 app:layout_constraintTop_toTopOf="@+id/tv_coin"
-                android:text="2500 XP" />
+                tools:text="2500 XP" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -313,4 +313,6 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

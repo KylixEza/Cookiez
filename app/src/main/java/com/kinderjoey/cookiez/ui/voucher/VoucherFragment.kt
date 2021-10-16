@@ -10,6 +10,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.VoucherPagerAdapter
 import com.kinderjoey.cookiez.databinding.FragmentVoucherBinding
+import com.kinderjoey.cookiez.ui.voucher.screen.AvailableVoucherFragment
+import com.kinderjoey.cookiez.ui.voucher.screen.OwnVoucherFragment
 
 class VoucherFragment : Fragment() {
 
@@ -37,14 +39,14 @@ class VoucherFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-        /*val listOfFragment = listOf<Fragment>(
+        val listOfFragment = listOf<Fragment>(
             AvailableVoucherFragment(),
             OwnVoucherFragment()
-        )*/
+        )
 
         binding.apply {
             adapter.apply {
-                //setFragments(listOfFragment)
+                setFragments(listOfFragment)
                 viewPager.adapter = this
             }
             TabLayoutMediator(tabVoucher, viewPager) { tab, position ->
