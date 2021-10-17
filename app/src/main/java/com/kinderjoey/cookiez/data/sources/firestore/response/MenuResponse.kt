@@ -7,5 +7,6 @@ data class MenuResponse(
     val price: Int = 0,
     val rating: Double = 0.0,
     val image: String = "",
+    val type: String = "",
 )
 

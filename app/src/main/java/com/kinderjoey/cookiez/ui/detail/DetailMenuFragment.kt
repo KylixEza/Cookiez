@@ -105,6 +105,10 @@ class DetailMenuFragment : Fragment() {
         }
     }
 
+    private fun extractYoutubeUrl() {
+
+    }
+
     private fun initializePlayer() {
         mediaDataSourceFactory = DefaultDataSourceFactory(requireActivity(), Util.getUserAgent(requireActivity(), "mediaPlayerSample"))
 

@@ -17,7 +17,8 @@ object FirestoreMapper {
                 it.difficulty,
                 it.price,
                 it.rating,
-                it.image
+                it.image,
+                it.type
             )
             result.add(menu)
         }

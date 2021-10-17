@@ -35,6 +35,7 @@ class DetailOrderVerificationFragment : Fragment() {
             val intent = Intent(activity, HistoryActivity::class.java)
             startActivity(intent)
             activity?.finish()
+            activity?.finish()
         }
     }
 }
