@@ -14,11 +14,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.LeaderboardAdapter
-import com.kinderjoey.cookiez.data.sources.dummy.DataDummy
 import com.kinderjoey.cookiez.databinding.FragmentLeaderboardBinding
 import com.kinderjoey.cookiez.model.UserLeaderBoard
 import kotlinx.android.synthetic.main.dialog_rank.view.*
-import kotlinx.android.synthetic.main.dialog_voucher.view.*
 import kotlinx.android.synthetic.main.dialog_voucher.view.btn_ok
 import kotlinx.android.synthetic.main.dialog_voucher.view.ib_close
 

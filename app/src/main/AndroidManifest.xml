@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookiez">
         <activity
+            android:name=".ui.voucher.screen.DetailVoucherActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.profile.EditAddressActivity"
             android:exported="true" />
         <activity

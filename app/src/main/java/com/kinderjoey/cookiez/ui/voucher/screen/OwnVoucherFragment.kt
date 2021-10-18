@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.data.sources.dummy.DataDummy
 import com.kinderjoey.cookiez.databinding.FragmentOwnVoucherBinding
-import com.kinderjoey.cookiez.ui.voucher.screen.VoucherListAdapter
 
 class OwnVoucherFragment : Fragment() {
 
@@ -27,14 +24,14 @@ class OwnVoucherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val ownAdapter = VoucherListAdapter()
+/*        val ownAdapter = VoucherAdapter()
 
         binding.rvOwnVoucher.apply {
             adapter = ownAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
 
-        ownAdapter.setAllData(DataDummy.setOwnVoucher())
+        ownAdapter.setAllData(DataDummy.setOwnVoucher())*/
     }
 
 }
