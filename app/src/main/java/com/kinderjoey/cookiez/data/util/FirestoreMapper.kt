@@ -1,6 +1,7 @@
 package com.kinderjoey.cookiez.data.util
 
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
+import com.kinderjoey.cookiez.model.Favorite
 import com.kinderjoey.cookiez.model.Variant
 import com.kinderjoey.cookiez.model.menu.*
 import kotlinx.coroutines.flow.Flow
@@ -87,6 +88,26 @@ object FirestoreMapper {
             )
             result.add(variant)
         }
+        return flowOf(result)
+    }
+
+    fun mapFavoriteResponsesToDomain(input: List<FavoriteResponse>): Flow<List<Favorite>> {
+        val result = ArrayList<Favorite>()
+
+        input.map {
+            val favorite = Favorite(
+                it.uid,
+                it.title,
+                it.time,
+                it.difficulty,
+                it.price,
+                it.rating,
+                it.image,
+                it.type,
+            )
+            result.add(favorite)
+        }
+
         return flowOf(result)
     }
 }

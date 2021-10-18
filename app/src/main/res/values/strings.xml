@@ -41,6 +41,7 @@
     <string name="title_number_of_rating">Ringkasan Penilaian</string>
     <string name="title_list_of_review">Daftar Penilaian</string>
     <string name="message_empty_notification">Belum ada notifikasi yang tersedia</string>
+    <string name="message_empty_favorite">Belum menambahakan apapun dalam favorit kamu</string>
     <string name="title_top_up">Isi Saldo</string>
     <string name="rank_poin">Rank Poin</string>
     <string name="ubah_foto">Ubah Foto</string>

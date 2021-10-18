@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_home_to_categoryActivity"
             app:destination="@id/navigation_category" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_favorite"
+            app:destination="@id/navigation_favorite" />
     </fragment>
     <fragment
         android:id="@+id/navigation_voucher"
@@ -51,5 +54,10 @@
             app:argType="string"
             android:defaultValue="null" />
     </activity>
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.kinderjoey.cookiez.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 
 </navigation>

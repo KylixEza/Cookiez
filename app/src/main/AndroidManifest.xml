@@ -35,9 +35,6 @@
             android:name=".ui.profile.wallet.TopUpActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.notification.NotificationActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.history.HistoryActivity"
             android:exported="true" />
         <activity

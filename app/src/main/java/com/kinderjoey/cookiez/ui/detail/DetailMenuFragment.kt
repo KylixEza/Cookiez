@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import androidx.navigation.findNavController
@@ -25,11 +26,14 @@ import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.DetailMenuPageAdapter
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailMenuBinding
+import com.kinderjoey.cookiez.model.Favorite
+import com.kinderjoey.cookiez.model.menu.Menu
 import com.kinderjoey.cookiez.ui.detail.menu.*
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragment
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragmentDirections
 import com.kinderjoey.cookiez.ui.profile.ProfileViewModel
 import com.kinderjoey.cookiez.util.Constanta
+import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMenuFragment : Fragment() {
@@ -43,6 +47,8 @@ class DetailMenuFragment : Fragment() {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val uid = firebaseAuth.currentUser?.uid
+    private var id = ""
+    private val profileViewModel: ProfileViewModel by activityViewModels()
 
     companion object {
         var STREAM_URL = ""
@@ -63,34 +69,14 @@ class DetailMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val menuName = activity?.intent?.getStringExtra(Constanta.KEY_OF_MENU_NAME)
-        viewModel.getDetailMenu(menuName!!).observe(viewLifecycleOwner, {
-            when(it) {
-                is Resource.Empty -> {}
-                is Resource.Error -> {}
-                is Resource.Loading -> {}
-                is Resource.Success -> STREAM_URL = it.data?.videoUrl.toString()
-            }
-        })
 
-        viewModel.isFavorite(uid.toString(), menuName).observe(viewLifecycleOwner, {
-            when(it) {
-                is Resource.Empty -> {}
-                is Resource.Error -> {}
-                is Resource.Loading -> {}
-                is Resource.Success -> {
-                    if(it.data == true) {
-                        isFavorite = true
-                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_true))
-                    }
-                    else {
-                        isFavorite = false
-                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
-                    }
-                }
-            }
-        })
+        uid?.let {
+            profileViewModel.getUser(it).observe(viewLifecycleOwner, { user ->
+                id = user.id
+                observeDetail(menuName)
+            })
+        }
 
         initializePlayer()
 
@@ -105,14 +91,16 @@ class DetailMenuFragment : Fragment() {
 
         binding.includeBottomBarDetail.btnOrder.setOnClickListener {
             view.findNavController().navigate(DetailMenuFragmentDirections
-                .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName))
+                .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName!!))
         }
 
-        val pagerAdapter = DetailMenuPageAdapter(
-            requireActivity().supportFragmentManager,
-            lifecycle,
-            menuName
-        )
+        val pagerAdapter = menuName?.let {
+            DetailMenuPageAdapter(
+                requireActivity().supportFragmentManager,
+                lifecycle,
+                it
+            )
+        }
 
         binding.apply {
             pagerAdapter.apply {
@@ -125,7 +113,7 @@ class DetailMenuFragment : Fragment() {
             includeBottomBarDetail.btnOrder.setOnClickListener {
                 view.findNavController().navigate(
                     DetailMenuFragmentDirections
-                        .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName))
+                        .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName!!))
             }
         }
     }
@@ -153,6 +141,77 @@ class DetailMenuFragment : Fragment() {
 
     private fun releasePlayer() {
         simpleExoPlayer?.release()
+    }
+
+    private fun observeDetail(menuName: String?) {
+        viewModel.getDetailMenu(menuName!!).observe(viewLifecycleOwner, {
+            when(it) {
+                is Resource.Empty -> {}
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    val menu = it.data
+                    STREAM_URL = menu?.videoUrl.toString()
+                    menu?.let { it1 -> observeIsFavorite(it1) }
+                }
+            }
+        })
+    }
+
+    private fun observeIsFavorite(menu: Menu) {
+        viewModel.isFavorite(id, menu.title).observe(viewLifecycleOwner, {
+            when(it) {
+                is Resource.Empty -> binding.includeAppBarMiddle.ivFavorite.visibility = View.INVISIBLE
+                is Resource.Error -> binding.includeAppBarMiddle.ivFavorite.visibility = View.INVISIBLE
+                is Resource.Loading -> binding.includeAppBarMiddle.ivFavorite.visibility = View.INVISIBLE
+                is Resource.Success -> {
+                    binding.includeAppBarMiddle.ivFavorite.visibility = View.VISIBLE
+                    if(it.data == true) {
+                        isFavorite = true
+                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_true))
+                    }
+                    else {
+                        isFavorite = false
+                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
+                    }
+
+                    val favorite = Favorite(
+                        id,
+                        menu.title,
+                        menu.time,
+                        menu.difficulty,
+                        menu.price,
+                        menu.rating,
+                        menu.image,
+                        menu.type
+                    )
+
+                    binding.includeAppBarMiddle.ivFavorite.setOnClickListener {
+                        if (!isFavorite) {
+                            viewModel.addToFavorite(id, menu.title, favorite).observe(viewLifecycleOwner, { resource ->
+                                when(resource) {
+                                    is Resource.Empty -> {}
+                                    is Resource.Error -> Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
+                                    is Resource.Loading -> {}
+                                    is Resource.Success ->
+                                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_true))
+                                }
+                            })
+                        } else {
+                            viewModel.removeFromFavorite(id, menu.title).observe(viewLifecycleOwner, { resource ->
+                                when(resource) {
+                                    is Resource.Empty -> {}
+                                    is Resource.Error -> Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
+                                    is Resource.Loading -> {}
+                                    is Resource.Success ->
+                                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+        })
     }
 
     override fun onStart() {

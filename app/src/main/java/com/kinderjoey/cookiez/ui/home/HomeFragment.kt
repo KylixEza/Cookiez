@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.kinderjoey.cookiez.R
@@ -78,6 +79,10 @@ class HomeFragment : Fragment() {
                 layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
                 observeExclusiveMenus()
             }
+        }
+
+        homeBinding.ivFavorite.setOnClickListener {
+            view.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationFavorite())
         }
     }
 
