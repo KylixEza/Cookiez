@@ -30,4 +30,5 @@
     <color name="card_on_canceled">#FFFF1D58</color>
     <color name="card_on_order_cancel">#FFF1323E</color>
     <color name="card_on_order_again">#FF2BDAA6</color>
+    <color name="black_gray">#474748</color>
 </resources>

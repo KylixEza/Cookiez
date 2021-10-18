@@ -44,8 +44,12 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                     view.apply {
                         tvRank.visibility = View.INVISIBLE
                         ivRank.setImageResource(R.drawable.ic_rank_first)
+
+                        val imageAvatar =
+                            if (leaderboard.avatar.isNotEmpty()) leaderboard.avatar else R.drawable.ic_ava
+
                         Glide.with(itemView.context)
-                            .load(leaderboard.avatar)
+                            .load(imageAvatar)
                             .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
@@ -56,8 +60,12 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                     view.apply {
                         tvRank.visibility = View.INVISIBLE
                         ivRank.setImageResource(R.drawable.ic_rank_second)
+
+                        val imageAvatar =
+                            if (leaderboard.avatar.isNotEmpty()) leaderboard.avatar else R.drawable.ic_ava
+
                         Glide.with(itemView.context)
-                            .load(leaderboard.avatar)
+                            .load(imageAvatar)
                             .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
@@ -68,8 +76,11 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                     view.apply {
                         tvRank.visibility = View.INVISIBLE
                         ivRank.setImageResource(R.drawable.ic_rank_third)
+                        val imageAvatar =
+                            if (leaderboard.avatar.isNotEmpty()) leaderboard.avatar else R.drawable.ic_ava
+
                         Glide.with(itemView.context)
-                            .load(leaderboard.avatar)
+                            .load(imageAvatar)
                             .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
@@ -80,8 +91,11 @@ class LeaderboardAdapter: RecyclerView.Adapter<LeaderboardAdapter.LeaderBoardVie
                     view.apply {
                         tvRank.text = leaderboard.rank.toString()
                         ivRank.visibility = View.INVISIBLE
+                        val imageAvatar =
+                            if (leaderboard.avatar.isNotEmpty()) leaderboard.avatar else R.drawable.ic_ava
+
                         Glide.with(itemView.context)
-                            .load(leaderboard.avatar)
+                            .load(imageAvatar)
                             .placeholder(R.drawable.no_image)
                             .into(ivAvatar)
                         tvAccountName.text = leaderboard.username
