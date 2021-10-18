@@ -1,4 +1,4 @@
-package com.kinderjoey.cookiez.ui.voucher.screen
+package com.kinderjoey.cookiez.ui.voucher.my_voucher
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import com.kinderjoey.cookiez.databinding.ItemVoucherBinding
 import com.kinderjoey.cookiez.model.Voucher
 
 
-class VoucherAdapter(private val listItem: ArrayList<Voucher>) :
-    RecyclerView.Adapter<VoucherAdapter.ListViewHolder>() {
+class MyVoucherAdapter(private val listItem: ArrayList<Voucher>) :
+    RecyclerView.Adapter<MyVoucherAdapter.ListViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -43,8 +43,8 @@ class VoucherAdapter(private val listItem: ArrayList<Voucher>) :
 
             }
             binding.btnDetail.setOnClickListener {
-                val intent = Intent(itemView.context, DetailVoucherActivity::class.java)
-                intent.putExtra(DetailVoucherActivity.VOUCHER, item)
+                val intent = Intent(itemView.context, MyDetailVoucherActivity::class.java)
+                intent.putExtra(MyDetailVoucherActivity.VOUCHER, item)
                 itemView.context.startActivity(intent)
             }
 

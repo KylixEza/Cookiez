@@ -1,22 +1,37 @@
-package com.kinderjoey.cookiez.ui.voucher.screen
+package com.kinderjoey.cookiez.ui.voucher.my_voucher
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ActivityDetailVoucherBinding
+import com.kinderjoey.cookiez.databinding.ActivityMyDetailVoucherBinding
 import com.kinderjoey.cookiez.model.Voucher
+import com.kinderjoey.cookiez.ui.BaseActivity
+import com.kinderjoey.cookiez.ui.voucher.VoucherViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class DetailVoucherActivity : AppCompatActivity() {
+class MyDetailVoucherActivity : AppCompatActivity() {
     companion object {
         const val VOUCHER = "voucher"
     }
+    private lateinit var binding: ActivityMyDetailVoucherBinding
+    private val viewModel: VoucherViewModel by viewModels()
 
-    private lateinit var binding: ActivityDetailVoucherBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailVoucherBinding.inflate(layoutInflater)
+        binding = ActivityMyDetailVoucherBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -26,7 +41,7 @@ class DetailVoucherActivity : AppCompatActivity() {
         val intentValue = intent.getParcelableExtra<Voucher>(VOUCHER)
         with(binding) {
             intentValue?.let { item ->
-
+                Log.d("CEKK","isi item $item")
                 tvValidUntil.text = item.validUntil
                 tvVoucherCategory.text = item.voucherCategory
                 tvVoucherDiscount.text = "Discount ${item.voucherDiscount}%"
@@ -57,6 +72,14 @@ class DetailVoucherActivity : AppCompatActivity() {
             ivArrowBack.setOnClickListener {
                 onBackPressed()
             }
+
+            btnUseVoucher.setOnClickListener {
+                startActivity( Intent(this@MyDetailVoucherActivity, BaseActivity::class.java))
+
+                Toast.makeText(this@MyDetailVoucherActivity, "Silahkan gunakan voucher untuk pemesanan",Toast.LENGTH_LONG).show()
+            }
+
+
         }
     }
 }
