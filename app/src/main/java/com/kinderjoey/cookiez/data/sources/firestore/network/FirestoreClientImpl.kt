@@ -1,12 +1,13 @@
 package com.kinderjoey.cookiez.data.sources.firestore.network
 
 import android.util.Log
+import com.aventrix.jnanoid.jnanoid.NanoIdUtils
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
 import com.kinderjoey.cookiez.model.Favorite
-import com.kinderjoey.cookiez.model.User
 import com.kiwimob.firestore.coroutines.await
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +24,8 @@ class FirestoreClientImpl: FirestoreClient {
         .collection(FirestoreReference.Admin.reference!!)
         .document(FirestoreReference.Menu.reference!!)
 
+    private val userRef = fireStore
+        .collection(FirestoreReference.User.reference!!)
 
     override suspend fun getPopularMenus(): Flow<FirestoreResponses<List<MenuResponse>>> = flow {
         var listOfPopularMenu: List<MenuResponse> = ArrayList()
@@ -224,29 +227,90 @@ class FirestoreClientImpl: FirestoreClient {
             emit(FirestoreResponses.Success(listOfVariants))
     }.flowOn(Dispatchers.IO)
 
+    private suspend fun isFavoriteExist(uid: String, menuName: String): Boolean {
+        return userRef
+            .document(uid)
+            .collection(FirestoreReference.Favorite.reference.toString())
+            .document(menuName)
+            .get()
+            .await()
+            .exists()
+    }
+
     override suspend fun isFavorite(
         uid: String,
         menuName: String
     ): Flow<FirestoreResponses<Boolean>>  = flow {
-        var favorite: List<FavoriteResponse> = arrayListOf<FavoriteResponse>()
+        var isFavoriteExist = false
 
         try {
             CoroutineScope(Dispatchers.IO).launch {
-                favorite = menuRef
+                isFavoriteExist = isFavoriteExist(uid, menuName)
+            }.join()
+
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Success(false))
+        }
+
+        if (isFavoriteExist)
+            emit(FirestoreResponses.Success(true))
+        else
+            emit(FirestoreResponses.Success(false))
+
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun addToFavorite(
+        uid: String,
+        menuName: String,
+        data: Favorite
+    ): Flow<FirestoreResponses<String>>  = flow {
+        CoroutineScope(Dispatchers.IO).launch {
+            userRef
+                .document(uid)
+                .collection(FirestoreReference.Favorite.reference.toString())
+                .document(menuName)
+                .set(data)
+                .await()
+        }.join()
+
+        emit(FirestoreResponses.Success(""))
+    }
+
+    override suspend fun removeFromFavorite(
+        uid: String,
+        menuName: String
+    ): Flow<FirestoreResponses<String>> = flow {
+        CoroutineScope(Dispatchers.IO).launch {
+            userRef
+                .document(uid)
+                .collection(FirestoreReference.Favorite.reference.toString())
+                .document(menuName)
+                .delete()
+                .await()
+        }.join()
+
+        emit(FirestoreResponses.Success(""))
+    }
+
+    override suspend fun getAllFavorites(uid: String): Flow<FirestoreResponses<List<FavoriteResponse>>> = flow {
+        var listOfFavorite: List<FavoriteResponse> = ArrayList()
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                listOfFavorite = userRef
+                    .document(uid)
                     .collection(FirestoreReference.Favorite.reference.toString())
-                    .whereEqualTo(FirestoreReference.UidAttr.attribute.toString(), uid)
-                    .whereEqualTo(FirestoreReference.MenuNameAttr.attribute.toString(), menuName)
                     .get()
                     .await()
                     .toObjects(FavoriteResponse::class.java)
             }.join()
         } catch (e: Exception) {
-
+            emit(FirestoreResponses.Error(e.message))
         }
 
-        if (favorite.isNullOrEmpty())
-            emit(FirestoreResponses.Success(false))
+        if (listOfFavorite.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
         else
-            emit(FirestoreResponses.Success((true)))
+            emit(FirestoreResponses.Success(listOfFavorite))
     }.flowOn(Dispatchers.IO)
 }

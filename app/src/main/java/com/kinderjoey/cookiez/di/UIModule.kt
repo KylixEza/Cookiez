@@ -9,6 +9,7 @@ import com.kinderjoey.cookiez.ui.detail.menu.DetailMenuAboutViewModel
 import com.kinderjoey.cookiez.ui.detail.menu.DetailMenuReviewViewModel
 import com.kinderjoey.cookiez.ui.detail.menu.DetailMenuTutorialViewModel
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuViewModel
+import com.kinderjoey.cookiez.ui.favorite.FavoriteViewModel
 import com.kinderjoey.cookiez.ui.home.HomeViewModel
 import com.kinderjoey.cookiez.ui.profile.ProfileViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -24,6 +25,7 @@ val viewModelModule = module {
     viewModel { DetailVariantMenuViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
 }
 
 val adapterModule = module {
@@ -34,4 +36,5 @@ val adapterModule = module {
     single { ReviewAdapter() }
     single { StepAdapter() }
     single { IngredientAdapter() }
+    single { FavoriteAdapter() }
 }

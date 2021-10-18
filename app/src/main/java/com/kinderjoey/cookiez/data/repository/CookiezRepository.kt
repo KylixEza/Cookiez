@@ -137,4 +137,44 @@ class CookiezRepository(
             }
         }.asFlow()
     }
+
+    override fun addToFavorite(
+        uid: String,
+        menuName: String,
+        data: Favorite
+    ): Flow<Resource<String>> {
+        return object : FirestoreOnlyResource<String, String>() {
+            override fun loadFromNetwork(data: String): Flow<String> {
+                return flowOf(data)
+            }
+
+            override suspend fun createCall(): Flow<FirestoreResponses<String>> {
+                return firestoreDataSource.addToFavorite(uid, menuName, data)
+            }
+        }.asFlow()
+    }
+
+    override fun removeFromFavorite(uid: String, menuName: String): Flow<Resource<String>> {
+        return object : FirestoreOnlyResource<String, String>() {
+            override fun loadFromNetwork(data: String): Flow<String> {
+                return flowOf(data)
+            }
+
+            override suspend fun createCall(): Flow<FirestoreResponses<String>> {
+                return firestoreDataSource.removeFromFavorite(uid, menuName)
+            }
+        }.asFlow()
+    }
+
+    override fun getAllFavorites(uid: String): Flow<Resource<List<Favorite>>> {
+        return object : FirestoreOnlyResource<List<Favorite>, List<FavoriteResponse>>() {
+            override fun loadFromNetwork(data: List<FavoriteResponse>): Flow<List<Favorite>> {
+                return FirestoreMapper.mapFavoriteResponsesToDomain(data)
+            }
+
+            override suspend fun createCall(): Flow<FirestoreResponses<List<FavoriteResponse>>> {
+                return firestoreDataSource.getAllFavorites(uid)
+            }
+        }.asFlow()
+    }
 }
