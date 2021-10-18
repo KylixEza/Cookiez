@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.data.sources.dummy.DataDummy
 import com.kinderjoey.cookiez.databinding.FragmentAvailableVoucherBinding
-import com.kinderjoey.cookiez.ui.voucher.screen.VoucherListAdapter
+import com.kinderjoey.cookiez.model.Voucher
+import com.kinderjoey.cookiez.ui.voucher.VoucherViewModel
 
 class AvailableVoucherFragment : Fragment() {
 
     private val binding by viewBinding<FragmentAvailableVoucherBinding>()
-
+    private val viewModel: VoucherViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,13 +28,18 @@ class AvailableVoucherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val availableAdapter = VoucherListAdapter()
+        viewModel.getListVoucher().observe(viewLifecycleOwner,::setViewAvailableVoucher)
+
+
+
+    }
+
+    private fun setViewAvailableVoucher(listItem: ArrayList<Voucher>) {
+        val availableAdapter = VoucherAdapter(listItem)
 
         binding.rvAvailableVoucher.apply {
             adapter = availableAdapter
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
-
-        availableAdapter.setAllData(DataDummy.setAvailableVoucher())
     }
 }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginStart="8dp"
+    android:id="@+id/layout_tiket"
+    android:layout_marginEnd="8dp"
+    android:layout_height="wrap_content"
+    android:padding="24dp"
+
+    android:background="@drawable/bg_voucher1">
+
+    <TextView
+        android:id="@+id/tv_voucher_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Discount 25%" />
+
+    <TextView
+        android:id="@+id/tv_voucher_category"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_voucher_discount"
+        app:layout_constraintTop_toBottomOf="@+id/tv_voucher_discount"
+        tools:text="Potongan Bahan Makanan" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Valid until"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_voucher_category"
+        app:layout_constraintTop_toBottomOf="@+id/tv_voucher_category" />
+
+    <TextView
+        android:id="@+id/tv_valid_until"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="December 25,2021" />
+
+
+    <ImageView
+        android:id="@+id/logo_tiket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_logo_voucher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_detail"
+        android:layout_width="77dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/white"
+        android:text="Detail"
+        android:textAllCaps="false"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valid_until"
+        app:layout_constraintStart_toEndOf="@+id/tv_voucher_category" />
+
+
+
+    <TextView
+        android:id="@+id/tv_coin"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="@+id/logo_tiket"
+        app:layout_constraintLeft_toLeftOf="@id/logo_tiket"
+        app:layout_constraintTop_toBottomOf="@+id/logo_tiket" />
+
+    <TextView
+        android:id="@+id/textViewCp"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CP"
+        app:layout_constraintEnd_toEndOf="@+id/tv_coin"
+        app:layout_constraintLeft_toLeftOf="@id/tv_coin"
+        app:layout_constraintTop_toBottomOf="@id/tv_coin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

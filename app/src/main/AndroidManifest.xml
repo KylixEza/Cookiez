@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookiez">
         <activity
+            android:name=".ui.voucher.screen.DetailVoucherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.EditAddressActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.profile.EditProfileActivity"
             android:exported="true" />
         <activity
@@ -21,7 +27,7 @@
         <activity
             android:name=".ui.BaseActivity"
             android:exported="true"
-            android:label="@string/title_activity_base"></activity>
+            android:label="@string/title_activity_base" />
         <activity
             android:name=".ui.profile.wallet.TopUpActivity"
             android:exported="true" />
@@ -37,7 +43,6 @@
         <activity
             android:name=".ui.profile.wallet.CWalletActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true">

@@ -57,5 +57,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="alamat">Alamat</string>
     <string name="ubah_profile">Ubah Profil</string>
+    <string name="simpan_perubahan">Simpan Perubahan</string>
+    <string name="information">Information</string>
+    <string name="desc_dialog_voucher">Terus tingkatkan pesananmu untuk mendapat tambahan Coin Poin yang bisa kamu tukar dengan beragam Voucher menarik yang ada.</string>
+    <string name="desc_dialog_rank">Saat ini anda berada pada peringkat ke %d. Terus tingkatkan pesananmu untuk mendapat tambahan poin XP.</string>
+    <string name="ok">OK</string>
 
 </resources>

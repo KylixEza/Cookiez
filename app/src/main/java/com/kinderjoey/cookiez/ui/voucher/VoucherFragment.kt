@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.VoucherPagerAdapter
 import com.kinderjoey.cookiez.databinding.FragmentVoucherBinding
 import com.kinderjoey.cookiez.ui.voucher.screen.AvailableVoucherFragment
 import com.kinderjoey.cookiez.ui.voucher.screen.OwnVoucherFragment
+import kotlinx.android.synthetic.main.dialog_voucher.view.*
 
 class VoucherFragment : Fragment() {
 
@@ -43,6 +45,19 @@ class VoucherFragment : Fragment() {
             AvailableVoucherFragment(),
             OwnVoucherFragment()
         )
+
+        binding.includeAppBarVoucher.ivInfo.setOnClickListener {
+            val materialBuilder = MaterialAlertDialogBuilder(requireContext()).create()
+            val inflater = layoutInflater.inflate(R.layout.dialog_voucher, null)
+            inflater.btn_ok.setOnClickListener {
+                materialBuilder.dismiss()
+            }
+            inflater.ib_close.setOnClickListener {
+                materialBuilder.dismiss()
+            }
+            materialBuilder.setView(inflater)
+            materialBuilder.show()
+        }
 
         binding.apply {
             adapter.apply {
