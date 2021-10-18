@@ -11,6 +11,7 @@ import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.SelectedCategoryAdapter
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.ActivityCategoryBinding
+import com.kinderjoey.cookiez.model.menu.Menu
 import com.kinderjoey.cookiez.util.CategoryType
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -53,23 +54,46 @@ class CategoryActivity : AppCompatActivity() {
         if (category == CategoryType.All.type) {
             categoryViewModel.getAllMenus().observe(this@CategoryActivity, {
                 when(it) {
-                    is Resource.Empty -> {}
-                    is Resource.Error -> {}
-                    is Resource.Loading -> {}
-                    is Resource.Success -> it.data?.let { data -> categoryAdapter.setAllData(data) }
+                    is Resource.Empty -> emptyCondition()
+                    is Resource.Error -> errorCondition(it.message)
+                    is Resource.Loading -> loadingCondition()
+                    is Resource.Success -> it.data?.let { menu -> successCondition(menu) }
                 }
             })
         } else {
             categoryViewModel.getCategoryMenus(category).observe(this@CategoryActivity, {
                 when(it) {
-                    is Resource.Empty -> {}
-                    is Resource.Error -> {}
-                    is Resource.Loading -> {}
-                    is Resource.Success -> it.data?.let { data -> categoryAdapter.setAllData(data) }
+                    is Resource.Empty -> emptyCondition()
+                    is Resource.Error -> errorCondition(it.message)
+                    is Resource.Loading -> loadingCondition()
+                    is Resource.Success -> it.data?.let { menu -> successCondition(menu) }
                 }
             })
         }
+    }
 
+    private fun emptyCondition() {
+        binding.apply {
+            tvErrorSelectedCategory.text = "Tidak ada menu terkait"
+            progressSelectedCategory.visibility = View.INVISIBLE
+        }
+    }
 
+    private fun errorCondition(e: String?) {
+        binding.apply {
+            tvErrorSelectedCategory.text = e
+            progressSelectedCategory.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun loadingCondition() {
+        binding.progressSelectedCategory.visibility = View.VISIBLE
+    }
+
+    private fun successCondition(data: List<Menu>) {
+        binding.apply {
+            categoryAdapter.setAllData(data)
+            binding.progressSelectedCategory.visibility = View.INVISIBLE
+        }
     }
 }

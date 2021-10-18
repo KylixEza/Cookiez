@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ItemListMenuBinding
 import com.kinderjoey.cookiez.model.menu.Menu
+import com.kinderjoey.cookiez.util.Formatting
 
 class ListMenuAdapter: RecyclerView.Adapter<ListMenuAdapter.ListMenuViewHolder>() {
 
@@ -72,7 +73,7 @@ class ListMenuAdapter: RecyclerView.Adapter<ListMenuAdapter.ListMenuViewHolder>(
                         cvDifficulty.setCardBackgroundColor(itemView.context.getColor(R.color.card_difficult_hard))
                     }
                 }
-                tvPrice.text = String.format("Rp. ${menu.price}")
+                tvPrice.text = String.format("Rp ${Formatting.rupiahCurrencyFormatting(menu.price)}")
             }
         }
 

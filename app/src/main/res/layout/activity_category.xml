@@ -21,4 +21,25 @@
         app:layout_constraintTop_toBottomOf="@id/include_app_bar_middle"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ProgressBar
+        android:id="@+id/progress_selected_category"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="@id/rv_selected_category"
+        app:layout_constraintTop_toTopOf="@id/rv_selected_category"
+        app:layout_constraintBottom_toBottomOf="@id/rv_selected_category"
+        app:layout_constraintEnd_toEndOf="@id/rv_selected_category"/>
+
+    <TextView
+        android:id="@+id/tv_error_selected_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_semibold"
+        app:layout_constraintStart_toStartOf="@id/rv_selected_category"
+        app:layout_constraintTop_toTopOf="@id/rv_selected_category"
+        app:layout_constraintBottom_toBottomOf="@id/rv_selected_category"
+        app:layout_constraintEnd_toEndOf="@id/rv_selected_category"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

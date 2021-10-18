@@ -18,16 +18,27 @@ object FirestoreMapper {
                 it.price,
                 it.rating,
                 it.image,
-                it.type
+                it.type,
+                it.videoUrl,
+                it.description,
+                it.estimatedTime,
+                it.benefit,
+
             )
             result.add(menu)
         }
         return flowOf(result)
     }
 
-    fun mapDetailResponseToDomain(input: DetailMenuResponse) = flowOf(
-        DetailMenu(
-            input.menuName,
+    fun mapMenuResponToDomain(input: MenuResponse) = flowOf(
+        Menu(
+            input.title,
+            input.time,
+            input.difficulty,
+            input.price,
+            input.rating,
+            input.image,
+            input.type,
             input.videoUrl,
             input.description,
             input.estimatedTime,

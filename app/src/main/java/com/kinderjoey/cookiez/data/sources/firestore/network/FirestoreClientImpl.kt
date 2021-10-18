@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
+import com.kinderjoey.cookiez.model.Favorite
 import com.kinderjoey.cookiez.model.User
 import com.kiwimob.firestore.coroutines.await
 import kotlinx.coroutines.CoroutineScope
@@ -112,17 +113,17 @@ class FirestoreClientImpl: FirestoreClient {
             emit(FirestoreResponses.Success(listOfAll))
     }.flowOn(Dispatchers.IO)
 
-    override suspend fun getDetailMenu(menuName: String): Flow<FirestoreResponses<DetailMenuResponse?>> = flow {
-        var detailMenu: DetailMenuResponse? = null
+    override suspend fun getDetailMenu(menuName: String): Flow<FirestoreResponses<MenuResponse?>> = flow {
+        var detailMenu: MenuResponse? = null
 
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 detailMenu = menuRef
-                    .collection(FirestoreReference.Detail.reference.toString())
+                    .collection(FirestoreReference.All.reference.toString())
                     .document(menuName)
                     .get()
                     .await()
-                    .toObject(DetailMenuResponse::class.java)!!
+                    .toObject(MenuResponse::class.java)!!
             }.join()
         } catch (e: Exception) {
             emit(FirestoreResponses.Error(e.localizedMessage))
@@ -223,7 +224,29 @@ class FirestoreClientImpl: FirestoreClient {
             emit(FirestoreResponses.Success(listOfVariants))
     }.flowOn(Dispatchers.IO)
 
+    override suspend fun isFavorite(
+        uid: String,
+        menuName: String
+    ): Flow<FirestoreResponses<Boolean>>  = flow {
+        var favorite: List<FavoriteResponse> = arrayListOf<FavoriteResponse>()
 
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                favorite = menuRef
+                    .collection(FirestoreReference.Favorite.reference.toString())
+                    .whereEqualTo(FirestoreReference.UidAttr.attribute.toString(), uid)
+                    .whereEqualTo(FirestoreReference.MenuNameAttr.attribute.toString(), menuName)
+                    .get()
+                    .await()
+                    .toObjects(FavoriteResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
 
+        }
 
+        if (favorite.isNullOrEmpty())
+            emit(FirestoreResponses.Success(false))
+        else
+            emit(FirestoreResponses.Success((true)))
+    }.flowOn(Dispatchers.IO)
 }

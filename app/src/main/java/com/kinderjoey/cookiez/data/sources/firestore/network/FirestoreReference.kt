@@ -12,7 +12,10 @@ enum class FirestoreReference(val reference: String? = null, val attribute: Stri
     Review("review"),
     Reviewer("reviewer"),
     Variant("variant"),
+    Favorite("favorite"),
 
-    CategoryAttr(attribute = "category"),
-    MenuNameAttr(attribute = "menuName")
+    CategoryAttr(attribute = "type"),
+    MenuNameAttr(attribute = "menuName"),
+    UidAttr(attribute = "uid"),
+
 }

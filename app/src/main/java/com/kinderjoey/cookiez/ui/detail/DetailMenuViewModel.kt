@@ -10,4 +10,8 @@ class DetailMenuViewModel(private val cookiezRepository: ICookiezRepository): Vi
     fun getDetailMenu(menuName: String) = cookiezRepository
         .getDetailMenu(menuName)
         .asLiveData(Dispatchers.IO)
+
+    fun isFavorite(uid: String, menuName: String) = cookiezRepository
+        .isFavorite(uid, menuName)
+        .asLiveData(Dispatchers.IO)
 }

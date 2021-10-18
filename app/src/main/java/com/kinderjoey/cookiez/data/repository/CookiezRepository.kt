@@ -6,9 +6,11 @@ import com.kinderjoey.cookiez.data.sources.firestore.response.*
 import com.kinderjoey.cookiez.data.util.FirestoreMapper
 import com.kinderjoey.cookiez.data.util.FirestoreOnlyResource
 import com.kinderjoey.cookiez.data.util.Resource
+import com.kinderjoey.cookiez.model.Favorite
 import com.kinderjoey.cookiez.model.Variant
 import com.kinderjoey.cookiez.model.menu.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 class CookiezRepository(
     private val firestoreDataSource: FirestoreDataSource
@@ -64,13 +66,13 @@ class CookiezRepository(
         }.asFlow()
     }
 
-    override fun getDetailMenu(menuName: String): Flow<Resource<DetailMenu>> {
-        return object : FirestoreOnlyResource<DetailMenu, DetailMenuResponse?>() {
-            override fun loadFromNetwork(data: DetailMenuResponse?): Flow<DetailMenu> {
-                return FirestoreMapper.mapDetailResponseToDomain(data!!)
+    override fun getDetailMenu(menuName: String): Flow<Resource<Menu>> {
+        return object : FirestoreOnlyResource<Menu, MenuResponse?>() {
+            override fun loadFromNetwork(data: MenuResponse?): Flow<Menu> {
+                return FirestoreMapper.mapMenuResponToDomain(data!!)
             }
 
-            override suspend fun createCall(): Flow<FirestoreResponses<DetailMenuResponse?>> {
+            override suspend fun createCall(): Flow<FirestoreResponses<MenuResponse?>> {
                 return firestoreDataSource.getDetailMenu(menuName)
             }
         }.asFlow()
@@ -120,6 +122,18 @@ class CookiezRepository(
 
             override suspend fun createCall(): Flow<FirestoreResponses<List<VariantResponse>>> {
                 return firestoreDataSource.getVariantMenu(menuName)
+            }
+        }.asFlow()
+    }
+
+    override fun isFavorite(uid: String, menuName: String): Flow<Resource<Boolean>> {
+        return object : FirestoreOnlyResource<Boolean, Boolean>() {
+            override fun loadFromNetwork(data: Boolean): Flow<Boolean> {
+                return flowOf(data)
+            }
+
+            override suspend fun createCall(): Flow<FirestoreResponses<Boolean>> {
+                return firestoreDataSource.isFavorite(uid, menuName)
             }
         }.asFlow()
     }

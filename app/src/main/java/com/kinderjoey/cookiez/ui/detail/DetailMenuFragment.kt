@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import com.google.android.exoplayer2.MediaItem
@@ -19,6 +20,7 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.DetailMenuPageAdapter
 import com.kinderjoey.cookiez.data.util.Resource
@@ -26,6 +28,7 @@ import com.kinderjoey.cookiez.databinding.FragmentDetailMenuBinding
 import com.kinderjoey.cookiez.ui.detail.menu.*
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragment
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragmentDirections
+import com.kinderjoey.cookiez.ui.profile.ProfileViewModel
 import com.kinderjoey.cookiez.util.Constanta
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -36,6 +39,10 @@ class DetailMenuFragment : Fragment() {
     private var playerView: PlayerView? = null
     private lateinit var mediaDataSourceFactory: DataSource.Factory
     private val viewModel by viewModel<DetailMenuViewModel>()
+    private var isFavorite = false
+
+    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val uid = firebaseAuth.currentUser?.uid
 
     companion object {
         var STREAM_URL = ""
@@ -64,6 +71,24 @@ class DetailMenuFragment : Fragment() {
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
                 is Resource.Success -> STREAM_URL = it.data?.videoUrl.toString()
+            }
+        })
+
+        viewModel.isFavorite(uid.toString(), menuName).observe(viewLifecycleOwner, {
+            when(it) {
+                is Resource.Empty -> {}
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    if(it.data == true) {
+                        isFavorite = true
+                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_true))
+                    }
+                    else {
+                        isFavorite = false
+                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
+                    }
+                }
             }
         })
 
@@ -103,10 +128,6 @@ class DetailMenuFragment : Fragment() {
                         .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName))
             }
         }
-    }
-
-    private fun extractYoutubeUrl() {
-
     }
 
     private fun initializePlayer() {
