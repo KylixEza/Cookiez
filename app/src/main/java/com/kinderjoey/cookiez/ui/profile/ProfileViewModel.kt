@@ -33,10 +33,10 @@ class ProfileViewModel():ViewModel() {
     }
 
     fun changeProfileImage(uid: String, profilePic: String) {
-        val userCollection =Firebase.firestore.collection("users")
+        val userCollection =Firebase.firestore.collection("user")
         CoroutineScope(Dispatchers.IO).launch {
             val querySnapshot = userCollection
-                .whereEqualTo("uid",uid)
+                .whereEqualTo("id",uid)
                 .get()
                 .await()
             for (document in querySnapshot) {
@@ -47,23 +47,34 @@ class ProfileViewModel():ViewModel() {
         }
     }
 
-    fun updateUser(user: User) {
-        val storyCollectionRef = Firebase.firestore.collection("users")
+    fun updateUser(uid: String, username: String, phoneNumber: String) {
+        val storyCollectionRef = Firebase.firestore.collection("user")
         CoroutineScope(Dispatchers.IO).launch {
             val querySnapshot = storyCollectionRef
-                .whereEqualTo("email", user.email)
-                .whereEqualTo("uid", user.id)
+                .whereEqualTo("id", uid)
                 .get()
                 .await()
             for (document in querySnapshot) {
                 val userRef = storyCollectionRef.document(document.id)
-                userRef.update("address", user.address)
-                userRef.update("name", user.name)
-                userRef.update("phone", user.phoneNumber)
+                userRef.update("name", username)
+                userRef.update("phone", phoneNumber)
 
             }
         }
+    }
 
+    fun updateAdress(uid:String, address: String) {
+        val storyCollectionRef = Firebase.firestore.collection("user")
+        CoroutineScope(Dispatchers.IO).launch {
+            val querySnapshot = storyCollectionRef
+                .whereEqualTo("id", uid)
+                .get()
+                .await()
+            for (document in querySnapshot) {
+                val userRef = storyCollectionRef.document(document.id)
+                userRef.update("address", address)
+            }
+        }
     }
 
 

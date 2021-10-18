@@ -56,5 +56,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="alamat">Alamat</string>
     <string name="ubah_profile">Ubah Profil</string>
+    <string name="simpan_perubahan">Simpan Perubahan</string>
 
 </resources>

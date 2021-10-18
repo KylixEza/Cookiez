@@ -28,40 +28,11 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val firebaseAuth = FirebaseAuth.getInstance()
-    private val viewModel: ProfileViewModel by activityViewModels()
     private val uid = firebaseAuth.currentUser?.uid
-    var photoMax: Int = 1
-    var photoLocation: Uri? = null
-    lateinit var storageRef: StorageReference
-    var profilePic: String = ""
 
-    private fun getFileExtension(uri: Uri?): String? {
-        val contentResolver = activity?.contentResolver
-        val mimeTypeMap = MimeTypeMap.getSingleton()
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver?.getType(uri!!))
-    }
+    private val viewModel: ProfileViewModel by activityViewModels()
 
-    private fun findPhoto() {
-        val pic = Intent()
-        pic.type = "image/*"
-        pic.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(pic, photoMax)
-    }
 
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == photoMax && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            photoLocation = data.data
-            Glide.with(requireContext())
-                .load(photoLocation)
-                .into(binding.imgProfile)
-            uploadImage()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,20 +52,36 @@ class ProfileFragment : Fragment() {
         binding.btnHistory.setOnClickListener {
             startActivity(Intent(requireActivity(), HistoryActivity::class.java))
         }
-        Log.d("CEKK","uid $uid")
         uid?.let { viewModel.getUser(it).observe(viewLifecycleOwner, ::setProfile) }
+
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun setProfile(user: User) {
         user.let { data ->
-            Log.d("CEKK","user $user")
         with(binding){
 
             tvName.text = data.name
             tvEmail.text = data.email
             tvCoin.text = data.coin.toString()+" Coin"
             tvXp.text = data.xp.toString()+" XP"
+
+            binding.btnUbahProfile.setOnClickListener {
+                startActivity(
+                    Intent(requireActivity(), EditProfileActivity::class.java)
+                    .putExtra("USERNAME",data.name)
+                    .putExtra("PHONE_NUMBER",data.phoneNumber)
+                    .putExtra("AVATAR",data.avatar)
+                )
+            }
+
+            binding.btnLocation.setOnClickListener {
+                startActivity(
+                    Intent(requireActivity(), EditAddressActivity::class.java)
+                        .putExtra("ADDRESS",data.address)
+                )
+            }
 
             Glide.with(requireContext())
                 .load(data.avatar)
@@ -106,24 +93,7 @@ class ProfileFragment : Fragment() {
 
         }
     }
-    private fun uploadImage() {
-        if (photoLocation != null) {
-            storageRef = FirebaseStorage.getInstance().reference.child("AvatarPath")
-            val storage = storageRef.child(
-                System.currentTimeMillis()
-                    .toString() + "." + getFileExtension(photoLocation)
-            )
-            photoLocation?.let { it1 ->
-                storage.putFile(it1).addOnSuccessListener {
-                    storage.downloadUrl.addOnSuccessListener(OnSuccessListener<Uri> { uri ->
-                        profilePic = uri.toString()
-                        uid?.let { id -> viewModel.changeProfileImage(id,  profilePic) }
 
-                    })
-                }
-            }
-        }
-    }
 
 
 
