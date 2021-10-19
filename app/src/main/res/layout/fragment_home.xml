@@ -41,8 +41,7 @@
                 app:layout_constraintStart_toStartOf="@id/tv_your_location"
                 app:layout_constraintTop_toBottomOf="@id/tv_your_location"
                 app:layout_constraintEnd_toStartOf="@id/iv_favorite"
-                android:drawablePadding="8dp"
-                android:text="Kota Malang"/>
+                android:drawablePadding="8dp"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_search_cover"

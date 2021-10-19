@@ -1,5 +1,6 @@
 package com.kinderjoey.cookiez.ui.category
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.kinderjoey.cookiez.adapter.SelectedCategoryAdapter
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.ActivityCategoryBinding
 import com.kinderjoey.cookiez.model.menu.Menu
+import com.kinderjoey.cookiez.ui.BaseActivity
 import com.kinderjoey.cookiez.util.CategoryType
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,6 +42,10 @@ class CategoryActivity : AppCompatActivity() {
             includeAppBarMiddle.apply {
                 ivFavorite.visibility = View.GONE
                 tvTittle.text = categoryTitle
+                ivArrowBack.setOnClickListener {
+                    startActivity(Intent(this@CategoryActivity, BaseActivity::class.java))
+                    finish()
+                }
             }
             rvSelectedCategory.apply {
                 adapter = categoryAdapter

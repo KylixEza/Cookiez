@@ -64,13 +64,12 @@ class DetailMenuTutorialFragment : Fragment() {
             }
         }
 
-        val menuName = "Nasi Goreng Asia"
-        observeIngredient(menuName)
-        observeStep(menuName)
+        observeIngredient()
+        observeStep()
     }
 
-    private fun observeIngredient(menuName: String) {
-        viewModel.getIngredients(menuName).observe(viewLifecycleOwner, {
+    private fun observeIngredient() {
+        viewModel.getIngredients(menuName.toString()).observe(viewLifecycleOwner, {
             when(it) {
                 is Resource.Empty -> {}
                 is Resource.Error -> {}
@@ -84,8 +83,8 @@ class DetailMenuTutorialFragment : Fragment() {
         })
     }
 
-    private fun observeStep(menuName: String) {
-        viewModel.getSteps(menuName).observe(viewLifecycleOwner, {
+    private fun observeStep() {
+        viewModel.getSteps(menuName.toString()).observe(viewLifecycleOwner, {
             when(it) {
                 is Resource.Empty -> {}
                 is Resource.Error -> {}

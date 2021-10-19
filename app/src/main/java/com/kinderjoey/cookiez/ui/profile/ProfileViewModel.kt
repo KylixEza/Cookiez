@@ -1,20 +1,21 @@
 package com.kinderjoey.cookiez.ui.profile
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.ktx.auth
+import androidx.lifecycle.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.kinderjoey.cookiez.data.sources.datastore.DataStorePlayground
 import com.kinderjoey.cookiez.model.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class ProfileViewModel():ViewModel() {
+class ProfileViewModel(application: Application): AndroidViewModel(application){
+
+    private val datastore = DataStorePlayground.getInstance(application)
 
     fun getUser(uid: String): LiveData<User> {
         val user = MutableLiveData<User>()
@@ -77,7 +78,8 @@ class ProfileViewModel():ViewModel() {
         }
     }
 
-
-
+    fun savePrefEmail() = viewModelScope.launch {
+        datastore.savePrefEmail("null")
+    }
 
 }

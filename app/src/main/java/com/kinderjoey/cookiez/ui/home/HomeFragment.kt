@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +31,7 @@ class HomeFragment : Fragment() {
     private val categoryAdapter: CategoryAdapter by inject()
     private val promotionAdapter: PromotionAdapter by inject()
     private val firebaseAuth = FirebaseAuth.getInstance()
-    private val profileViewModel: ProfileViewModel by activityViewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
     private val uid = firebaseAuth.currentUser?.uid
     private lateinit var popularAdapter: ListMenuAdapter
     private lateinit var exclusiveAdapter: ListMenuAdapter
@@ -82,7 +83,7 @@ class HomeFragment : Fragment() {
         }
 
         homeBinding.ivFavorite.setOnClickListener {
-            view.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationFavorite())
+            view.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToFavoriteActivity())
         }
     }
 

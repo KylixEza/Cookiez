@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinderjoey.cookiez.R
@@ -38,6 +39,11 @@ class DetailVariantMenuFragment : Fragment() {
             includeAppBarMiddle.apply {
                 ivFavorite.visibility = View.GONE
                 tvTittle.text = "Detail Pemesanan"
+                ivArrowBack.setOnClickListener {
+                    view.findNavController().navigate(DetailVariantMenuFragmentDirections
+                        .actionDetailVariantMenuFragmentToDetailMenuFragment()
+                    )
+                }
             }
             includeBottomBarDetail.apply {
                 availability.text = "Harga Bahan"

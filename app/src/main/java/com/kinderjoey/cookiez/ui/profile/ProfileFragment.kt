@@ -1,38 +1,31 @@
 package com.kinderjoey.cookiez.ui.profile
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.MimeTypeMap
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentProfileBinding
 import com.kinderjoey.cookiez.model.User
+import com.kinderjoey.cookiez.ui.auth.AuthActivity
 import com.kinderjoey.cookiez.ui.history.HistoryActivity
 import com.kinderjoey.cookiez.ui.profile.wallet.CWalletActivity
+import com.kinderjoey.cookiez.ui.splash.SplashActivity
+import com.kinderjoey.cookiez.util.Constanta
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val uid = firebaseAuth.currentUser?.uid
-
-    private val viewModel: ProfileViewModel by activityViewModels()
-
-
+    private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +33,8 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return binding.root    }
+        return binding.root
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,12 +83,15 @@ class ProfileFragment : Fragment() {
                 .apply(RequestOptions())
                 .into(imgProfile)
 
+            binding.btnLogout.setOnClickListener {
+                viewModel.savePrefEmail()
+                val intent = Intent(activity, AuthActivity::class.java)
+                Constanta.SOURCE = Constanta.SOURCE_LOGOUT
+                startActivity(intent)
+                activity?.finish()
+            }
         }
 
         }
     }
-
-
-
-
 }

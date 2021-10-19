@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -25,7 +26,7 @@ class DetailOrderMenuFragment : Fragment() {
     private val binding by viewBinding<FragmentDetailOrderMenuBinding>()
     private val args by navArgs<DetailOrderMenuFragmentArgs>()
     private val firebaseAuth = FirebaseAuth.getInstance()
-    private val viewModel: ProfileViewModel by activityViewModels()
+    private val viewModel: ProfileViewModel by viewModels()
     private val uid = firebaseAuth.currentUser?.uid
 
     companion object {
@@ -51,6 +52,11 @@ class DetailOrderMenuFragment : Fragment() {
             includeAppBarMiddle.apply {
                 tvTittle.text = "Detail Pemesanan"
                 ivFavorite.visibility = View.INVISIBLE
+                ivArrowBack.setOnClickListener {
+                    view.findNavController().navigate(DetailOrderMenuFragmentDirections
+                        .actionDetailOrderMenuFragmentToDetailVariantMenuFragment(selectedVariant.menuName)
+                    )
+                }
             }
             includeSelectedItemVariant.apply {
                 tvTittleVariant.text = selectedVariant.variant
@@ -67,6 +73,9 @@ class DetailOrderMenuFragment : Fragment() {
                 "- ${Formatting.rupiahCurrencyFormatting(discount)}"
             )
             tvTotalPaymentPrice.text = Formatting.rupiahCurrencyFormatting(totalPrice)
+            ivArrowForward.setOnClickListener {
+
+            }
         }
 
         uid?.let {

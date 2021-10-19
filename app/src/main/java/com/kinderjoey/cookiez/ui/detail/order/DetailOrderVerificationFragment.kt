@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.findNavController
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentDetailOrderVerificationBinding
+import com.kinderjoey.cookiez.ui.category.CategoryActivity
 import com.kinderjoey.cookiez.ui.history.HistoryActivity
 
 class DetailOrderVerificationFragment : Fragment() {
@@ -29,6 +32,7 @@ class DetailOrderVerificationFragment : Fragment() {
         binding.includeAppBarMiddle.apply {
             ivFavorite.visibility = View.GONE
             tvTittle.text = "Pesanan Diterima"
+            ivArrowBack.visibility = View.GONE
         }
 
         binding.btnGoToHistory.setOnClickListener {
@@ -37,5 +41,12 @@ class DetailOrderVerificationFragment : Fragment() {
             activity?.finish()
             activity?.finish()
         }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                startActivity(Intent(requireContext(), CategoryActivity::class.java))
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(requireActivity(), callback)
     }
 }

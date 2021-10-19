@@ -42,7 +42,7 @@ class DataStorePlayground(private val context: Context) {
 
     fun readPrefEmail(): Flow<Boolean> = context.userPreferenceDataStore.data
         .map {
-            it[DataStoreUtil.EMAIL_PREF_KEY] != null
+            it[DataStoreUtil.EMAIL_PREF_KEY] != "null"
         }
 
     fun readPrefHaveRunAppBefore(): Flow<Boolean> = context.userPreferenceDataStore.data

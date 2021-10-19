@@ -37,6 +37,7 @@ class SplashFragment : Fragment() {
         splashViewModel.readPrefEmail().observe(viewLifecycleOwner, { isLogin ->
             if (isLogin) {
                 view.findNavController().navigate(R.id.action_splashFragment_to_baseActivity)
+                activity?.finish()
             } else {
                 view.findNavController().navigate(R.id.action_splash_destination_to_loginFragment)
             }

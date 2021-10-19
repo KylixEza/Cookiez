@@ -1,22 +1,30 @@
 package com.kinderjoey.cookiez.ui.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.core.view.isVisible
+import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentLoginBinding
+import com.kinderjoey.cookiez.ui.BaseActivity
+import com.kinderjoey.cookiez.ui.auth.register.RegisterFragment
+import com.kinderjoey.cookiez.util.Constanta
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
     private val binding by viewBinding<FragmentLoginBinding>()
+    private var email: String = ""
     private val loginViewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
@@ -35,14 +43,26 @@ class LoginFragment : Fragment() {
             btnLogin.setOnClickListener {
 
                 val email = edtEmail.editText?.text.toString()
+                this@LoginFragment.email = email
                 val password = edtPassword.editText?.text.toString()
                 loginViewModel.signIn(email,password).observe(viewLifecycleOwner,::signInResponse)
-                loginViewModel.savePrefEmail(email)
-                loginViewModel.savePrefHaveRunAppBefore(true)
             }
             tvRegister.setOnClickListener {
-                view.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+                if (Constanta.SOURCE == Constanta.SOURCE_LOGOUT) {
+                    parentFragmentManager.commit {
+                        replace(R.id.auth_container, RegisterFragment())
+                    }
+                } else {
+                    view.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+                }
             }
+
+            val callback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.finish()
+                }
+            }
+            activity?.onBackPressedDispatcher?.addCallback(requireActivity(), callback)
         }
 
     }
@@ -51,8 +71,14 @@ class LoginFragment : Fragment() {
         when(resource){
             is Resource.Success -> {
                 loadingState(false)
-                view?.findNavController()?.navigate(LoginFragmentDirections.actionLoginDestinationToBaseDestination())
-//                loginViewModel.saveToDataStore("Kylix")
+
+                if (Constanta.SOURCE == Constanta.SOURCE_LOGOUT)
+                    startActivity(Intent(requireContext(), BaseActivity::class.java))
+                else
+                    view?.findNavController()?.navigate(LoginFragmentDirections.actionLoginDestinationToBaseDestination())
+
+                loginViewModel.savePrefEmail(email)
+                loginViewModel.savePrefHaveRunAppBefore(true)
                 activity?.finish()
             }
             is Resource.Loading -> {

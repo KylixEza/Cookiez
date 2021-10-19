@@ -1,22 +1,31 @@
 package com.kinderjoey.cookiez.ui.auth.register
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentRegisterBinding
 import com.kinderjoey.cookiez.model.User
+import com.kinderjoey.cookiez.ui.BaseActivity
+import com.kinderjoey.cookiez.ui.auth.login.LoginFragment
+import com.kinderjoey.cookiez.ui.auth.login.LoginFragmentDirections
+import com.kinderjoey.cookiez.util.Constanta
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+    private var email = ""
     private val viewModel: RegisterViewModel by viewModel()
 
     override fun onCreateView(
@@ -31,10 +40,11 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
 
-            activity.apply {
+            activity?.apply {
 
                 btnRegister.setOnClickListener {
                     val email = edtEmail.editText?.text.toString()
+                    this@RegisterFragment.email = email
                     val password = edtPassword.editText?.text.toString()
                     val username = edtName.editText?.text.toString()
                     val address = edtAddress.editText?.text.toString()
@@ -45,9 +55,27 @@ class RegisterFragment : Fragment() {
                         password,
                         createEntityUser(email,username,address,phoneNumber)
                     ).observe(viewLifecycleOwner,::signUpResponse)
+                }
 
-                    viewModel.savePrefEmail(email)
-                    viewModel.savePrefHaveRunAppBefore(true)
+                val callback = object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        parentFragmentManager.commit {
+                            replace(R.id.auth_container, LoginFragment())
+                        }
+                    }
+                }
+                if (Constanta.SOURCE == Constanta.SOURCE_LOGOUT) {
+                    onBackPressedDispatcher.addCallback(requireActivity(), callback)
+                }
+            }
+
+            tvLogin.setOnClickListener {
+                if (Constanta.SOURCE == Constanta.SOURCE_LOGOUT) {
+                    parentFragmentManager.commit {
+                        replace(R.id.auth_container, LoginFragment())
+                    }
+                } else {
+                    view.findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
                 }
             }
         }
@@ -71,7 +99,12 @@ class RegisterFragment : Fragment() {
         when(resource){
             is Resource.Success -> {
                 loadingState(false)
-                view?.findNavController()?.navigate(RegisterFragmentDirections.actionRegisterDestinationToBaseDestination())
+                if (Constanta.SOURCE == Constanta.SOURCE_LOGOUT)
+                    startActivity(Intent(requireContext(), BaseActivity::class.java))
+                else
+                    view?.findNavController()?.navigate(RegisterFragmentDirections.actionRegisterDestinationToBaseDestination())
+                viewModel.savePrefEmail(email)
+                viewModel.savePrefHaveRunAppBefore(true)
                 activity?.finish()
             }
             is Resource.Loading -> {

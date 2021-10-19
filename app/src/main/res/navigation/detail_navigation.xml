@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_detailMenuFragment_to_detailVariantMenuFragment"
             app:destination="@id/detail_variant_destination" />
+        <action
+            android:id="@+id/action_detail_menu_destination_to_categoryActivity"
+            app:destination="@id/categoryActivity" />
     </fragment>
 
     <fragment
@@ -54,5 +57,10 @@
             android:id="@+id/action_detailOrderVerificationFragment_to_detailOrderMenuFragment"
             app:destination="@id/detail_order_destination" />
     </fragment>
+    <activity
+        android:id="@+id/categoryActivity"
+        android:name="com.kinderjoey.cookiez.ui.category.CategoryActivity"
+        android:label="activity_category"
+        tools:layout="@layout/activity_category" />
 
 </navigation>

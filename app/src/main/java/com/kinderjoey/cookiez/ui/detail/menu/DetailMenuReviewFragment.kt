@@ -74,6 +74,7 @@ class DetailMenuReviewFragment : Fragment() {
                         avgRating += review.starReviewer
                     }
                     binding.tvAverageRating.text = avgRating.toString()
+                    binding.ratingBar.rating = avgRating.toFloat()
                 }
             }
         })

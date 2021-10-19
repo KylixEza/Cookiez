@@ -143,6 +143,8 @@
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:src="@drawable/ic_arrow_forward_ios"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintTop_toTopOf="@id/tv_choose_voucher"
         app:layout_constraintEnd_toEndOf="@id/separator_address_menu"
         app:layout_constraintBottom_toBottomOf="@id/tv_choose_voucher"/>

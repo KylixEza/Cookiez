@@ -1,7 +1,6 @@
 package com.kinderjoey.cookiez.ui.auth.register
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope

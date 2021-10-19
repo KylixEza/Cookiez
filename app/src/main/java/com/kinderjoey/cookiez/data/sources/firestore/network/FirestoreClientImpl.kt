@@ -9,12 +9,10 @@ import com.google.firebase.ktx.Firebase
 import com.kinderjoey.cookiez.data.sources.firestore.response.*
 import com.kinderjoey.cookiez.model.Favorite
 import com.kiwimob.firestore.coroutines.await
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
 import kotlin.Exception
 
 class FirestoreClientImpl: FirestoreClient {
@@ -292,11 +290,12 @@ class FirestoreClientImpl: FirestoreClient {
         emit(FirestoreResponses.Success(""))
     }
 
+    @DelicateCoroutinesApi
     override suspend fun getAllFavorites(uid: String): Flow<FirestoreResponses<List<FavoriteResponse>>> = flow {
         var listOfFavorite: List<FavoriteResponse> = ArrayList()
 
         try {
-            CoroutineScope(Dispatchers.IO).launch {
+            GlobalScope.launch {
                 listOfFavorite = userRef
                     .document(uid)
                     .collection(FirestoreReference.Favorite.reference.toString())

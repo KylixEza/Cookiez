@@ -1,5 +1,6 @@
 package com.kinderjoey.cookiez.ui.detail
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -28,6 +30,7 @@ import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailMenuBinding
 import com.kinderjoey.cookiez.model.Favorite
 import com.kinderjoey.cookiez.model.menu.Menu
+import com.kinderjoey.cookiez.ui.category.CategoryActivity
 import com.kinderjoey.cookiez.ui.detail.menu.*
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragment
 import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragmentDirections
@@ -49,7 +52,7 @@ class DetailMenuFragment : Fragment() {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val uid = firebaseAuth.currentUser?.uid
     private var id = ""
-    private val profileViewModel: ProfileViewModel by activityViewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
 
     companion object {
         var STREAM_URL = ""
@@ -88,7 +91,13 @@ class DetailMenuFragment : Fragment() {
                 onStart()
         }
 
-        binding.includeAppBarMiddle.tvTittle.text = menuName
+        binding.includeAppBarMiddle.apply {
+            tvTittle.text = menuName
+            ivArrowBack.setOnClickListener {
+                view.findNavController().navigate(DetailMenuFragmentDirections.actionDetailMenuDestinationToCategoryActivity())
+                activity?.finish()
+            }
+        }
 
         binding.includeBottomBarDetail.btnOrder.setOnClickListener {
             view.findNavController().navigate(DetailMenuFragmentDirections
