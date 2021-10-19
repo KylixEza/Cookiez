@@ -13,7 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookiez">
         <activity
-            android:name=".ui.voucher.screen.DetailVoucherActivity"
+            android:name=".ui.profile.wallet.DetailTopUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.voucher.my_voucher.MyDetailVoucherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.voucher.voucher.DetailVoucherActivity"
             android:exported="true" />
         <activity
             android:name=".ui.profile.EditAddressActivity"

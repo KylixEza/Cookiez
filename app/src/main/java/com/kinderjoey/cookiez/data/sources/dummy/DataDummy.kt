@@ -2,6 +2,8 @@ package com.kinderjoey.cookiez.data.sources.dummy
 
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.model.Category
+import com.kinderjoey.cookiez.model.TopUp
+import com.kinderjoey.cookiez.model.Transaction
 import com.kinderjoey.cookiez.model.UserLeaderBoard
 import com.kinderjoey.cookiez.util.CategoryType
 import com.kinderjoey.cookiez.util.Constanta
@@ -51,86 +53,54 @@ object DataDummy {
         )
     }
 
-    fun setLeaderboard(): List<UserLeaderBoard> {
+    fun setTopUpPayment(): List<TopUp>{
         return listOf(
-            UserLeaderBoard(
-                1,
-                Constanta.DUMMY_PROFILE,
-                "Annette Black",
-                2450
-            ),
-            UserLeaderBoard(
-                2,
-                Constanta.DUMMY_PROFILE,
-                "Esther Howard",
-                2450
-            ),
-            UserLeaderBoard(
-                3,
-                Constanta.DUMMY_PROFILE,
-                "Eleanor Pena",
-                2450
-            ),
-            UserLeaderBoard(
-                4,
-                Constanta.DUMMY_PROFILE,
-                "Jane Cooper",
-                2450
-            ),
-            UserLeaderBoard(
-                5,
-                Constanta.DUMMY_PROFILE,
-                "Bessie Cooper",
-                2450
-            ),
-            UserLeaderBoard(
-                6,
-                Constanta.DUMMY_PROFILE,
-                "Dianner Russel",
-                2450
-            ),
-            UserLeaderBoard(
-                7,
-                Constanta.DUMMY_PROFILE,
-                "Matthew Natt",
-                2450
-            ),
-            UserLeaderBoard(
-                8,
-                Constanta.DUMMY_PROFILE,
-                "Easter Egg",
-                2450
-            ),
-            UserLeaderBoard(
-                9,
-                Constanta.DUMMY_PROFILE,
-                "Norrand Gold",
-                2450
-            ),
-            UserLeaderBoard(
-                10,
-                Constanta.DUMMY_PROFILE,
-                "Fanny Viola",
-                2450
-            ),
+            TopUp("BCA",R.drawable.ic_logo_bca),
+            TopUp("BNI",R.drawable.ic_logo_bni),
+            TopUp("BRI",R.drawable.ic_logo_bri),
+            TopUp("Dana",R.drawable.ic_logo_dana),
+            TopUp("Gopay",R.drawable.ic_logo_gopay),
+            TopUp("LinkAja",R.drawable.ic_logo_link_aja),
+            TopUp("Ovo",R.drawable.ic_logo_ovo),
         )
     }
-    fun setAvailableVoucher(): List<Int> {
-        return arrayListOf(
-            R.drawable.voucher_red,
-            R.drawable.voucher_yellow,
-            R.drawable.voucher_orange,
-            R.drawable.voucher_red,
-            R.drawable.voucher_yellow,
-            R.drawable.voucher_orange,
-            R.drawable.voucher_red
-        )
-    }
-
-    fun setOwnVoucher(): List<Int> {
-        return arrayListOf(
-            R.drawable.voucher_red,
-            R.drawable.voucher_yellow,
+    fun setTransaction(): List<Transaction> {
+        return listOf(
+            Transaction(
+                "Pembayaran",
+                "Nasi Goreng Asia (1-3 porsi)",
+                "21-08-2021",
+                "- Rp. 25000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Nasi Goreng Asia (5-7 porsi)",
+                "17-08-2021",
+                "- Rp. 75000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Ayam bakar (3-5 porsi)",
+                "15-08-2021",
+                "- Rp. 41000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Mie rebus (3-5 porsi)",
+                "11-08-2021",
+                "- Rp. 27000",
+                "Berhasil"
+            ),
+            Transaction(
+                "Pembayaran",
+                "Nasi lalapan (3-5 porsi)",
+                "09-08-2021",
+                "- Rp. 32000",
+                "Berhasil"
+            ),
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.kinderjoey.cookiez.ui.voucher.screen
+package com.kinderjoey.cookiez.ui.voucher.voucher
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

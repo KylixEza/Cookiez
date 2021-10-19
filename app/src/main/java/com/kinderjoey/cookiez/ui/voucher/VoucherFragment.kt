@@ -11,8 +11,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.adapter.VoucherPagerAdapter
 import com.kinderjoey.cookiez.databinding.FragmentVoucherBinding
-import com.kinderjoey.cookiez.ui.voucher.screen.AvailableVoucherFragment
-import com.kinderjoey.cookiez.ui.voucher.screen.OwnVoucherFragment
+import com.kinderjoey.cookiez.ui.voucher.voucher.AvailableVoucherFragment
+import com.kinderjoey.cookiez.ui.voucher.my_voucher.OwnVoucherFragment
 import kotlinx.android.synthetic.main.dialog_voucher.view.*
 
 class VoucherFragment : Fragment() {
