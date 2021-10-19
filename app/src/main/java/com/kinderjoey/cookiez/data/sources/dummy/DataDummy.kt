@@ -4,9 +4,7 @@ import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.model.Category
 import com.kinderjoey.cookiez.model.TopUp
 import com.kinderjoey.cookiez.model.Transaction
-import com.kinderjoey.cookiez.model.UserLeaderBoard
 import com.kinderjoey.cookiez.util.CategoryType
-import com.kinderjoey.cookiez.util.Constanta
 
 object DataDummy {
 
@@ -61,7 +59,7 @@ object DataDummy {
             TopUp("Dana",R.drawable.ic_logo_dana),
             TopUp("Gopay",R.drawable.ic_logo_gopay),
             TopUp("LinkAja",R.drawable.ic_logo_link_aja),
-            TopUp("Ovo",R.drawable.ic_logo_ovo),
+            TopUp("OVO",R.drawable.ic_logo_ovo),
         )
     }
     fun setTransaction(): List<Transaction> {

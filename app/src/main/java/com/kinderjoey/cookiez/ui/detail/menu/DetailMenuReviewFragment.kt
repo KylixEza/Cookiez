@@ -73,7 +73,8 @@ class DetailMenuReviewFragment : Fragment() {
                     it.data?.forEach { review ->
                         avgRating += review.starReviewer
                     }
-                    binding.tvAverageRating.text = avgRating.toString()
+                    avgRating /= it.data?.size!!
+                    binding.tvAverageRating.text = String.format("%.1f".format(avgRating))
                     binding.ratingBar.rating = avgRating.toFloat()
                 }
             }

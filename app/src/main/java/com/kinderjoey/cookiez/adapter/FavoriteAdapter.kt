@@ -23,7 +23,7 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>(
             clear()
             addAll(data)
         }
-        notifyItemRangeRemoved(0, listOfFavorite.size)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {

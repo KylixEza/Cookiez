@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.history
 
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +7,7 @@ import android.view.View
 import android.viewbinding.library.activity.viewBinding
 import com.bumptech.glide.Glide
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.databinding.ActivityFavoriteBinding
 import com.kinderjoey.cookiez.databinding.ActivityHistoryBinding
-import com.kinderjoey.cookiez.ui.BaseActivity
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -34,7 +31,7 @@ class HistoryActivity : AppCompatActivity() {
             tvTittle.text = String.format("Riwayat Pesanan")
             ivFavorite.visibility = View.GONE
             ivArrowBack.setOnClickListener {
-                startActivity(Intent(this@HistoryActivity, BaseActivity::class.java))
+                onBackPressed()
             }
         }
 

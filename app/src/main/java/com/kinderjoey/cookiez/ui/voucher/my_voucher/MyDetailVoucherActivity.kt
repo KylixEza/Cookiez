@@ -1,7 +1,5 @@
 package com.kinderjoey.cookiez.ui.voucher.my_voucher
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,18 +7,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
-import com.google.firebase.auth.FirebaseAuth
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.databinding.ActivityDetailVoucherBinding
 import com.kinderjoey.cookiez.databinding.ActivityMyDetailVoucherBinding
 import com.kinderjoey.cookiez.model.Voucher
-import com.kinderjoey.cookiez.ui.BaseActivity
+import com.kinderjoey.cookiez.ui.detail.order.DetailOrderMenuFragment
 import com.kinderjoey.cookiez.ui.voucher.VoucherViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MyDetailVoucherActivity : AppCompatActivity() {
     companion object {
@@ -74,8 +65,8 @@ class MyDetailVoucherActivity : AppCompatActivity() {
             }
 
             btnUseVoucher.setOnClickListener {
-                startActivity( Intent(this@MyDetailVoucherActivity, BaseActivity::class.java))
-
+                onBackPressed()
+                DetailOrderMenuFragment.precentageDiscount = intentValue?.voucherDiscount!!
                 Toast.makeText(this@MyDetailVoucherActivity, "Silahkan gunakan voucher untuk pemesanan",Toast.LENGTH_LONG).show()
             }
 

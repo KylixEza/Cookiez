@@ -312,4 +312,26 @@ class FirestoreClientImpl: FirestoreClient {
         else
             emit(FirestoreResponses.Success(listOfFavorite))
     }.flowOn(Dispatchers.IO)
+
+    override suspend fun getAllSearches(query: String): Flow<FirestoreResponses<List<MenuResponse>>> = flow {
+        var listOfSearch: List<MenuResponse> = ArrayList()
+
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                listOfSearch = menuRef
+                    .collection(FirestoreReference.All.reference.toString())
+                    .whereArrayContains(FirestoreReference.TitleAttr.attribute.toString(), query)
+                    .get()
+                    .await()
+                    .toObjects(MenuResponse::class.java)
+            }.join()
+        } catch (e: Exception) {
+            emit(FirestoreResponses.Error(e.message))
+        }
+
+        if (listOfSearch.isNullOrEmpty())
+            emit(FirestoreResponses.Empty())
+        else
+            emit(FirestoreResponses.Success(listOfSearch))
+    }
 }

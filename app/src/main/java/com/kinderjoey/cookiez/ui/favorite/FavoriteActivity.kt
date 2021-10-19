@@ -44,7 +44,7 @@ class FavoriteActivity : AppCompatActivity() {
                 tvTittle.text = String.format("Menu Favorit")
                 ivFavorite.visibility = View.INVISIBLE
                 ivArrowBack.setOnClickListener {
-                    startActivity(Intent(this@FavoriteActivity, BaseActivity::class.java))
+                    onBackPressed()
                 }
             }
             rvFavorite.apply {

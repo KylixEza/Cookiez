@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.auth.login
 
-
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -8,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.kinderjoey.cookiez.data.repository.IAuthRepository
 import com.kinderjoey.cookiez.data.sources.datastore.DataStorePlayground
 import kotlinx.coroutines.launch
-
 
 class LoginViewModel( private val repository: IAuthRepository, private val application: Application): ViewModel() {
 

@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.kinderjoey.cookiez.data.sources.local.entity.UserEntity
-import com.kinderjoey.cookiez.model.User
 import kotlinx.coroutines.flow.Flow
 
 @Dao

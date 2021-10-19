@@ -8,7 +8,6 @@ import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ItemVoucherBinding
 import com.kinderjoey.cookiez.model.Voucher
 
-
 class VoucherAdapter(private val listItem: ArrayList<Voucher>) :
     RecyclerView.Adapter<VoucherAdapter.ListViewHolder>() {
 

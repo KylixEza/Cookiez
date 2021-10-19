@@ -12,10 +12,11 @@
         tools:layout="@layout/fragment_detail_menu" >
         <action
             android:id="@+id/action_detailMenuFragment_to_detailVariantMenuFragment"
-            app:destination="@id/detail_variant_destination" />
-        <action
-            android:id="@+id/action_detail_menu_destination_to_categoryActivity"
-            app:destination="@id/categoryActivity" />
+            app:destination="@id/detail_variant_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -25,10 +26,18 @@
         tools:layout="@layout/fragment_detail_variant_menu">
         <action
             android:id="@+id/action_detailVariantMenuFragment_to_detailOrderMenuFragment"
-            app:destination="@id/detail_order_destination" />
+            app:destination="@id/detail_order_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_detailVariantMenuFragment_to_detailMenuFragment"
-            app:destination="@id/detail_menu_destination" />
+            app:destination="@id/detail_menu_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="menuName"
             app:argType="string" />
@@ -40,13 +49,28 @@
         tools:layout="@layout/fragment_detail_order_menu">
         <action
             android:id="@+id/action_detailOrderMenuFragment_to_detailOrderVerificationFragment"
-            app:destination="@id/detail_verification_destination" />
+            app:destination="@id/detail_verification_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_detailOrderMenuFragment_to_detailVariantMenuFragment"
-            app:destination="@id/detail_variant_destination" />
+            app:destination="@id/detail_variant_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="selectedVariant"
             app:argType="com.kinderjoey.cookiez.model.Variant" />
+        <action
+            android:id="@+id/action_detail_order_destination_to_ownVoucherFragment"
+            app:destination="@id/own_voucher_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/detail_verification_destination"
@@ -55,12 +79,16 @@
         tools:layout="@layout/fragment_detail_order_verification" >
         <action
             android:id="@+id/action_detailOrderVerificationFragment_to_detailOrderMenuFragment"
-            app:destination="@id/detail_order_destination" />
+            app:destination="@id/detail_order_destination"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
-    <activity
-        android:id="@+id/categoryActivity"
-        android:name="com.kinderjoey.cookiez.ui.category.CategoryActivity"
-        android:label="activity_category"
-        tools:layout="@layout/activity_category" />
+    <fragment
+        android:id="@+id/own_voucher_destination"
+        android:name="com.kinderjoey.cookiez.ui.voucher.my_voucher.OwnVoucherFragment"
+        android:label="fragment_own_voucher"
+        tools:layout="@layout/fragment_own_voucher" />
 
 </navigation>

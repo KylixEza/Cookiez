@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.notification
 
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,7 +7,6 @@ import android.view.View
 import android.viewbinding.library.activity.viewBinding
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ActivityNotificationBinding
-import com.kinderjoey.cookiez.ui.BaseActivity
 
 class NotificationActivity : AppCompatActivity() {
 
@@ -27,7 +25,7 @@ class NotificationActivity : AppCompatActivity() {
             tvTittle.text = String.format("Notifikasi")
             ivFavorite.visibility = View.GONE
             ivArrowBack.setOnClickListener {
-                startActivity(Intent(this@NotificationActivity, BaseActivity::class.java))
+                onBackPressed()
             }
         }
     }

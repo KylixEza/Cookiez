@@ -15,7 +15,6 @@ import com.kinderjoey.cookiez.databinding.ActivityCategoryBinding
 import com.kinderjoey.cookiez.model.menu.Menu
 import com.kinderjoey.cookiez.ui.BaseActivity
 import com.kinderjoey.cookiez.util.CategoryType
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CategoryActivity : AppCompatActivity() {

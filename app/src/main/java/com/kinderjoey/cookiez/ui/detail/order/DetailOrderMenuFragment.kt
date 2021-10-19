@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -20,6 +19,7 @@ import com.kinderjoey.cookiez.model.User
 import com.kinderjoey.cookiez.ui.profile.ProfileViewModel
 import com.kinderjoey.cookiez.util.Formatting
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.roundToInt
 
 class DetailOrderMenuFragment : Fragment() {
 
@@ -31,7 +31,7 @@ class DetailOrderMenuFragment : Fragment() {
 
     companion object {
         const val shipment = 4000
-        const val discount = 0
+        var precentageDiscount = 0
     }
 
     override fun onCreateView(
@@ -46,7 +46,6 @@ class DetailOrderMenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val selectedVariant = args.selectedVariant
-        val totalPrice = selectedVariant.price + shipment - discount
 
         binding.apply {
             includeAppBarMiddle.apply {
@@ -69,17 +68,20 @@ class DetailOrderMenuFragment : Fragment() {
             }
             tvIngredientsPrice.text = Formatting.rupiahCurrencyFormatting(selectedVariant.price)
             tvShipmentPrice.text = Formatting.rupiahCurrencyFormatting(shipment)
+            val discount = selectedVariant.price * precentageDiscount / 100
+            val totalPrice = (selectedVariant.price + shipment - discount)
             tvDiscountPrice.text = String.format(
                 "- ${Formatting.rupiahCurrencyFormatting(discount)}"
             )
+            uid?.let {
+                viewModel.getUser(it).observe(viewLifecycleOwner, observe(totalPrice))
+            }
             tvTotalPaymentPrice.text = Formatting.rupiahCurrencyFormatting(totalPrice)
             ivArrowForward.setOnClickListener {
-
+                view.findNavController().navigate(DetailOrderMenuFragmentDirections
+                    .actionDetailOrderDestinationToOwnVoucherFragment()
+                )
             }
-        }
-
-        uid?.let {
-            viewModel.getUser(it).observe(viewLifecycleOwner, observe(totalPrice))
         }
 
         binding.includeBottomBarDetailOrder.apply {
@@ -90,7 +92,7 @@ class DetailOrderMenuFragment : Fragment() {
                             .actionDetailOrderMenuFragmentToDetailOrderVerificationFragment()
                     )
                 }
-            }, 2500)
+            }, 300)
         }
     }
 

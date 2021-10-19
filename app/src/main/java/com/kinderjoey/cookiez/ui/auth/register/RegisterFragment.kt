@@ -17,7 +17,6 @@ import com.kinderjoey.cookiez.databinding.FragmentRegisterBinding
 import com.kinderjoey.cookiez.model.User
 import com.kinderjoey.cookiez.ui.BaseActivity
 import com.kinderjoey.cookiez.ui.auth.login.LoginFragment
-import com.kinderjoey.cookiez.ui.auth.login.LoginFragmentDirections
 import com.kinderjoey.cookiez.util.Constanta
 import org.koin.android.viewmodel.ext.android.viewModel
 

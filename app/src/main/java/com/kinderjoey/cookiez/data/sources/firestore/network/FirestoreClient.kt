@@ -19,4 +19,5 @@ interface FirestoreClient {
     suspend fun addToFavorite(uid: String, menuName: String, data: Favorite): Flow<FirestoreResponses<String>>
     suspend fun removeFromFavorite(uid: String, menuName: String): Flow<FirestoreResponses<String>>
     suspend fun getAllFavorites(uid: String): Flow<FirestoreResponses<List<FavoriteResponse>>>
+    suspend fun getAllSearches(query: String): Flow<FirestoreResponses<List<MenuResponse>>>
 }

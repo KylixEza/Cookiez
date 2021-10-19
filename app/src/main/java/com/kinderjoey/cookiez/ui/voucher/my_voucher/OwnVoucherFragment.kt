@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentOwnVoucherBinding
 import com.kinderjoey.cookiez.ui.voucher.VoucherViewModel
-import com.kinderjoey.cookiez.ui.voucher.voucher.VoucherAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,8 +50,5 @@ class OwnVoucherFragment : Fragment() {
                 }
             }
         }
-
-
     }
-
 }

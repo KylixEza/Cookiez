@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.detail
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.google.android.exoplayer2.MediaItem
@@ -30,13 +27,8 @@ import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentDetailMenuBinding
 import com.kinderjoey.cookiez.model.Favorite
 import com.kinderjoey.cookiez.model.menu.Menu
-import com.kinderjoey.cookiez.ui.category.CategoryActivity
-import com.kinderjoey.cookiez.ui.detail.menu.*
-import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragment
-import com.kinderjoey.cookiez.ui.detail.order.DetailVariantMenuFragmentDirections
 import com.kinderjoey.cookiez.ui.profile.ProfileViewModel
 import com.kinderjoey.cookiez.util.Constanta
-import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMenuFragment : Fragment() {
@@ -94,7 +86,6 @@ class DetailMenuFragment : Fragment() {
         binding.includeAppBarMiddle.apply {
             tvTittle.text = menuName
             ivArrowBack.setOnClickListener {
-                view.findNavController().navigate(DetailMenuFragmentDirections.actionDetailMenuDestinationToCategoryActivity())
                 activity?.finish()
             }
         }

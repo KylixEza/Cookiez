@@ -17,8 +17,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ActivityEditProfileBinding
-import com.kinderjoey.cookiez.databinding.FragmentProfileBinding
-import com.kinderjoey.cookiez.ui.MainActivity
 
 class EditProfileActivity : AppCompatActivity() {
     private lateinit var binding : ActivityEditProfileBinding

@@ -17,7 +17,6 @@ import com.kinderjoey.cookiez.model.User
 import com.kinderjoey.cookiez.ui.auth.AuthActivity
 import com.kinderjoey.cookiez.ui.history.HistoryActivity
 import com.kinderjoey.cookiez.ui.profile.wallet.CWalletActivity
-import com.kinderjoey.cookiez.ui.splash.SplashActivity
 import com.kinderjoey.cookiez.util.Constanta
 
 class ProfileFragment : Fragment() {

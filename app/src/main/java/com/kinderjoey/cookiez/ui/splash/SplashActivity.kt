@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.activity.viewBinding
-import androidx.fragment.app.commit
 import androidx.navigation.fragment.NavHostFragment
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.ActivitySplashBinding

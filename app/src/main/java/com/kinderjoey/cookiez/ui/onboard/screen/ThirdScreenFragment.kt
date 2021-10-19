@@ -9,10 +9,7 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.navigation.findNavController
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.databinding.FragmentThirdScreenBinding
-import com.kinderjoey.cookiez.ui.auth.login.LoginFragment
-import com.kinderjoey.cookiez.ui.auth.register.RegisterFragment
 import com.kinderjoey.cookiez.ui.onboard.OnBoardingFragmentDirections
-import com.kinderjoey.cookiez.ui.splash.SplashFragmentDirections
 
 class ThirdScreenFragment : Fragment() {
 

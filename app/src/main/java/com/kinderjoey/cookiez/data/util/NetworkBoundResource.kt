@@ -1,7 +1,6 @@
 package com.kinderjoey.cookiez.data.util
 
 import com.kinderjoey.cookiez.data.sources.firestore.network.FirebaseResponse
-import com.kinderjoey.cookiez.data.sources.firestore.network.FirestoreResponses
 import kotlinx.coroutines.flow.*
 
 abstract class NetworkBoundResource<ResultType, RequestType> {

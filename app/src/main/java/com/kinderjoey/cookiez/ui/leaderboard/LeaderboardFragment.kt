@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.dialog_rank.view.*
 import kotlinx.android.synthetic.main.dialog_voucher.view.btn_ok
 import kotlinx.android.synthetic.main.dialog_voucher.view.ib_close
 
-
 class LeaderboardFragment : Fragment() {
 
     private val binding by viewBinding<FragmentLeaderboardBinding>()
