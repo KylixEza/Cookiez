@@ -77,20 +77,4 @@
         app:layout_constraintTop_toTopOf="@id/btn_register"
         app:layout_constraintBottom_toBottomOf="@id/btn_register"/>
 
-    <TextView
-        android:id="@+id/tv_skip_clickable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/skip"
-        android:textColor="@color/red"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

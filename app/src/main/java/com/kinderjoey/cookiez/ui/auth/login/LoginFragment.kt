@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.auth.login
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentLoginBinding
-import com.kinderjoey.cookiez.ui.splash.SplashFragmentDirections
-import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -41,6 +37,8 @@ class LoginFragment : Fragment() {
                 val email = edtEmail.editText?.text.toString()
                 val password = edtPassword.editText?.text.toString()
                 loginViewModel.signIn(email,password).observe(viewLifecycleOwner,::signInResponse)
+                loginViewModel.savePrefEmail(email)
+                loginViewModel.savePrefHaveRunAppBefore(true)
             }
             tvRegister.setOnClickListener {
                 view.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())

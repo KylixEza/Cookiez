@@ -44,7 +44,8 @@ class DetailMenuFragment : Fragment() {
     private lateinit var mediaDataSourceFactory: DataSource.Factory
     private val viewModel by viewModel<DetailMenuViewModel>()
     private var isFavorite = false
-
+    private var menu: Menu? = null
+    private var favorite: Favorite? = null
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val uid = firebaseAuth.currentUser?.uid
     private var id = ""
@@ -116,6 +117,34 @@ class DetailMenuFragment : Fragment() {
                         .actionDetailMenuFragmentToDetailVariantMenuFragment(menuName!!))
             }
         }
+
+        binding.includeAppBarMiddle.ivFavorite.setOnClickListener {
+            if (!isFavorite) {
+                viewModel.addToFavorite(id, menu?.title!!, favorite!!).observe(viewLifecycleOwner, { resource ->
+                    when(resource) {
+                        is Resource.Empty -> {}
+                        is Resource.Error -> Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
+                        is Resource.Loading -> {}
+                        is Resource.Success -> {
+                            binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_true))
+                            isFavorite = true
+                        }
+                    }
+                })
+            } else {
+                viewModel.removeFromFavorite(id, menu?.title!!).observe(viewLifecycleOwner, { resource ->
+                    when(resource) {
+                        is Resource.Empty -> {}
+                        is Resource.Error -> Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
+                        is Resource.Loading -> {}
+                        is Resource.Success -> {
+                            binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
+                            isFavorite = false
+                        }
+                    }
+                })
+            }
+        }
     }
 
     private fun initializePlayer() {
@@ -150,16 +179,16 @@ class DetailMenuFragment : Fragment() {
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
                 is Resource.Success -> {
-                    val menu = it.data
+                    menu = it.data
                     STREAM_URL = menu?.videoUrl.toString()
-                    menu?.let { it1 -> observeIsFavorite(it1) }
+                    observeIsFavorite()
                 }
             }
         })
     }
 
-    private fun observeIsFavorite(menu: Menu) {
-        viewModel.isFavorite(id, menu.title).observe(viewLifecycleOwner, {
+    private fun observeIsFavorite() {
+        viewModel.isFavorite(id, menu?.title.toString()).observe(viewLifecycleOwner, {
             when(it) {
                 is Resource.Empty -> binding.includeAppBarMiddle.ivFavorite.visibility = View.INVISIBLE
                 is Resource.Error -> binding.includeAppBarMiddle.ivFavorite.visibility = View.INVISIBLE
@@ -175,40 +204,16 @@ class DetailMenuFragment : Fragment() {
                         binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
                     }
 
-                    val favorite = Favorite(
+                    favorite = Favorite(
                         id,
-                        menu.title,
-                        menu.time,
-                        menu.difficulty,
-                        menu.price,
-                        menu.rating,
-                        menu.image,
-                        menu.type
+                        menu?.title!!,
+                        menu?.time!!,
+                        menu?.difficulty!!,
+                        menu?.price!!,
+                        menu?.rating!!,
+                        menu?.image!!,
+                        menu?.type!!
                     )
-
-                    binding.includeAppBarMiddle.ivFavorite.setOnClickListener {
-                        if (!isFavorite) {
-                            viewModel.addToFavorite(id, menu.title, favorite).observe(viewLifecycleOwner, { resource ->
-                                when(resource) {
-                                    is Resource.Empty -> {}
-                                    is Resource.Error -> Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
-                                    is Resource.Loading -> {}
-                                    is Resource.Success ->
-                                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_true))
-                                }
-                            })
-                        } else {
-                            viewModel.removeFromFavorite(id, menu.title).observe(viewLifecycleOwner, { resource ->
-                                when(resource) {
-                                    is Resource.Empty -> {}
-                                    is Resource.Error -> Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
-                                    is Resource.Loading -> {}
-                                    is Resource.Success ->
-                                        binding.includeAppBarMiddle.ivFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_false))
-                                }
-                            })
-                        }
-                    }
                 }
             }
         })

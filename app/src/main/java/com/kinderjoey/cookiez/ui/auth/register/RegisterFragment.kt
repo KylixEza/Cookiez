@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.auth.register
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,14 +8,11 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.kinderjoey.cookiez.R
 import com.kinderjoey.cookiez.data.util.Resource
 import com.kinderjoey.cookiez.databinding.FragmentRegisterBinding
 import com.kinderjoey.cookiez.model.User
-import com.kinderjoey.cookiez.ui.MainActivity
-import com.kinderjoey.cookiez.ui.auth.login.LoginFragment
-import com.kinderjoey.cookiez.ui.auth.login.LoginFragmentDirections
 import org.koin.android.viewmodel.ext.android.viewModel
+
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
@@ -50,9 +46,9 @@ class RegisterFragment : Fragment() {
                         createEntityUser(email,username,address,phoneNumber)
                     ).observe(viewLifecycleOwner,::signUpResponse)
 
+                    viewModel.savePrefEmail(email)
+                    viewModel.savePrefHaveRunAppBefore(true)
                 }
-
-
             }
         }
     }

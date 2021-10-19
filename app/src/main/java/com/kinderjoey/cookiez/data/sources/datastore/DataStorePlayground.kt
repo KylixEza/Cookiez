@@ -28,9 +28,9 @@ class DataStorePlayground(private val context: Context) {
         name = DataStoreUtil.DATA_STORE_NAME
     )
 
-    suspend fun savePrefUsername(name: String) {
+    suspend fun savePrefEmail(email: String) {
         context.userPreferenceDataStore.edit {
-            it[DataStoreUtil.USERNAME_PREF_KEY] = name
+            it[DataStoreUtil.EMAIL_PREF_KEY] = email
         }
     }
 
@@ -40,9 +40,9 @@ class DataStorePlayground(private val context: Context) {
         }
     }
 
-    fun readPrefUsername(): Flow<Boolean> = context.userPreferenceDataStore.data
+    fun readPrefEmail(): Flow<Boolean> = context.userPreferenceDataStore.data
         .map {
-            it[DataStoreUtil.USERNAME_PREF_KEY] != null
+            it[DataStoreUtil.EMAIL_PREF_KEY] != null
         }
 
     fun readPrefHaveRunAppBefore(): Flow<Boolean> = context.userPreferenceDataStore.data

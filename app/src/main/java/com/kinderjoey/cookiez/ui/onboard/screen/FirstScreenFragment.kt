@@ -30,5 +30,9 @@ class FirstScreenFragment : Fragment() {
         firstScreenBinding.btnNext.setOnClickListener {
             pager?.currentItem = 1
         }
+
+        firstScreenBinding.tvSkipClickable.setOnClickListener {
+            pager?.currentItem = 2
+        }
     }
 }

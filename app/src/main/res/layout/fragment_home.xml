@@ -30,14 +30,17 @@
 
             <TextView
                 android:id="@+id/tv_location_point"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="34dp"
+                android:maxLines="1"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_semibold"
                 app:drawableStartCompat="@drawable/ic_location_red"
                 app:layout_constraintStart_toStartOf="@id/tv_your_location"
                 app:layout_constraintTop_toBottomOf="@id/tv_your_location"
+                app:layout_constraintEnd_toStartOf="@id/iv_favorite"
                 android:drawablePadding="8dp"
                 android:text="Kota Malang"/>
 

@@ -1,6 +1,5 @@
 package com.kinderjoey.cookiez.ui.splash
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,14 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.kinderjoey.cookiez.R
-import com.kinderjoey.cookiez.ui.MainActivity
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment() {
 
-    private val splashViewModel by viewModels<SplashViewModel>()
+    private val splashViewModel by viewModel<SplashViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +34,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun observeUsername(view: View) {
-        splashViewModel.readPrefUsername().observe(viewLifecycleOwner, {isLogin ->
+        splashViewModel.readPrefEmail().observe(viewLifecycleOwner, { isLogin ->
             if (isLogin) {
                 view.findNavController().navigate(R.id.action_splashFragment_to_baseActivity)
             } else {

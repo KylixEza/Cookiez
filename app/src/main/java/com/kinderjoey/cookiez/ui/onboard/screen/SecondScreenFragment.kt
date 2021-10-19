@@ -29,5 +29,9 @@ class SecondScreenFragment : Fragment() {
         secondScreenBinding.btnNext.setOnClickListener {
             pager?.currentItem = 2
         }
+
+        secondScreenBinding.tvSkipClickable.setOnClickListener {
+            pager?.currentItem = 2
+        }
     }
 }
