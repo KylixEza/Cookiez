@@ -74,7 +74,7 @@ class DetailMenuFragment : Fragment() {
             })
         }
 
-        initializePlayer()
+
 
         playerView?.setOnClickListener {
             if (simpleExoPlayer?.playWhenReady == true)
@@ -147,11 +147,11 @@ class DetailMenuFragment : Fragment() {
         }
     }
 
-    private fun initializePlayer() {
+    private fun initializePlayer(streamUrl: String?) {
         mediaDataSourceFactory = DefaultDataSourceFactory(requireActivity(), Util.getUserAgent(requireActivity(), "mediaPlayerSample"))
 
         val mediaSource = ProgressiveMediaSource.Factory(mediaDataSourceFactory).createMediaSource(
-            MediaItem.fromUri(STREAM_URL))
+            MediaItem.fromUri(streamUrl.toString()))
 
         val mediaSourceFactory: MediaSourceFactory = DefaultMediaSourceFactory(mediaDataSourceFactory)
 
@@ -180,7 +180,7 @@ class DetailMenuFragment : Fragment() {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     menu = it.data
-                    STREAM_URL = menu?.videoUrl.toString()
+                    initializePlayer(menu?.videoUrl)
                     observeIsFavorite()
                 }
             }
@@ -222,13 +222,13 @@ class DetailMenuFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        if (Util.SDK_INT > 23) initializePlayer()
+        if (Util.SDK_INT > 23) initializePlayer(menu?.videoUrl)
     }
 
     override fun onResume() {
         super.onResume()
 
-        if (Util.SDK_INT <= 23) initializePlayer()
+        if (Util.SDK_INT <= 23) initializePlayer(menu?.videoUrl)
     }
 
     override fun onPause() {
